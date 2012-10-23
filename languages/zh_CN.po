@@ -1,0 +1,890 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PhilNa2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-01-11 03:09+0800\n"
+"PO-Revision-Date: \n"
+"Last-Translator: yinheli <yinheli@gmail.com>\n"
+"Language-Team: yinheli <yinheli@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: _e;__;_c;_x\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:33
+msgid "Welcome to the 404 page!!!"
+msgstr "欢迎来到 404 页面!!!"
+
+#: 404.php:35
+msgid "Whoops, sorry, It seems the page you were trying to find on my site isn's around anymore.This is probably my fault...but maybe I  just had changed the url or hided the post which I don't want to show publicly."
+msgstr "哎呀,看来您试图访问的页面不错在了,这可能是我的错误....但是也有可能是我改变了原来的链接,或者仅仅是隐藏了起来不想公开的显示了"
+
+#: 404.php:36
+msgid "So I have some advice for you."
+msgstr "因此,这里我有些建议要给您."
+
+#: 404.php:38
+msgid "Try to Search. "
+msgstr "尝试搜索."
+
+#: 404.php:38
+msgid "Use google or wordpress search engine.Maybe you can find what you want or somethingelse which is usefull for you too."
+msgstr "使用Google自定义搜索,或者 Wordpress 自带的搜索引擎搜索.有可能您能很幸运的找见您想要的,或者其他对您也很有用的东西."
+
+#: 404.php:39
+msgid "Contact me. "
+msgstr "联系我."
+
+#: 404.php:39
+msgid "If you really found something wrong please contact me that would be very friendly of you.Thank you!"
+msgstr "如果您真的发现了什么错误,能请联系并告之我的话,那您真是太好了,非常感谢."
+
+#: 404.php:47
+msgid "Google custom search"
+msgstr "谷歌自定义搜索"
+
+#: 404.php:57
+#: searchform.php:46
+msgid "Search posts"
+msgstr "搜索文章."
+
+#: 404.php:58
+msgid "WordPress search"
+msgstr "WordPress 搜索"
+
+#: 404.php:65
+msgid "Back to home"
+msgstr "返回首页"
+
+#: comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "该文章受密码保护. 要查看评论请输入密码."
+
+#: comments.php:39
+msgid "Comments"
+msgstr "评论"
+
+#: comments.php:42
+msgid "Feed for this Entry"
+msgstr "订阅这里的评论"
+
+#: comments.php:43
+msgid "Use this link to send a trackback to this post."
+msgstr "使用该链接向该文章发送 trackback "
+
+#: comments.php:43
+msgid "Trackback"
+msgstr "Trackback"
+
+#: comments.php:44
+msgid "Add a comment"
+msgstr "添加评论"
+
+#: comments.php:44
+msgid "Leave a comment"
+msgstr "留言"
+
+#: comments.php:57
+msgid "No comments yet."
+msgstr "还没有评论"
+
+#: comments.php:64
+msgid "Submitting Comment, Give me a second..."
+msgstr "评论提交中, 请稍候..."
+
+#: comments.php:75
+msgid "Comment pages"
+msgstr "评论分页"
+
+#: comments.php:90
+msgid "Comments are currently closed."
+msgstr "评论已关闭."
+
+#: comments.php:97
+msgid "Trackbacks &amp; Pingbacks"
+msgstr "Trackbacks &amp; Pingbacks"
+
+#: comments.php:100
+msgid "Show/Hide the list"
+msgstr "显示/隐藏 列表"
+
+#: comments.php:100
+msgid "Toggle the list"
+msgstr "显示/隐藏 列表"
+
+#: comments.php:115
+msgid "No trackbacks yet."
+msgstr "还没有 trackbacks"
+
+#: comments.php:122
+msgid "Trackbacks are currently closed."
+msgstr "Trackbacks 已关闭"
+
+#: contact.php:45
+#: links.php:45
+#: loop.php:46
+msgid "F jS, Y"
+msgstr "Y年n月j日"
+
+#: contact.php:49
+#: links.php:49
+#: loop.php:51
+msgid "Edit"
+msgstr "编辑"
+
+#: contact.php:54
+#: links.php:61
+#: loop.php:61
+msgid "Read more..."
+msgstr "阅读更多... "
+
+#: contact.php:56
+#: links.php:63
+#: loop.php:64
+msgid "Pages:"
+msgstr "分页: "
+
+#: contact.php:62
+msgid "Sending your email, Give me a second..."
+msgstr "邮件发送中.请稍候... "
+
+#: contact.php:72
+msgid "Name"
+msgstr "昵称"
+
+#: contact.php:76
+msgid "Your E_mail"
+msgstr "您的邮箱"
+
+#: contact.php:80
+msgid "Subject"
+msgstr "主题"
+
+#: contact.php:84
+msgid "Verification Code"
+msgstr "验证码"
+
+#: contact.php:84
+msgid "Click the picture to refresh"
+msgstr "单击图片刷新"
+
+#: contact.php:87
+msgid "HTML tag enabled"
+msgstr "可以使用 HTML"
+
+#: contact.php:90
+msgid "Email Me!"
+msgstr "发送邮件"
+
+#: contact.php:95
+msgid "Can't get the admin's email address. The contact form is not available."
+msgstr "无法取得管理员邮箱地址或管理员邮箱未设置, 联系表单不可使用."
+
+#: contact.php:101
+msgid "<strong>You Can use the HTML tags:</strong> "
+msgstr "<strong>可以使用的 HTML 标签:</strong> "
+
+#: footer.php:37
+msgid "powered by WordPress"
+msgstr "由 WordPress 强力驱动"
+
+#: footer.php:41
+msgid "Theme PhilNa2 gorgeous design by <a rel=\"acquaintance themeAuthor\" href=\"http://philna.com\" title=\"The author of PhilNa2\">yinheli</a>."
+msgstr "主题 PhilNa2 由 <a rel=\"acquaintance\" href=\"http://philna.com\" title=\"PhilNa2 的作者\">yinheli</a> 设计."
+
+#: footer.php:42
+msgid "Page load: "
+msgstr "页面加载:"
+
+#: loop.php:41
+msgid "Back to homepage"
+msgstr "返回首页"
+
+#: loop.php:41
+msgid "Home"
+msgstr "首页"
+
+#: loop.php:50
+msgid "Skip to Comments"
+msgstr "跳到评论"
+
+#: loop.php:50
+msgid "No Comments"
+msgstr "没有评论"
+
+#: loop.php:50
+msgid "1 Comment"
+msgstr "1 条评论"
+
+#: loop.php:50
+msgid "% Comments"
+msgstr "% 条评论"
+
+#: loop.php:84
+msgid "Oh no!. No posts matched your criteria. You may try other keywords."
+msgstr "啊, 没有找到相应的文章. 你可以尝试其他关键字"
+
+#: loop.php:86
+msgid "Oh no! You're looking for something which just isn't here! Fear not however, errors are to be expected, and luckily there are tools on the sidebar for you to use in your search for what you need."
+msgstr "Oh no! You're looking for something which just isn't here! Fear not however, errors are to be expected, and luckily there are tools on the sidebar for you to use in your search for what you need."
+
+#: sendemail.php:40
+msgid "Admin's E_mail address is empty!"
+msgstr "管理员邮箱地址不存在!"
+
+#: sendemail.php:52
+msgid "Error: please fill the required fields (name, email, subject)"
+msgstr "错误: 请填写必填项目 (昵称, 邮箱, 主题)"
+
+#: sendemail.php:56
+msgid "Error: please enter a valid email address."
+msgstr "错误: 请输入一个有效的邮箱地址."
+
+#: sendemail.php:60
+msgid "Verification Code error"
+msgstr "验证码错误"
+
+#: sendemail.php:64
+msgid "Please type the content"
+msgstr "请输入评论内容."
+
+#: sendemail.php:112
+#, php-format
+msgid "Congratulations, %1$s. I've received your email. I'll be in touch as soon as I possibly can!"
+msgstr "恭喜, %1$s. 我已经收到您的邮件, 我将尽快快回复."
+
+#: sendemail.php:116
+msgid "Success"
+msgstr "发送成功"
+
+#: sendemail.php:119
+msgid "Sorry! An error occurred. You may try again or other way to contact me."
+msgstr "很抱歉. 出错了. 你可以尝试提前其他方式其他方式联系我."
+
+#: sidebar.php:42
+msgid "Recent Comments"
+msgstr "最近评论"
+
+#: sidebar.php:50
+msgid "Tag Cloud"
+msgstr "标签云"
+
+#: sidebar.php:57
+msgid "Achive"
+msgstr "归档"
+
+#: sidebar.php:67
+msgid "Categories"
+msgstr "分类"
+
+#: sidebar.php:78
+msgid "Meta"
+msgstr "管理"
+
+#: admin/admin.php:47
+msgid "Current Theme Options"
+msgstr "当前主题设置"
+
+#: admin/admin.php:47
+#: admin/optionspage.php:10
+msgid "PhilNa2 Settings"
+msgstr "PhilNa2 设置"
+
+#: admin/admin.php:49
+msgid "PhilNa2 Bug Tracker"
+msgstr "报告 PhilNa2 中的错误."
+
+#: admin/hooks.php:29
+msgid "Go to <a href=\"themes.php?page=PhilNa2admin\">Theme Options page</a>?"
+msgstr "转到 <a href=\"themes.php?page=admin.php\">主题设置页面</a>?"
+
+#: admin/hooks.php:47
+msgid "Thank you for using <strong><a href=\"http://philna.com\">PhilNa</a></strong> theme."
+msgstr "Thank you for using <strong><a href=\"http://philna.com\">PhilNa</a></strong> theme."
+
+#: admin/optionspage.php:28
+msgid "Settings saved."
+msgstr "设置已保存."
+
+#: admin/optionspage.php:36
+msgid "<h5>Meta</h5><em>Just in effect homepage</em>"
+msgstr "<h5>Meta</h5><em>仅对首页有效</em>"
+
+#: admin/optionspage.php:38
+msgid "Keywords"
+msgstr "关键字"
+
+#: admin/optionspage.php:39
+msgid "( Separate keywords with commas )"
+msgstr "( 每个关键字用逗号隔开)"
+
+#: admin/optionspage.php:41
+msgid "Description"
+msgstr "描述"
+
+#: admin/optionspage.php:42
+msgid "( Main decription for your blog )"
+msgstr "( 您博客的主要描述 )"
+
+#: admin/optionspage.php:47
+msgid "<h5>Search Settings</h5>"
+msgstr "<h5>搜索设置</h5>"
+
+#: admin/optionspage.php:50
+msgid "Using google custom search engine."
+msgstr "使用谷歌自定义搜索引擎."
+
+#: admin/optionspage.php:51
+msgid "CX:"
+msgstr "CX:"
+
+#: admin/optionspage.php:53
+msgid "How to find the CX code?"
+msgstr "如何找到 CX 代码?"
+
+#: admin/optionspage.php:54
+msgid "Find <code>name=\"cx\"</code> in the <strong>Search box code</strong> of <a href=\"http://www.google.com/coop/cse/\">Google Custom Search Engine</a>, and type the <code>value</code> here.<br/>For example: <code>011275726292926788974:fezfvqcwgmo</code>"
+msgstr "在 <a href=\"http://www.google.com/coop/cse/\">Google 自定义搜索引擎</a>的<strong>搜索框代码</strong>中找到 <code>name=\"cx\"</code> , 并将同行中 <code>value</code> 的值填写在上方的输入框内.<br/>例如: <code>011275726292926788974:fezfvqcwgmo</code>"
+
+#: admin/optionspage.php:58
+msgid "<h5>Notice</h5><em>HTML enabled </em>"
+msgstr "<h5>通知</h5><em>可以使用 HTML</em>"
+
+#: admin/optionspage.php:60
+msgid "Homepage notice"
+msgstr "首页通知"
+
+#: admin/optionspage.php:62
+msgid "This notice bar will display at the top of posts on homepage. "
+msgstr "该通知将显示在首页"
+
+#: admin/optionspage.php:69
+msgid "<h5>Advertisement</h5><em>This AD will show in single post instead of the '&lt;!--more--&gt;' tag</em>. Size: 468x60"
+msgstr "<h5>广告</h5><em>该广告通过替换文章中的 '&lt;!--more--&gt;' 标签来显示.</em> 尺寸:468x60"
+
+#: admin/optionspage.php:72
+msgid "Show advertisement"
+msgstr "展示广告"
+
+#: admin/optionspage.php:72
+msgid " (Not displayed while doing ajax or the admin logged-in)"
+msgstr " (在执行 Ajax 或登录时不会显示)"
+
+#: admin/optionspage.php:79
+msgid "<h5>Feed Settings</h5>"
+msgstr "<h5>Feed 设置</h5>"
+
+#: admin/optionspage.php:82
+msgid "Use custom feed."
+msgstr "使用自定义 Feed 地址"
+
+#: admin/optionspage.php:83
+msgid "Custom feed URL:"
+msgstr "自定义 Feed 地址:"
+
+#: admin/optionspage.php:86
+msgid "Use E_mail feed."
+msgstr "使用邮件订阅"
+
+#: admin/optionspage.php:87
+msgid "E_mail feed URL:"
+msgstr "邮件订阅地址:"
+
+#: admin/optionspage.php:91
+msgid "Add custom text in your Rss <em>(such as copyright, advertisement and so on.)</em>"
+msgstr "添加自定义文字到 RSS 输出中.比如版权信息等."
+
+#: admin/optionspage.php:95
+msgid "Rss custom text goes here."
+msgstr "在这里填写RSS自定义文字."
+
+#: admin/optionspage.php:102
+msgid "<h5>Header background image</h5>"
+msgstr "<h5>头部背景图片</h5>"
+
+#: admin/optionspage.php:104
+msgid "Select an Image (at least size 920 px by 145 px .You can upload more files to <code>themes\\philna2\\images\\headers</code> :)"
+msgstr "选择一个图片 (你可以上传更多图片到 <code>themes\\philna2\\images\\headers</code> 文件夹. 图片至少需要 920像素 x 145像素)"
+
+#: admin/optionspage.php:110
+msgid "<h5>PhilNa say</h5>"
+msgstr "<h5>PhilNa say</h5>"
+
+#: admin/optionspage.php:114
+msgid "Show philna say on header"
+msgstr "在头部显示 'philna say' "
+
+#: admin/optionspage.php:117
+msgid "Say what?(One sentence per line)"
+msgstr "显示什么?(一句话一行)"
+
+#: admin/optionspage.php:125
+msgid "Save Changes"
+msgstr "保存修改"
+
+#: app/comment.php:62
+#: app/comment.php:101
+msgid "M jS, Y @ H:i"
+msgstr "M jS, Y @ H:i"
+
+#: app/comment.php:67
+msgid "Reply this comment"
+msgstr "回复这条评论"
+
+#: app/comment.php:67
+msgid "Reply"
+msgstr "回复"
+
+#: app/comment.php:68
+msgid "Quote this comment"
+msgstr "引用这条评论"
+
+#: app/comment.php:68
+msgid "Quote"
+msgstr "引用"
+
+#: app/comment.php:70
+msgid "Your can modify your comment in 30 min"
+msgstr "在30分钟内您能修改这条评论."
+
+#: app/comment.php:70
+msgid "Modify"
+msgstr "修改"
+
+#: app/comment.php:77
+msgid "Your comment is awaiting moderation."
+msgstr "您的评论等待审核."
+
+#: app/comment.php:105
+msgid "Comment: "
+msgstr "评论: "
+
+#: app/comment.php:105
+msgid "Trackback: "
+msgstr "Trackback: "
+
+#: app/comment.php:105
+msgid "Pingback: "
+msgstr "Pingback: "
+
+#: app/comment.php:127
+msgid "Time is up! or you cant't edit this comment."
+msgstr "时间到了. 您不能再编辑该评论."
+
+#: app/comment.php:155
+#, php-format
+msgid "You comment <code>%1$s</code> %2$s in the past 30 days. Thank you."
+msgstr "在过去的30天您评论了<code>%1$s</code> %2$s. 谢谢你."
+
+#: app/comment.php:178
+msgid "Error: you are not allowed to use the nickname that you entered.if you are the administrator you hava to login to comment."
+msgstr "错误: 您不能以这个名字提交评论.如果您是管理员,请登录后再评论."
+
+#: app/comment.php:180
+msgid "Error: you are not allowed to use the email that you entered.if you are the administrator you hava to login to comment."
+msgstr "错误: 您不能以这个邮箱地址提交评论.如果您是管理员,请登录后再评论."
+
+#: app/commentajax.php:36
+msgid "Error post id or comment page id."
+msgstr "错误的文章编号或评论编号."
+
+#: app/commentajax.php:44
+msgid "Error! can't find the comments"
+msgstr "错误! 无法找到评论."
+
+#: app/commentajax.php:76
+#: app/commentajax.php:231
+msgid "Error comment id"
+msgstr "错误的评论编号"
+
+#: app/commentajax.php:81
+#: app/commentajax.php:236
+#, php-format
+msgid "Whoops! I am sorry I can't find the comment width id  %1$s"
+msgstr "啊! 我很抱歉.无法找到评论编号为'%1$s'的评论"
+
+#: app/commentajax.php:105
+msgid "Error post ID"
+msgstr "错误的文章编号"
+
+#: app/commentajax.php:109
+msgid "Sorry, comments are closed for this item."
+msgstr "很抱歉, 该文章已关闭评论了."
+
+#: app/commentajax.php:113
+msgid "The post is in draft or pending"
+msgstr "文章被标记为草稿或正在等待发布."
+
+#: app/commentajax.php:117
+msgid "The post is in trash box"
+msgstr "文章被放在回收站了."
+
+#: app/commentajax.php:146
+msgid "Sorry, you must be logged in to post a comment."
+msgstr "抱歉, 您必须登陆后才能评论."
+
+#: app/commentajax.php:157
+msgid "Error: please fill the required fields (name, email)."
+msgstr "错误: 请填写相应的项目(昵称, 邮箱)."
+
+#: app/commentajax.php:165
+msgid "Error: please type a comment."
+msgstr "错误: 请输入评论内容."
+
+#: app/commentajax.php:178
+msgid "The comment you are trying to update is't here any more"
+msgstr "您要更新的这条评论可能已经不存在了."
+
+#: app/commentajax.php:181
+msgid "Update comment failed or you can't comment the same message."
+msgstr "评论更新失败或您您不能提交相同的内容."
+
+#: app/commentajax.php:194
+msgid "Sorry, Update comment failed."
+msgstr "抱歉, 评论更新失败."
+
+#: app/headimg.php:74
+msgid "random"
+msgstr "随机"
+
+#: app/hooks.php:44
+msgid "You are doing Ajax searching, "
+msgstr "您正在使用 Ajax 搜索, "
+
+#: app/hooks.php:44
+msgid "You are doing Ajax Paging, "
+msgstr "您正在使用 Ajax 翻页, "
+
+#: app/hooks.php:49
+msgid "Back to last page"
+msgstr "返回到刚才的页面"
+
+#: app/javascript.php:34
+msgid "Sorry! An error occurred"
+msgstr "很抱歉. 出错了."
+
+#: app/javascript.php:35
+msgid "Loading..."
+msgstr "加载中..."
+
+#: app/javascript.php:36
+msgid "Type text to search here..."
+msgstr "搜索.."
+
+#: app/javascript.php:37
+msgid "Submit Comment"
+msgstr "提交评论"
+
+#: app/javascript.php:38
+msgid "Update Comment"
+msgstr "更新评论"
+
+#: app/javascript.php:39
+msgid "Thanks for your comment"
+msgstr "感谢您的评论"
+
+#: app/passwordhint.php:37
+msgid "Submit"
+msgstr "提交"
+
+#: app/passwordhint.php:41
+msgid "This post is password protected. To view it please enter your password below:"
+msgstr "该文章受密码保护. 要查看请在下面输入密码."
+
+#: app/passwordhint.php:43
+#, php-format
+msgid " Welcome <strong>%1$s</strong> ! The password is : %2$s "
+msgstr " 欢迎您. <strong>%1$s</strong> ! 该文章的密码是 : %2$s "
+
+#: app/passwordhint.php:67
+msgid "How to set a password hint."
+msgstr "如何设置密码提示?"
+
+#: app/passwordhint.php:68
+msgid "If your are posting a password protected post article. Please add a new <a href=\"#postcustom\">custom field</a> width the name 'password_hint'"
+msgstr "如果你正在发布或编辑一篇受密码保护的文章,建议您添加一个名称为'password_hint'的自定义域.用来提示访客."
+
+#: app/philnasay.php:37
+msgid "Click to get a new one (Random)"
+msgstr "单击随机获取一条新的"
+
+#: app/recentcomments.php:46
+msgid "No Data Found"
+msgstr "没有找到数据"
+
+#: app/recentcomments.php:53
+msgid "Anonymous"
+msgstr "Anonymous"
+
+#: app/recentcomments.php:66
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: app/recentcomments.php:68
+msgid "Trackback:"
+msgstr "Trackback:"
+
+#: app/relatedposts.php:48
+msgid "Related Posts"
+msgstr "相关文章"
+
+#: app/relatedposts.php:75
+#: app/widgetpostlink.php:46
+msgid "Random Posts"
+msgstr "随机文章"
+
+#: app/relatedposts.php:87
+msgid "Not found."
+msgstr "没有找到."
+
+#: app/relatedposts.php:92
+msgid "No title"
+msgstr "未命名"
+
+#: app/smilies.php:37
+msgid "Add a smiley?"
+msgstr "添加一个表情?"
+
+#: app/template.php:63
+msgid " - Page  "
+msgstr " - Page  "
+
+#: app/template.php:73
+#, php-format
+msgid "Search results for &quot;%1$s&quot;"
+msgstr "搜索 &quot;%1$s&quot; 结果"
+
+#: app/template.php:81
+#, php-format
+msgid "Archive for %1$s"
+msgstr "%1$s 的存档"
+
+#: app/template.php:84
+msgid "404 Not Found  I'm sorry"
+msgstr "错误 404. 没有找到, 我很抱歉"
+
+#: app/template.php:102
+msgid "RSS 2.0 - posts"
+msgstr "RSS 2.0 - 文章"
+
+#: app/template.php:103
+msgid "RSS 2.0 - all comments"
+msgstr "RSS 2.0 - 全部评论"
+
+#: app/template.php:168
+msgid "Protected post.Enter your password to view"
+msgstr "密码保护文章. 要阅读请输入密码."
+
+#: app/template.php:286
+msgid " [ stick ]"
+msgstr " [ 置顶 ]"
+
+#: app/template.php:512
+msgid "Top widget"
+msgstr "顶部小工具"
+
+#: app/template.php:513
+msgid "This widget will show in top of the sidebar."
+msgstr "这个小工具将显示在边侧栏顶部."
+
+#: app/template.php:522
+msgid "Left widget"
+msgstr "左边小工具"
+
+#: app/template.php:523
+msgid "This widget will show in left of the sidebar. Replace \"Achive\" widget"
+msgstr "这个小工具将显示在边侧栏左边,替换\"存档\"."
+
+#: app/template.php:532
+msgid "Right widget"
+msgstr "右边小工具"
+
+#: app/template.php:533
+msgid "This widget will show in right of the sidebar. Replace \"Categories\" widget"
+msgstr "这个小工具将显示在边侧栏右边, 替换\"分类\"."
+
+#: app/template.php:542
+msgid "Bottom widget"
+msgstr "底部小工具"
+
+#: app/template.php:543
+msgid "This widget will show in bottom of the sidebar. Replace \"Meta\" widget"
+msgstr "这个小工具将显示在边侧栏底部. 替换\"管理\"."
+
+#: app/widgetpostlink.php:40
+msgid "Recent Posts"
+msgstr "最近文章"
+
+#: app/base/ajax.php:97
+msgid "Method NOT allowed!"
+msgstr "Method NOT allowed!"
+
+#: custom-functions/ajaxCommentAdd.php:14
+msgid "Duplicate comment detected; it looks as though you have already said that!"
+msgstr "Duplicate comment detected; it looks as though you have already said that!"
+
+#: custom-functions/yinheli.php:137
+#, php-format
+msgid "This page loaded in %1$s seconds with %2$s database queries."
+msgstr "This page loaded in %1$s seconds with %2$s database queries."
+
+#: templates/commentform.php:36
+msgid "Support: Ctrl + Enter | Ctrl + S | Alt + S | Alt + Enter"
+msgstr "快捷键: Ctrl + Enter 或 Ctrl + S 或 Alt + S 或 Alt + Enter"
+
+#: templates/commentform.php:43
+msgid "Logged in as"
+msgstr "登录帐号 "
+
+#: templates/commentform.php:44
+msgid "Log out of this account"
+msgstr "退出该帐号"
+
+#: templates/commentform.php:44
+msgid "Logout &raquo;"
+msgstr "退出 &raquo;"
+
+#: templates/commentform.php:46
+msgid "Welcome !"
+msgstr "Welcome !"
+
+#: templates/commentform.php:54
+#, php-format
+msgid "Hey! %1s, Welcome Back!"
+msgstr "嗨! %1s, 欢迎回来!"
+
+#: templates/commentform.php:55
+msgid "Edit your profile?"
+msgstr "编辑您的信息?"
+
+#: templates/commentform.php:65
+#: templates/commentform.php:69
+msgid "(required)"
+msgstr "(必填)"
+
+#: templates/commentform.php:69
+msgid "E-Mail (will not be published)"
+msgstr "邮箱 (不会公开)"
+
+#: templates/commentform.php:73
+msgid "Website"
+msgstr "网站"
+
+#: templates/commentform.php:91
+msgid "<strong>Allowed tags:</strong> "
+msgstr "<strong>可以使用的标签:</strong> "
+
+#: templates/feed.php:30
+msgid "Subscribe to this blog..."
+msgstr "订阅该博客..."
+
+#: templates/feed.php:30
+msgid "<abbr title=\"Really Simple Syndication\">RSS</abbr> feed"
+msgstr "<abbr title=\"Really Simple Syndication\">RSS</abbr> feed"
+
+#: templates/feed.php:32
+msgid "Subscribe to this blog via email..."
+msgstr "通过邮件订阅..."
+
+#: templates/feed.php:32
+msgid "Email feed"
+msgstr "邮件订阅"
+
+#: templates/feed.php:37
+#: templates/feed.php:38
+#: templates/feed.php:39
+#: templates/feed.php:40
+msgid "Subscribe with "
+msgstr "订阅到  "
+
+#: templates/feed.php:37
+msgid "Google"
+msgstr "谷歌"
+
+#: templates/feed.php:38
+msgid "Xian Guo"
+msgstr "鲜果"
+
+#: templates/feed.php:39
+msgid "QQ email"
+msgstr "QQ 邮箱"
+
+#: templates/feed.php:39
+msgid "QQ Email"
+msgstr "QQ 邮箱"
+
+#: templates/feed.php:40
+msgid "My Yahoo!"
+msgstr "My Yahoo!"
+
+#: templates/loophead.php:32
+msgid "<strong>Search Results : </strong><br/>"
+msgstr "<strong>搜索结果:</strong><br/>"
+
+#: templates/loophead.php:33
+#, php-format
+msgid "Keyword: &quot; %1$s &quot;"
+msgstr "关键字: &quot;%1$s&quot;"
+
+#: templates/loophead.php:35
+#, php-format
+msgid "Archive for the &quot;%1$s&quot; Category"
+msgstr "分类 &quot;%1$s&quot; 的存档."
+
+#: templates/loophead.php:37
+#: templates/loophead.php:43
+msgid "Description: "
+msgstr "描述"
+
+#: templates/loophead.php:41
+#, php-format
+msgid "Posts Tagged &quot;%1$s&quot;"
+msgstr "标签为 &quot;%1$s&quot; 的存档"
+
+#: templates/loophead.php:49
+#, php-format
+msgid "Archive for %1$s "
+msgstr "%1$s 的存档"
+
+#: templates/loophead.php:49
+msgid "F, Y"
+msgstr "Y年n月"
+
+#: templates/loophead.php:51
+msgid "Y"
+msgstr "Y 年"
+
+#: templates/loophead.php:53
+msgid "Author Archive"
+msgstr "作者归档"
+
+#: templates/loophead.php:55
+msgid "Blog Archives"
+msgstr "归档"
+
+#: templates/loophead.php:57
+msgid "Arhives page"
+msgstr "存档页面"
+
+#: templates/navigation.php:35
+msgid "Older Page"
+msgstr "上一页"
+
+#: templates/navigation.php:36
+msgid "Newer Page"
+msgstr "下一页"
+
+#~ msgid "Method does NOT exists!"
+#~ msgstr "Method does NOT exists!"
+
+#, fuzzy
+#~ msgid "Archive for %1$s day"
+#~ msgstr "%1$s 的存档"
+#~ msgid "newsgator"
+#~ msgstr "newsgator"
+
