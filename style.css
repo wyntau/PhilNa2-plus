@@ -188,6 +188,7 @@ td{border-top:1px solid #DEE9F6;padding:2px 5px;}
 #respond:target{border-color:#555;}
 #respond h4{color:#555;}
 #commentbox{width:400px;}
+/*#commentbox textarea{background: #F6F6F6 url(images/comment-bg.png) no-repeat scroll center center;overflow: hidden;}*/
 #comment_author_info{width:235px;}
 #comment_author_info .textfield{width:229px;}
 #comment_author_info .row{margin-bottom:5px;}
@@ -385,14 +386,6 @@ ul.archives-list > li{list-style-type:none;}
 /*评论框计数*/
 #num{float:right;font-size:35px;color:#DDD;margin:-50px 5px 0 0;padding-right:10px;}
 #comtinfo{float:right;font-size:35px;color:#DDD;margin:-140px 60px 0 0px;padding-right:10px;}
-/* 这是分享部分的样式代码 */
-.share span{float:left;}
-.share a{cursor:pointer;background:url("images/icon2.gif") no-repeat 0 0;display:block;padding:0 0 0 18px;height:16px;line-height:16px;color:#0066CC;overflow:hidden;margin:2px 0 0;text-decoration:none;float:left;}
-.share a:hover{color:#E05C23;}
-.share .twitter{background-position:0 -16px;}
-.share .renren{background-position:0 -32px;}
-.share .qzone{background-position:0 -48px;}
-.share .t_qq{background-position:0 -64px;}
 /*评论头像倾斜*/
 .avatar:hover{-webkit-transform: rotate(10deg);-moz-transform: rotate(10deg);-o-transform: rotate(10deg);}
 .avatar {-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;}
