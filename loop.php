@@ -69,13 +69,6 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
 	<div class="meta">
 		<span class="cat icon"><?php the_category(', ');?></span>
 		<?php the_tags('<span class="tag icon">', ', ', '</span>');?>
-<?php if(is_single()):?><div class="share clearfix right"><span>分享到</span>
- <span><a class="t_qq" title="分享到腾讯微博"></a></span>
- <span><a class="sina" title="分享到新浪微博"></a></span>
- <span><a class="twitter" title="分享到Twitter"></a></span>
- <span><a class="renren" title="分享到淫淫网"></a></span>
- <span><a class="qzone" title="分享到扣扣空间"></a></span>
-    </div><?php endif;?>
 	</div>
 	<?php endif; // meta ?>
 </div><?php /* end post */?>
