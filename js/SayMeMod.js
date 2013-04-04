@@ -496,7 +496,6 @@ function homepage() {
 							scrollTop: $(this).offset().top - 180
 						}, 500)
 					});
-					syntaxslide();
 					imgEffection()
 				}
 			});
@@ -517,9 +516,3 @@ function homepage() {
 }
 homepage();
 $('#content .post_content:first').slideDown(500);
-
-function syntaxslide() {}
-syntaxslide();
-
-function welcome_msg() {}
-welcome_msg();
