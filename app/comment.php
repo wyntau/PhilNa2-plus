@@ -51,19 +51,9 @@ function philnaComments($comment, $args = array(), $depth = 1){
 <li id="comment-<?php comment_ID() ?>" <?php comment_class(); ?>>
 	<div class="the_avatar left">
 		<a rel="nofollow" class="reply" href="#comment-<?php comment_ID() ?>" title="回复这个南瓜?"><?php echo my_avatar($comment->comment_author_email, 30); ?></a>
-<?php
-$handsome=explode(",", $GLOBALS['philnaopt']['handsome']);
-$beauty=explode(",", $GLOBALS['philnaopt']['beauty']);
-$adminEmail = get_option('admin_email'); 
-if($comment->comment_author_email==$adminEmail) 
-echo " <span class='admin' title='博主'> Admin</span>";
-elseif(in_array($comment->comment_author_email,$handsome)) 
-echo " <span class='handsome' title='帅哥✔'> 帅哥认证</span>"; 
-elseif(in_array($comment->comment_author_email,$beauty))
-echo " <span class='beauty' title='美女✔'> 美女认证</span>";
-?>
+<?php handsome_beauty($comment->comment_author_email);?>
 	</div>
-	<div class="comment_body right">
+	<div class="comment_body left">
 		<div class="comment_head">
 		<div class="commentinfo left">
 			<span class="name webshot"><?php comment_author_link(); ?></span>
