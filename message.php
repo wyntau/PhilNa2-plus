@@ -15,25 +15,6 @@ get_header();
 			<?php philnaBlogTitleAndDesc(); ?>
 		</div>
 		<?php wp_nav_menu(array( 'theme_location'=>'primary','container_class' => 'navigation')); ?>
-<div id="top_right">
-        	<ul id="menu-top_right">
-        	<ul id="menu-top_right">      
-		<?php if(!$_COOKIE['show_sidebar']=='no'):?>    
-			<li id="close-sidebar" title="显示/关闭侧边栏"><a>关闭侧边栏</a></li>
-			<li id="show-sidebar" style="display:none;"title="显示/关闭侧边栏"><a>显示侧边栏</a></li>
-		<?php else: ?>                                                   
-			<li id="close-sidebar" style="display:none;" title="显示/关闭侧边栏"><a>关闭侧边栏</a></li>
-			<li id="show-sidebar" title="显示/关闭侧边栏"><a>显示侧边栏</a></li>
-		<?php endif;?>
-        <?php if($_COOKIE['show_sidebar']=='no'): ?>
-<style type="text/css">
-#content,#content2,#content3 {width:920px;}
-#footer {width:920px;}
-#sidebar {display:none;}
-</style>
-<?php endif; ?>
-			</ul>
-        </div>
 		<div class="clear"></div>
 	</div>
 	<div id="content3">
@@ -67,7 +48,7 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
 <div align="center"><b>信春哥.原地满血,爆极品神器.</b>想要满血吗?赶紧来说几句吧!</div>
 	<!-- start 读者墙 -->
 <?php
-    $query="SELECT COUNT(comment_ID) AS cnt, comment_author, comment_author_url, comment_author_email FROM (SELECT * FROM $wpdb->comments LEFT OUTER JOIN $wpdb->posts ON ($wpdb->posts.ID=$wpdb->comments.comment_post_ID) WHERE comment_date > date_sub( NOW(), INTERVAL 24 MONTH ) AND user_id='0' AND comment_author_email != 'lwent90@gmail.com' AND post_password='' AND comment_approved='1' AND comment_type='') AS tempcmt GROUP BY comment_author_email ORDER BY cnt DESC LIMIT 48";//最后的这个40是选取多少个头像，我一次让它显示40个。
+    $query="SELECT COUNT(comment_ID) AS cnt, comment_author, comment_author_url, comment_author_email FROM (SELECT * FROM $wpdb->comments LEFT OUTER JOIN $wpdb->posts ON ($wpdb->posts.ID=$wpdb->comments.comment_post_ID) WHERE comment_date > date_sub( NOW(), INTERVAL 24 MONTH ) AND user_id='0' AND comment_author_email != 'lwent90@gmail.com' AND post_password='' AND comment_approved='1' AND comment_type='') AS tempcmt GROUP BY comment_author_email ORDER BY cnt DESC LIMIT 39";//最后的这个40是选取多少个头像，我一次让它显示40个。
     $wall = $wpdb->get_results($query);
     $maxNum = $wall[0]->cnt;
     foreach ($wall as $comment) 
@@ -76,10 +57,10 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
         if( $comment->comment_author_url ) 
         $url = $comment->comment_author_url;
         else $url="#";
-        $tmp = "<li title='".$comment->comment_author." (".$comment->cnt."次重要讲话)'><a href='".$comment->comment_author_url."' target='_blank'>".my_avatar($comment->comment_author_email, 30)."</a><div class='active-bg'><div class='active-degree' style='width:".$width."px'></div></li>";
+        $tmp = "<li><a target=\"_blank\" href=\"".$comment->comment_author_url."\"><span class=\"pic\" style=\"background: url(http://www.gravatar.com/avatar/".md5(strtolower($comment->comment_author_email))."?s=36&d=monsterid&r=G) no-repeat;\">pic</span><span class=\"num\">".$comment->cnt."</span><span class=\"name\">".$comment->comment_author."</span></a><div class='active-bg'><div class='active-degree' style='width:".$width."px'></div></div></li>";
         $output .= $tmp; 
      }
-    $output = "<div id='readerswall'><ul class='gavaimg'>".$output."</ul></div>";
+    $output = "<div class=\"readerwall\">".$output."<div class=\"clear\"></div></div>";
     echo $output ;
 ?>
 <!-- end 读者墙 -->
