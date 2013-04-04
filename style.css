@@ -350,7 +350,7 @@ zoom:1;}
 #tab-content ul li{padding-top:5px;overflow:hidden;}
 #tab-content ul li img.avatar{height:20px;width:20px;}
 
-/*reader wall*/
+/*reader wall v1
 #readerswall{padding:10px 0 10px 10px;display:block;overflow:hidden;}
         #readerswall li{width:40px;height:46px;margin:0 0px 0px 0;padding:5px;
 float:left;list-style:none;border: 1px solid #DFDFDF;
@@ -360,6 +360,25 @@ float:left;list-style:none;border: 1px solid #DFDFDF;
 #readerswall .active-bg{width:40px;height:2px;_font-size:0;margin-top:5px;background:#DFDFDF; }
 #readerswall .active-degree{background:red;width:40px;height:2px;_font-size:0;}
 #readerswall ul li a:hover img{z-index:20;margin: -9px 0px 0px -10px;width:60px;height:60px;}
+*/
+
+/*readerwall v2*/
+body{overflow-x: hidden;}
+.readerwall{padding:12px 0 12px 15px; font-size:12px;overflow:visible;}
+.readerwall li{width:40px;height:40px;margin:0;padding:5px 0 5px 5px;float:left;list-style:none;border: 1px solid #DFDFDF;-moz-border-radius:2px;-khtml-border-radius: 2px;-webkit-border-radius: 2px;border-radius: 2px;}
+.readerwall .active-bg{width:40px;height:2px;_font-size:0;margin:-3px 0 0 -2px;background:#DFDFDF; }
+.readerwall .active-degree{background:red;width:40px;height:2px;_font-size:0;}
+.readerwall a{width:36px;height:36px;display:inline-block;position:relative;margin:0 0px 2px 0; text-decoration:none}
+.readerwall .pic{position:absolute;top:0;left:0;z-index:100;width:36px;height:36px;display:block;-webkit-transform-style:preserve-3d;-webkit-backface-visibility:hidden;-webkit-transition:all .4s ease-in-out;-moz-transition:all .4s ease-in-out;-o-transition:all .4s ease-in-out;border-radius:4px; text-indent:-9999px}
+.readerwall .num{position:absolute;top:0;left:0;z-index:99;width:34px;height:34px;line-height:34px;color:#E02523;font-size:18px;font-weight:bold;display:block;background:#fff;text-align:center;border:#bbb 1px solid;box-shadow:0 0 4px #ccc;-webkit-transform:rotateY(-180deg);-webkit-transform-style:preserve-3d;-webkit-backface-visibility:hidden;transition:all .4s ease-in-out;-webkit-transition:all .4s ease-in-out;-moz-transition:all .4s ease-in-out;-o-transition:all .4s ease-in-out;border-radius:4px}
+.readerwall .name{position:absolute;top:0;left:0;color:#333;display:block;width:1px;height:1px;overflow:hidden;-webkit-transform-style:preserve-3d;-webkit-backface-visibility:hidden;-webkit-transition:all .2s ease-in-out;-moz-transition:all .2s ease-in-out;-o-transition:all .2s ease-in-out;text-align:center}
+.readerwall a:hover .pic{z-index:100;border-color:#eee;-webkit-transform:rotateY(180deg);-moz-transform:rotateY(180deg)}
+.readerwall a:hover .num{z-index:101;-webkit-transform:rotateY(0deg);-moz-transform:rotateY(0deg);opacity:.8}
+.readerwall a:hover .name{top:-28px;left:-38px;z-index:101;padding:4px 6px;height:20px;line-height:20px;overflow:hidden;background:#fff;border-radius:2px;box-shadow:0 0 3px #000;min-width:100px;opacity:.8}
+/*#content p img,#content2 p img,#content3 p img{padding:3px;box-shadow:3px 3px 6px #666;}*/
+.con_tsina{background:url(images/16weibo.png) no-repeat 0 0;padding-left:20px;margin-left:3px;}
+.con_douban{background:url(images/16douban.png) no-repeat 0 0;padding-left:20px;margin-left:3px;}
+
 /*archive */
 ul.archives-list > li{list-style-type:none;}
 .archives-list li ul li{list-style-type:disc;}
