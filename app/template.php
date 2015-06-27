@@ -487,6 +487,7 @@ add_filter('wp_get_attachment_image_attributes', 'philnaThumbnailAttr');
 if( function_exists('register_sidebar')){
   //1 top widget
   register_sidebar(array(
+    'id' => 'sidebar-1',
     'name' => __('First widget',YHL),
     'description'=>__('This widget will show in top of the sidebar.', YHL),
     'before_widget' => '<div id="%1$s" class="widget box icon content">',
@@ -497,6 +498,7 @@ if( function_exists('register_sidebar')){
 
   //2 left widget
   register_sidebar(array(
+    'id' => 'sidebar-2',
     'name' => __('Second widget',YHL),
     'description'=>__('This widget will show in bottom of the sidebar. Replace "Meta" widget', YHL),
     'before_widget' => '<div id="%1$s" class="widget box icon content">',
@@ -507,6 +509,7 @@ if( function_exists('register_sidebar')){
 
   //3 right widget
   register_sidebar(array(
+    'id' => 'sidebar-3',
     'name' => __('Third widget',YHL),
     'description'=>__('This widget will show in bottom of the sidebar. Replace "Meta" widget', YHL),
     'before_widget' => '<div id="%1$s" class="widget box icon content">',
@@ -517,6 +520,7 @@ if( function_exists('register_sidebar')){
 
   //4 bottom widget
   register_sidebar(array(
+    'id' => 'sidebar-4',
     'name' => __('Fourth widget',YHL),
     'description'=>__('This widget will show in bottom of the sidebar. Replace "Meta" widget', YHL),
     'before_widget' => '<div id="%1$s" class="widget box icon content">',

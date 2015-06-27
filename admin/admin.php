@@ -66,10 +66,38 @@ class PhilNaAdmin {
 // admin options
 if(is_admin()){
   $philnaDefaultOptType = array(
-    'string'=>array('keywords', 'description', 'google_cse_cx', 'notice_content', 'ad', 'feed_url',
-            'feed_url_email', 'rss_additional', 'headimg', 'philna_say' ,'LoadText','AjaxLoading','google_analytics_code','handsome','beauty','excerpt_length'),
-    'bool'  =>array('cacheavatar','google_cse', 'notice', 'showad', 'feed', 'feed_email', 'rss_additional_show',
-            'show_philna_say','homeslide','enable_google_analytics','exclude_admin_analytics','no_home_slide'),
+    'string' => array(
+      'keywords',
+      'description',
+      'google_cse_cx',
+      'notice_content',
+      'ad',
+      'feed_url',
+      'feed_url_email',
+      'rss_additional',
+      'headimg',
+      'philna_say',
+      'LoadText',
+      'AjaxLoading',
+      'google_analytics_code',
+      'handsome',
+      'beauty',
+      'excerpt_length'
+    ),
+    'bool' => array(
+      'cacheavatar',
+      'google_cse',
+      'notice',
+      'showad',
+      'feed',
+      'feed_email',
+      'rss_additional_show',
+      'show_philna_say',
+      'homeslide',
+      'enable_google_analytics',
+      'exclude_admin_analytics',
+      'no_home_slide'
+    )
   );
   new PhilNaAdmin($philnaDefaultOptType);
 }

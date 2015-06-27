@@ -4,8 +4,8 @@
  * 摘自winysky的W1s主题,
  *呵呵,winysky也是在philna2的早期版本中摘取的,所以我又加上了.
  ************************************************************/
-function welcome_msg(){  
-    if(is_bot()){
+function welcome_msg(){
+  if(is_bot()){
     return;
   }
   if($m = apply_filters('welcome_msg',$string)){
@@ -18,66 +18,68 @@ function welcome_msg(){
   $host_h=$hostinfo["host"];
   $host_p=$hostinfo["path"];
   $host=array($host_h,$host_p);
-  if(substr($host_h, 0, 4) == 'www.')
+  if(substr($host_h, 0, 4) == 'www.'){
     $host_h = substr($host_h, 4);
-    $host_h_url='<a href="http://'.$host_h.'/">$host_h</a>';
-    if($referer==""){
-      echo "<!--您直接访问了本站!-->\n";
-      if($_COOKIE["comment_author_" . COOKIEHASH]!=""){
-        echo 'Howdy, <strong>'.$_COOKIE["comment_author_" . COOKIEHASH].'</strong>, 欢迎回来';
-      }else{
-        echo "您直接访问了本站!  莫非您记住了我的<strong>域名</strong>.厉害~我倍感荣幸啊 嘿嘿";
-      }  
-    //搜索引擎
-      //baidu
-    }elseif(preg_match('/baidu.*/i',$host_h)){
-      echo "您通过 <strong>百度</strong> 找到了我! 厉害.你要是能够订阅我的博客那就更好了.我经常分享一些好东西哦";
-      //google
-    }elseif(!preg_match('/www\.google\.com\/reader/i',$referer) && preg_match('/google\./i',$referer)){
-      echo "您通过 <strong>Google</strong> 找到了我! 厉害. 你要是能够订阅我的博客那就更好了. 我经常分享一些好东西哦";
-      //yahoo
-    }elseif(preg_match('/search\.yahoo.*/i',$referer) || preg_match('/yahoo.cn/i',$referer)){
-      echo "您通过 <strong>Yahoo</strong> 找到了我! 厉害. 你要是能够订阅我的博客那就更好了. 我经常分享一些好东西哦";
-    //阅读器
-      //google
-    }elseif(preg_match('/google\.com\/reader/i',$referer)){
-      echo "感谢你通过 <strong>Google</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
-      //xianguo
-    }elseif(preg_match('/xianguo\.com\/reader/i', $referer)){
-      echo "感谢你通过 <strong>鲜果</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
-      //zhuaxia
-    }elseif(preg_match('/zhuaxia\.com/i', $referer)){
-      echo "感谢你通过 <strong>抓虾</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
-      //哪吒
-    }elseif(preg_match('/inezha\.com/i', $referer)){
-      echo "感谢你通过 <strong>哪吒</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
-      //有道
-    }elseif(preg_match('/reader\.youdao/i', $referer)){
-      echo "感谢你通过 <strong>有道</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
-      //自己  
-    }elseif(self()){
-      echo "你在找什么吗？试试旁边的搜索吧~"."\n";
-    }elseif($_COOKIE["comment_author_" . COOKIEHASH]!=""){
-      echo 'Howdy, <strong>'.$_COOKIE["comment_author_" . COOKIEHASH].'</strong>欢迎从<strong>'.$host_h.'</strong>回来';
+  }
+  $host_h_url='<a href="http://'.$host_h.'/">$host_h</a>';
+  if($referer==""){
+    echo "<!--您直接访问了本站!-->\n";
+    if($_COOKIE["comment_author_" . COOKIEHASH]!=""){
+      echo 'Howdy, <strong>'.$_COOKIE["comment_author_" . COOKIEHASH].'</strong>, 欢迎回来';
     }else{
-      echo '欢迎来自<strong>'. $host_h.'</strong>的朋友. 我经常分享一些好东西哦 ^_^  欢迎订阅我的博客.';
+      echo "您直接访问了本站!  莫非您记住了我的<strong>域名</strong>.厉害~我倍感荣幸啊 嘿嘿";
     }
-     
+  //搜索引擎
+    //baidu
+  }elseif(preg_match('/baidu.*/i',$host_h)){
+    echo "您通过 <strong>百度</strong> 找到了我! 厉害.你要是能够订阅我的博客那就更好了.我经常分享一些好东西哦";
+    //google
+  }elseif(!preg_match('/www\.google\.com\/reader/i',$referer) && preg_match('/google\./i',$referer)){
+    echo "您通过 <strong>Google</strong> 找到了我! 厉害. 你要是能够订阅我的博客那就更好了. 我经常分享一些好东西哦";
+    //yahoo
+  }elseif(preg_match('/search\.yahoo.*/i',$referer) || preg_match('/yahoo.cn/i',$referer)){
+    echo "您通过 <strong>Yahoo</strong> 找到了我! 厉害. 你要是能够订阅我的博客那就更好了. 我经常分享一些好东西哦";
+  //阅读器
+    //google
+  }elseif(preg_match('/google\.com\/reader/i',$referer)){
+    echo "感谢你通过 <strong>Google</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+    //xianguo
+  }elseif(preg_match('/xianguo\.com\/reader/i', $referer)){
+    echo "感谢你通过 <strong>鲜果</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+    //zhuaxia
+  }elseif(preg_match('/zhuaxia\.com/i', $referer)){
+    echo "感谢你通过 <strong>抓虾</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+    //哪吒
+  }elseif(preg_match('/inezha\.com/i', $referer)){
+    echo "感谢你通过 <strong>哪吒</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+    //有道
+  }elseif(preg_match('/reader\.youdao/i', $referer)){
+    echo "感谢你通过 <strong>有道</strong> 订阅我!  既然过来读原文了. 欢迎留言指导啊.嘿嘿 ^_^";
+    //自己
+  }elseif(self()){
+    echo "你在找什么吗？试试旁边的搜索吧~"."\n";
+  }elseif($_COOKIE["comment_author_" . COOKIEHASH]!=""){
+    echo 'Howdy, <strong>'.$_COOKIE["comment_author_" . COOKIEHASH].'</strong>欢迎从<strong>'.$host_h.'</strong>回来';
+  }else{
+    echo '欢迎来自<strong>'. $host_h.'</strong>的朋友. 我经常分享一些好东西哦 ^_^  欢迎订阅我的博客.';
+  }
 }
 //判断是自己的函数
 function self(){
   $local_info = parse_url(get_option('siteurl'));
-    $local_host = $local_info['host'];
+  $local_host = $local_info['host'];
   //check self
-  if ( preg_match("/^http:\/\/(\w+\.)?($local_host)/",$_SERVER['HTTP_REFERER']) != 0) return true;
+  if ( preg_match("/^http:\/\/(\w+\.)?($local_host)/",$_SERVER['HTTP_REFERER']) != 0) {
+    return true;
+  }
 }
-  /**
-   * 分析浏览器 对于使用IE老版本的用户推送提醒
-   * 不要过分推送, 根据cookie判断
-   * 比如 对IE6的推送! 我希望是每隔20秒要有一次!
-   * @see setcookie_for_ie()
-   */
-function killIE($msg){   
+/**
+ * 分析浏览器 对于使用IE老版本的用户推送提醒
+ * 不要过分推送, 根据cookie判断
+ * 比如 对IE6的推送! 我希望是每隔20秒要有一次!
+ * @see setcookie_for_ie()
+ */
+function killIE($msg){
   if(preg_match('/MSIE\s6/i', $_SERVER['HTTP_USER_AGENT'])){
     if(!$_COOKIE['alert_ie_visitor_'.COOKIEHASH]){
       $msg .= '<p>呃~ , 我不得不再提示一下:</p>';
@@ -97,8 +99,8 @@ function killIE($msg){
   }else{
     return;
   }
-return $msg;
-  }
+  return $msg;
+}
 add_filter('welcome_msg','killIE');
 
 /**
@@ -142,11 +144,13 @@ add_filter('welcome_msg','alert_commentator');
  * @since 2.0.2
  */
 function setcookie_for_alert_commentator(){
-  if(is_bot())
+  if(is_bot()){
     return;
+  }
   global $user_ID;
-  if($user_ID)
+  if($user_ID){
     return;
+  }
   //如果没有计数器,写入
   if(!isset($_COOKIE['comment_author_visit_times_'.COOKIEHASH])){
     setcookie('comment_author_visit_times_'. COOKIEHASH, 1, time() + (60*60*24*300), COOKIEPATH, COOKIE_DOMAIN);
@@ -168,8 +172,9 @@ add_action('init', 'setcookie_for_alert_commentator');
  * 为了后面的推送升级通知
  */
 function setcookie_for_ie(){
-  if(isset($_COOKIE['alert_ie_visitor_'.COOKIEHASH]))
+  if(isset($_COOKIE['alert_ie_visitor_'.COOKIEHASH])){
     return;
+  }
   if(preg_match('/MSIE\s6/i', $_SERVER['HTTP_USER_AGENT'])){
     //对于使用古老版ie用频繁推送 (cookies 5分钟失效)
     setcookie('alert_ie_visitor_'.COOKIEHASH,'ie6',time()+(20),COOKIEPATH,COOKIE_DOMAIN);

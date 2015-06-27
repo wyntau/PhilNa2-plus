@@ -39,20 +39,20 @@ function philnaRelatedPosts( $args = '' ){
       }
     }
     $related_query_args=array(
-          'tag__in' => $taglist,
-          'post__not_in' => array($post->ID),
-          'showposts'=>$limit,
-          'orderby'=>'rand',
-          'caller_get_posts'=>1
+      'tag__in' => $taglist,
+      'post__not_in' => array($post->ID),
+      'showposts'=>$limit,
+      'orderby'=>'rand',
+      'caller_get_posts'=>1
     );
     $r_posts = new WP_Query($related_query_args);
     $related_posts = $r_posts->posts;
   }else{
     $related_query_args=array(
-          'post__not_in' => array($post->ID),
-          'showposts'=>$limit,
-          'orderby'=>'rand',
-          'caller_get_posts'=>1
+      'post__not_in' => array($post->ID),
+      'showposts'=>$limit,
+      'orderby'=>'rand',
+      'caller_get_posts'=>1
     );
     $title = __('Random Posts',YHL);
     $r_posts = new WP_Query($related_query_args);
@@ -109,18 +109,18 @@ add_action('philnaEndloop', 'philnaInsertRelatedPosts');
  * @return unknown_type
  */
 function philnaFeedRelatedPosts($content){
-global $id;
-$comment_num = get_comments_number($id);
-if($comment_num==0):
-$rss_comment_tip="截至您的阅读器抓取时还没有评论.想抢沙发?那得赶快呀";
-elseif($comment_num>=1 && $comment_num<30):
-$rss_comment_tip="截至您的阅读器抓取时已有评论<strong> ".$comment_num." </strong>条,欢迎您也过来留下您的意见 !";
-elseif($comment_num>=30):
-$rss_comment_tip="截至您的阅读器抓取时已有评论<strong> ".$comment_num." </strong>条,大家讨论的如此激烈,你为什么不过去瞧瞧?!";
-endif;
+  global $id;
+  $comment_num = get_comments_number($id);
+  if($comment_num==0):
+    $rss_comment_tip="截至您的阅读器抓取时还没有评论.想抢沙发?那得赶快呀";
+  elseif($comment_num>=1 && $comment_num<30):
+    $rss_comment_tip="截至您的阅读器抓取时已有评论<strong> ".$comment_num." </strong>条,欢迎您也过来留下您的意见 !";
+  elseif($comment_num>=30):
+    $rss_comment_tip="截至您的阅读器抓取时已有评论<strong> ".$comment_num." </strong>条,大家讨论的如此激烈,你为什么不过去瞧瞧?!";
+  endif;
   if(is_feed()){
-$content .='<p>'.$rss_comment_tip.'</p>';
-$content .= philnaRelatedPosts('limit=8&excerpt_length=0');}  
+    $content .='<p>'.$rss_comment_tip.'</p>';
+    $content .= philnaRelatedPosts('limit=8&excerpt_length=0');}
   return $content;
 }
 add_filter('the_content', 'philnaFeedRelatedPosts', 0);

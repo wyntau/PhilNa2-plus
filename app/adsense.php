@@ -33,8 +33,7 @@ add_filter('the_content', 'philnaSinglePostAD', 999);
 // for adsense ajax
 if(isset($_GET['adsenseIframeURLContent'])){
   if($GLOBALS['philnaopt']['showad'] && $GLOBALS['philnaopt']['ad']){
-    $adsenseIframeURLContent =
-<<<EOF
+    $adsenseIframeURLContent = <<<EOF
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">

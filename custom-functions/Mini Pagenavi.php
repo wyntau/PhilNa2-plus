@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*****************************************
  *Mini Pagenavi v1.0 by Willin Kan.
  *免插件版pagenavi函数,
@@ -25,4 +25,3 @@ function p_link( $i, $title = '' ) {
   echo "<a href='", esc_html(get_pagenum_link( $i ) ), "'>{$title}</a>";
 }
 // -- END ----------------------------------------
-;?>

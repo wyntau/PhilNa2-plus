@@ -1,6 +1,6 @@
 <?php
 /**
- * base 
+ * base
  */
 
 // no direct access
@@ -12,7 +12,35 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
  * @return Boolean
  */
 function is_bot(){
-  $bots = array('Google Bot1' => 'googlebot', 'Google Bot2' => 'google', 'MSN' => 'msnbot', 'Alex' => 'ia_archiver', 'Lycos' => 'lycos', 'Ask Jeeves' => 'jeeves', 'Altavista' => 'scooter', 'AllTheWeb' => 'fast-webcrawler', 'Inktomi' => 'slurp@inktomi', 'Turnitin.com' => 'turnitinbot', 'Technorati' => 'technorati', 'Yahoo' => 'yahoo', 'Findexa' => 'findexa', 'NextLinks' => 'findlinks', 'Gais' => 'gaisbo', 'WiseNut' => 'zyborg', 'WhoisSource' => 'surveybot', 'Bloglines' => 'bloglines', 'BlogSearch' => 'blogsearch', 'PubSub' => 'pubsub', 'Syndic8' => 'syndic8', 'RadioUserland' => 'userland', 'Gigabot' => 'gigabot', 'Become.com' => 'become.com','Bot'=>'bot','Spider'=>'spider','yinheli_for_test'=>'dFirefox');
+  $bots = array(
+    'Google Bot1' => 'googlebot',
+    'Google Bot2' => 'google',
+    'MSN' => 'msnbot',
+    'Alex' => 'ia_archiver',
+    'Lycos' => 'lycos',
+    'Ask Jeeves' => 'jeeves',
+    'Altavista' => 'scooter',
+    'AllTheWeb' => 'fast-webcrawler',
+    'Inktomi' => 'slurp@inktomi',
+    'Turnitin.com' => 'turnitinbot',
+    'Technorati' => 'technorati',
+    'Yahoo' => 'yahoo',
+    'Findexa' => 'findexa',
+    'NextLinks' => 'findlinks',
+    'Gais' => 'gaisbo',
+    'WiseNut' => 'zyborg',
+    'WhoisSource' => 'surveybot',
+    'Bloglines' => 'bloglines',
+    'BlogSearch' => 'blogsearch',
+    'PubSub' => 'pubsub',
+    'Syndic8' => 'syndic8',
+    'RadioUserland' => 'userland',
+    'Gigabot' => 'gigabot',
+    'Become.com' => 'become.com',
+    'Bot'=>'bot',
+    'Spider'=>'spider',
+    'yinheli_for_test'=>'dFirefox'
+  );
   $useragent = $_SERVER['HTTP_USER_AGENT'];
   foreach ($bots as $name => $lookfor) {
     if (stristr($useragent, $lookfor) !== false) {

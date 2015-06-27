@@ -24,8 +24,7 @@ if($cacheavatar){
   }
   if (filesize($e) < 500) copy($default, $e);
   return "<img title='{$alt}' alt='{$alt}' src='{$a}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
-}
-else{
+}else{
   return get_avatar($email, $size);
   }
 }

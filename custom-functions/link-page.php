@@ -1,4 +1,4 @@
-<?php 
+<?php
 /******************************
  *友情链接页面专用函数
  ******************************/
@@ -122,4 +122,3 @@ function my_list_bookmarks($args = '') {
     return $output;
   echo $output;
 }
-;?>
