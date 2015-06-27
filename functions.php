@@ -27,14 +27,16 @@ define('PHILNA_DEBUG', false);
 
 // admin dir
 define('PHILNA_ADMIN', TEMPLATEPATH . '/admin');
-// base dir
-define('PHILNA_BASE', TEMPLATEPATH . '/base');
 // app dir
 define('PHILNA_APP', TEMPLATEPATH . '/app');
+// base dir
+define('PHILNA_BASE', TEMPLATEPATH . '/base');
 // functions dir
 define('PHILNA_FUNC', TEMPLATEPATH . '/functions');
 // langeage dir
 define('PHILNA_LANG', TEMPLATEPATH . '/languages');
+// widget dir
+define('PHILNA_WIDGET', TEMPLATEPATH . '/widgets');
 
 //激活菜单项
 if ( function_exists('register_nav_menus') ) {
@@ -80,6 +82,9 @@ philnaIncludeAll( PHILNA_APP );
 
 // include functions by user
 philnaIncludeAll( PHILNA_FUNC );
+
+// include functions by user
+philnaIncludeAll( PHILNA_WIDGET );
 
 // admin panel
 !is_admin() || include_once PHILNA_ADMIN . '/admin.php';
