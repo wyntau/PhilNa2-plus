@@ -51,7 +51,7 @@ function philnaStripslashes($data){
  */
 function philnaArray2String($data, $returns = ''){
   static $t = 1;
-  $tabType = "    ";
+  $tabType = "  ";
   $tab = str_repeat($tabType,$t);
   $data = (array)$data;
   foreach($data as $key=>$value){
