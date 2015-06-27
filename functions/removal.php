@@ -15,9 +15,10 @@ remove_action( 'wp_head', 'wp_generator' );//版本号
 remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );//短地址
 
 //禁用半角符号自动转换为全角
-foreach(array('comment_text','the_content','the_excerpt','the_title') as $xx){
-  remove_filter($xx,'wptexturize');
-}
+remove_filter('comment_text', 'wptexturize');
+remove_filter('the_content', 'wptexturize');
+remove_filter('the_excerpt', 'wptexturize');
+remove_filter('the_title', 'wptexturize');
 
 // function wp_hide_nag() {
 //   remove_action( 'admin_notices', 'update_nag', 3 );
