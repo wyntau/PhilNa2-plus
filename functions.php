@@ -5,10 +5,7 @@
 
 // no direct access
 defined('ABSPATH') or die('Restricted access -- PhilNa2 gorgeous design by yinheli < http://philna.com/ >');
-//激活菜单项
-if ( function_exists('register_nav_menus') ) {
-  register_nav_menus(array('primary' => '头部导航栏'));
-}
+
 /*
 Note:
   加载顺序:
@@ -28,21 +25,32 @@ define('PHILNA', 'philna2');
 // debug - if true the errors will display below footer when admin login
 define('PHILNA_DEBUG', false);
 
+// admin dir
+define('PHILNA_ADMIN', TEMPLATEPATH . '/admin');
+// base dir
+define('PHILNA_BASE', TEMPLATEPATH . '/base');
 // app dir
-define('PHILNA_APP', TEMPLATEPATH.'/app');
-// custom-functions dir
-define('PHILNA_CUS', TEMPLATEPATH.'/custom-functions');
+define('PHILNA_APP', TEMPLATEPATH . '/app');
+// functions dir
+define('PHILNA_FUNC', TEMPLATEPATH . '/functions');
+// langeage dir
+define('PHILNA_LANG', TEMPLATEPATH . '/languages');
+
+//激活菜单项
+if ( function_exists('register_nav_menus') ) {
+  register_nav_menus(array('primary' => '头部导航栏'));
+}
 
 // Load theme textdomain
-load_theme_textdomain(YHL, TEMPLATEPATH.'/languages');
+load_theme_textdomain(YHL, PHILNA_LANG);
 
 // befor load my function we load the base
 // functions for other functions
-include_once PHILNA_APP.'/base/options.php';
-include_once PHILNA_APP.'/base/format.php';
-include_once PHILNA_APP.'/base/base.php';
-include_once PHILNA_APP.'/base/json.php';
-include_once PHILNA_APP.'/base/ajax.php';
+include_once PHILNA_BASE . '/options.php';
+include_once PHILNA_BASE . '/format.php';
+include_once PHILNA_BASE . '/base.php';
+include_once PHILNA_BASE . '/json.php';
+include_once PHILNA_BASE . '/ajax.php';
 
 // init philna options
 $GLOBALS['philnaopt'] = PhilNaGetOpt::getInstance();
@@ -71,17 +79,17 @@ function philnaIncludeAll($dir){
 philnaIncludeAll( PHILNA_APP );
 
 // include functions by user
-philnaIncludeAll( PHILNA_CUS );
+philnaIncludeAll( PHILNA_FUNC );
 
 // admin panel
-!is_admin() || include_once TEMPLATEPATH.'/admin/admin.php';
+!is_admin() || include_once PHILNA_ADMIN . '/admin.php';
 
 do_action('PhilNaReady');
 
 function custom_smilies_src($src, $img){
     return get_bloginfo('template_directory').'/images/smilies/' . $img;
 }
-add_filter('smilies_src', 'custom_smilies_src', 10, 2); 
+add_filter('smilies_src', 'custom_smilies_src', 10, 2);
 if ( !isset( $wpsmiliestrans ) ) {
     $wpsmiliestrans = array(
       ':mrgreen:' => '11.gif',
