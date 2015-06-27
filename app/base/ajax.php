@@ -27,21 +27,23 @@ function getAjaxAction() {
     return;
   }
 
+  if(!isset($_GET['action']) && !isset($_POST['action'])){
+    return;
+  }
+
   if(isset($_GET['action']) && $_GET['action']) {
     return trim($_GET['action']);
-  }elseif(isset($_POST['action']) && $_POST['action']) {
+  }
+
+  if(isset($_POST['action']) && $_POST['action']) {
     return trim($_POST['action']);
-  }else{
-    return;
   }
 }
 
 if(isset($_GET['do']) && $_GET['do'] == 'ajax'){ // for ajax!
   defined('DOING_AJAX') || define('DOING_AJAX', true);
-  if(isset($_GET['action']) ){
-    if('philnaAjaxGetComment' == $_GET['action']){
-      defined('PHILNATIP') || define('PHILNATIP', true);
-    }
+  if(isset($_GET['action']) && $_GET['action'] == 'philnaAjaxGetComment'){
+    defined('PHILNATIP') || define('PHILNATIP', true);
   }
 }
 
