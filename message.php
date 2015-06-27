@@ -51,14 +51,15 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
     $query="SELECT COUNT(comment_ID) AS cnt, comment_author, comment_author_url, comment_author_email FROM (SELECT * FROM $wpdb->comments LEFT OUTER JOIN $wpdb->posts ON ($wpdb->posts.ID=$wpdb->comments.comment_post_ID) WHERE comment_date > date_sub( NOW(), INTERVAL 24 MONTH ) AND user_id='0' AND comment_author_email != 'lwent90@gmail.com' AND post_password='' AND comment_approved='1' AND comment_type='') AS tempcmt GROUP BY comment_author_email ORDER BY cnt DESC LIMIT 39";//最后的这个40是选取多少个头像，我一次让它显示40个。
     $wall = $wpdb->get_results($query);
     $maxNum = $wall[0]->cnt;
-    foreach ($wall as $comment) 
+    $output = '';
+    foreach ($wall as $comment)
     {
         $width = round(40 / ($maxNum / $comment->cnt),2);//这个40是我设置头像的宽度，和下面&size=40里的40一个概念，如果你头像宽度32，这里就是32了。
-        if( $comment->comment_author_url ) 
+        if( $comment->comment_author_url )
         $url = $comment->comment_author_url;
         else $url="#";
         $tmp = "<li><a target=\"_blank\" href=\"".$comment->comment_author_url."\"><span class=\"pic\" style=\"background: url(http://www.gravatar.com/avatar/".md5(strtolower($comment->comment_author_email))."?s=36&d=monsterid&r=G) no-repeat;\">pic</span><span class=\"num\">".$comment->cnt."</span><span class=\"name\">".$comment->comment_author."</span></a><div class='active-bg'><div class='active-degree' style='width:".$width."px'></div></div></li>";
-        $output .= $tmp; 
+        $output .= $tmp;
      }
     $output = "<div class=\"readerwall\">".$output."<div class=\"clear\"></div></div>";
     echo $output ;
