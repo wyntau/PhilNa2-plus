@@ -24,8 +24,6 @@ error_reporting(0);
 
 define('YHL', 'philna2');
 define('PHILNA', 'philna2');
-define('THEME_NAME', 'PhilNa2');
-define('THEME_AUTHOR', 'yinheli');
 
 // debug - if true the errors will display below footer when admin login
 define('PHILNA_DEBUG', false);
@@ -48,8 +46,6 @@ include_once PHILNA_APP.'/base/ajax.php';
 
 // init philna options
 $GLOBALS['philnaopt'] = PhilNaGetOpt::getInstance();
-
-header('Theme:'.THEME_NAME);
 
 /**
  * include all PHP script
