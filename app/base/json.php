@@ -18,7 +18,9 @@ function philnaJSON($s){
     return json_encode($s);
   }else{
     // check the JSON class
-    if(!class_exists('Services_JSON')) include_once ABSPATH . WPINC . '/class-json.php';
+    if(!class_exists('Services_JSON')) {
+      include_once ABSPATH . WPINC . '/class-json.php';
+    }
     $json = new Services_JSON();
     return $json->encode($s);
   }
