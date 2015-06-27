@@ -7,7 +7,7 @@ function mp3player($atts, $content=null){
   extract(shortcode_atts(array("auto"=>'0'),$atts));
   $autostart=$auto?'yes':'no';
   return '<embed src="'.get_bloginfo('template_directory').'/swf/player.swf?soundFile='.$content.'&autostart='.$autostart.'&animation=yes&encode=no&initialvolume=80&remaining=yes&noinfo=no&buffer=5&checkpolicy=no&rtl=no&bg=E5E5E5&text=333333&leftbg=CCCCCC&lefticon=333333&volslider=666666&voltrack=FFFFFF&rightbg=B4B4B4&rightbghover=999999&righticon=333333&righticonhover=FFFFFF&track=FFFFFF&loader=009900&border=CCCCCC&tracker=DDDDDD&skip=666666" type="application/x-shockwave-flash" wmode="transparent" allowscriptaccess="always" width="290" height="30">';
-  }
+}
 add_shortcode('mp3','mp3player');
 
 /**************************
