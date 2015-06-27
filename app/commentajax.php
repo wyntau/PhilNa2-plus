@@ -84,15 +84,15 @@ function philnaAjaxComment(){
     //do_action('comment_id_not_found', $comment_post_ID);
     //exit;
     fail(__('Error post ID', YHL));
-  } elseif ( !comments_open($comment_post_ID) ) {
+  } else if ( !comments_open($comment_post_ID) ) {
     //do_action('comment_closed', $comment_post_ID);
     //wp_die( __('Sorry, comments are closed for this item.') );
     fail(__('Sorry, comments are closed for this item.', YHL));
-  } elseif ( in_array($status->post_status, array('draft', 'pending') ) ) {
+  } else if ( in_array($status->post_status, array('draft', 'pending') ) ) {
     //do_action('comment_on_draft', $comment_post_ID);
     //exit;
     fail(__('The post is in draft or pending', YHL));
-  } elseif ( 'trash' == $status->post_status ) {
+  } else if ( 'trash' == $status->post_status ) {
     //do_action('comment_on_trash', $comment_post_ID);
     //exit;
     fail(__('The post is in trash box', YHL));
@@ -110,8 +110,9 @@ function philnaAjaxComment(){
   // If the user is logged in
   $user = wp_get_current_user();
   if ( $user->ID ) {
-    if ( empty( $user->display_name ) )
+    if ( empty( $user->display_name ) ){
       $user->display_name=$user->user_login;
+    }
     $comment_author       = $wpdb->escape($user->display_name);
     $comment_author_email = $wpdb->escape($user->user_email);
     $comment_author_url   = $wpdb->escape($user->user_url);
@@ -122,10 +123,10 @@ function philnaAjaxComment(){
       }
     }
   } else {
-    if ( get_option('comment_registration') || 'private' == $status->post_status )
+    if ( get_option('comment_registration') || 'private' == $status->post_status ){
       //wp_die( __('Sorry, you must be logged in to post a comment.') );
       fail(__('Sorry, you must be logged in to post a comment.', YHL));
-
+    }
     // PhilNa check email and name
     do_action('philnaCheckEmailAndName', $comment_author, $comment_author_email);
   }
@@ -133,12 +134,13 @@ function philnaAjaxComment(){
   $comment_type = '';
 
   if ( get_option('require_name_email') && !$user->ID ) {
-    if ( 6 > strlen($comment_author_email) || '' == $comment_author )
+    if ( 6 > strlen($comment_author_email) || '' == $comment_author ){
       //wp_die( __('Error: please fill the required fields (name, email).') );
       fail(__('Error: please fill the required fields (name, email).', YHL));
-    elseif ( !is_email($comment_author_email))
+    }else if ( !is_email($comment_author_email)){
       //wp_die( __('Error: please enter a valid email address.') );
       fail(__('Error: please enter a valid email address.', YHL));
+    }
   }
 
   if ( '' == $comment_content )
