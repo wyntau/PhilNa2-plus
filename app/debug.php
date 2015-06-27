@@ -47,7 +47,9 @@ function philnaErrorHandler($errno, $errstr, $errfile, $errline, $errcontext){
 
 function philnaDisplayPHPErrorMessage(){
 
-  if(is_bot()) return;
+  if(is_bot()) {
+    return;
+  }
 
   if(isset($GLOBALS['philnaPHPErrorMessage']) && $GLOBALS['philnaPHPErrorMessage']){
     echo '<div class="box content widget alert" style="margin: 0 auto; width: 898px"><h3>PHP errors on this blog</h3><ul>';

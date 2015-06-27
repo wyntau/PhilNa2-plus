@@ -18,10 +18,11 @@ function philnaCanonical(){
     return;
   }
   global $post;
-  if( is_home() )
+  if( is_home() ){
     echo '<link rel="canonical" href="'.get_bloginfo('url').'"/>',"\n";
-  else
+  }else{
     echo  '<link rel="canonical" href="'.get_permalink($post->ID).'"/>',"\n";
+  }
 }
 add_action('wp_head','philnaCanonical');
 
@@ -44,23 +45,23 @@ function philnaDocumentTitle(){
 
   if( is_home() ){//首页
     echo bloginfo('name'), ' - ' . get_bloginfo('description'), $page;
-  }elseif( is_single() ){ // 单篇文章页
+  }else if( is_single() ){ // 单篇文章页
     $catAndTag = get_the_category_list(' - ', '', false) . get_the_tag_list(' - ', ' - ', '');
     echo wp_title('',true), ' - ' . strip_tags($catAndTag), ' - ', get_bloginfo('name'), $page;
-  }elseif( is_page()){ //者普通页面
+  }else if( is_page()){ //者普通页面
     echo wp_title('',true), ' - ', get_bloginfo('name');
-  }elseif( is_search() ){ //搜索页
+  }else if( is_search() ){ //搜索页
     printf(__('Search results for &quot;%1$s&quot;',YHL),
     attribute_escape(get_search_query()));
     echo ' - ', bloginfo('name'), $page;
-  }elseif( is_category() ){ //分类页
+  }else if( is_category() ){ //分类页
     echo  single_cat_title(), ' - ', get_bloginfo('name'), $page;
-  }elseif( is_tag() ){ //Tags页 (标签页)
+  }else if( is_tag() ){ //Tags页 (标签页)
     echo single_tag_title(), ' - ', get_bloginfo('name'), $page;
-  }elseif( is_month() ){ //存档页(目前只有月份存档,如果有需要再添加其他的存档可能)
+  }else if( is_month() ){ //存档页(目前只有月份存档,如果有需要再添加其他的存档可能)
     printf(__('Archive for %1$s', YHL), single_month_title(' ', false));
     echo  ' - ', get_bloginfo('name'), $page;
-  }elseif( is_404() ){ //404 错误页面
+  }else if( is_404() ){ //404 错误页面
     echo __('404 Not Found  I\'m sorry', YHL), ' - ', get_bloginfo('name');
   }else{ //其他没有考虑到的情况
     echo wp_title('',true), ' - ', get_bloginfo('name'), $page;

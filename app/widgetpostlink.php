@@ -18,11 +18,11 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
  */
 function Randomposts($limit = 5){
   global $wpdb, $id;
-$posts_widget_title = __('Random Posts',YHL);
-if(!$posts = wp_cache_get('widgetPostsLinkElse', 'philna')){
-      $posts = get_posts("numberposts={$limit}&orderby=rand");
-      wp_cache_add('widgetPostsLinkElse', $posts, 'philna');
-    }
+  $posts_widget_title = __('Random Posts',YHL);
+  if(!$posts = wp_cache_get('widgetPostsLinkElse', 'philna')){
+    $posts = get_posts("numberposts={$limit}&orderby=rand");
+    wp_cache_add('widgetPostsLinkElse', $posts, 'philna');
+  }
   $output .="<ul>\n";
   if(empty($posts)){
     $output .= '<li>Can\'t found (没有找到)</li>';
@@ -36,13 +36,14 @@ if(!$posts = wp_cache_get('widgetPostsLinkElse', 'philna')){
   $output .= "</ul>\n";
   echo $output;
 }
+
 function Recentposts($limit = 5){
   global $wpdb, $id;
-    $posts_widget_title = __('Recent Posts',YHL);
-    if(!$posts = wp_cache_get('widgetPostsLinkSingle', 'philna')){
-      $posts = get_posts("numberposts={$limit}&orderby=post_date");
-      wp_cache_add('widgetPostsLinkSingle', $posts, 'philna');
-}
+  $posts_widget_title = __('Recent Posts',YHL);
+  if(!$posts = wp_cache_get('widgetPostsLinkSingle', 'philna')){
+    $posts = get_posts("numberposts={$limit}&orderby=post_date");
+    wp_cache_add('widgetPostsLinkSingle', $posts, 'philna');
+  }
   $output .="<ul>\n";
   if(empty($posts)){
     $output .= '<li>Can\'t found (没有找到)</li>';
