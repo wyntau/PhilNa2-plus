@@ -489,62 +489,62 @@ msgstr "错误: 您不能以这个名字提交评论.如果您是管理员,请�
 msgid "Error: you are not allowed to use the email that you entered.if you are the administrator you hava to login to comment."
 msgstr "错误: 您不能以这个邮箱地址提交评论.如果您是管理员,请登录后再评论."
 
-#: app/comment_ajax.php:36
+#: app/ajax_comment.php:36
 msgid "Error post id or comment page id."
 msgstr "错误的文章编号或评论编号."
 
-#: app/comment_ajax.php:44
+#: app/ajax_comment.php:44
 msgid "Error! can't find the comments"
 msgstr "错误! 无法找到评论."
 
-#: app/comment_ajax.php:76
-#: app/comment_ajax.php:231
+#: app/ajax_comment.php:76
+#: app/ajax_comment.php:231
 msgid "Error comment id"
 msgstr "错误的评论编号"
 
-#: app/comment_ajax.php:81
-#: app/comment_ajax.php:236
+#: app/ajax_comment.php:81
+#: app/ajax_comment.php:236
 #, php-format
 msgid "Whoops! I am sorry I can't find the comment width id  %1$s"
 msgstr "啊! 我很抱歉.无法找到评论编号为'%1$s'的评论"
 
-#: app/comment_ajax.php:105
+#: app/ajax_comment.php:105
 msgid "Error post ID"
 msgstr "错误的文章编号"
 
-#: app/comment_ajax.php:109
+#: app/ajax_comment.php:109
 msgid "Sorry, comments are closed for this item."
 msgstr "很抱歉, 该文章已关闭评论了."
 
-#: app/comment_ajax.php:113
+#: app/ajax_comment.php:113
 msgid "The post is in draft or pending"
 msgstr "文章被标记为草稿或正在等待发布."
 
-#: app/comment_ajax.php:117
+#: app/ajax_comment.php:117
 msgid "The post is in trash box"
 msgstr "文章被放在回收站了."
 
-#: app/comment_ajax.php:146
+#: app/ajax_comment.php:146
 msgid "Sorry, you must be logged in to post a comment."
 msgstr "抱歉, 您必须登陆后才能评论."
 
-#: app/comment_ajax.php:157
+#: app/ajax_comment.php:157
 msgid "Error: please fill the required fields (name, email)."
 msgstr "错误: 请填写相应的项目(昵称, 邮箱)."
 
-#: app/comment_ajax.php:165
+#: app/ajax_comment.php:165
 msgid "Error: please type a comment."
 msgstr "错误: 请输入评论内容."
 
-#: app/comment_ajax.php:178
+#: app/ajax_comment.php:178
 msgid "The comment you are trying to update is't here any more"
 msgstr "您要更新的这条评论可能已经不存在了."
 
-#: app/comment_ajax.php:181
+#: app/ajax_comment.php:181
 msgid "Update comment failed or you can't comment the same message."
 msgstr "评论更新失败或您您不能提交相同的内容."
 
-#: app/comment_ajax.php:194
+#: app/ajax_comment.php:194
 msgid "Sorry, Update comment failed."
 msgstr "抱歉, 评论更新失败."
 
@@ -588,61 +588,61 @@ msgstr "更新评论"
 msgid "Thanks for your comment"
 msgstr "感谢您的评论"
 
-#: app/passwordhint.php:37
+#: app/password_hint.php:37
 msgid "Submit"
 msgstr "提交"
 
-#: app/passwordhint.php:41
+#: app/password_hint.php:41
 msgid "This post is password protected. To view it please enter your password below:"
 msgstr "该文章受密码保护. 要查看请在下面输入密码."
 
-#: app/passwordhint.php:43
+#: app/password_hint.php:43
 #, php-format
 msgid " Welcome <strong>%1$s</strong> ! The password is : %2$s "
 msgstr " 欢迎您. <strong>%1$s</strong> ! 该文章的密码是 : %2$s "
 
-#: app/passwordhint.php:67
+#: app/password_hint.php:67
 msgid "How to set a password hint."
 msgstr "如何设置密码提示?"
 
-#: app/passwordhint.php:68
+#: app/password_hint.php:68
 msgid "If your are posting a password protected post article. Please add a new <a href=\"#postcustom\">custom field</a> width the name 'password_hint'"
 msgstr "如果你正在发布或编辑一篇受密码保护的文章,建议您添加一个名称为'password_hint'的自定义域.用来提示访客."
 
-#: app/philnasay.php:37
+#: app/philna_say.php:37
 msgid "Click to get a new one (Random)"
 msgstr "单击随机获取一条新的"
 
-#: app/recentcomments.php:46
+#: app/recent_comments.php:46
 msgid "No Data Found"
 msgstr "没有找到数据"
 
-#: app/recentcomments.php:53
+#: app/recent_comments.php:53
 msgid "Anonymous"
 msgstr "Anonymous"
 
-#: app/recentcomments.php:66
+#: app/recent_comments.php:66
 msgid "Pingback:"
 msgstr "Pingback:"
 
-#: app/recentcomments.php:68
+#: app/recent_comments.php:68
 msgid "Trackback:"
 msgstr "Trackback:"
 
-#: app/relatedposts.php:48
+#: app/related_posts.php:48
 msgid "Related Posts"
 msgstr "相关文章"
 
-#: app/relatedposts.php:75
+#: app/related_posts.php:75
 #: app/widget_postlink.php:46
 msgid "Random Posts"
 msgstr "随机文章"
 
-#: app/relatedposts.php:87
+#: app/related_posts.php:87
 msgid "Not found."
 msgstr "没有找到."
 
-#: app/relatedposts.php:92
+#: app/related_posts.php:92
 msgid "No title"
 msgstr "未命名"
 
