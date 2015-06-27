@@ -125,12 +125,4 @@ if ( !isset( $wpsmiliestrans ) ) {
       ':sad:' => '30.gif',
     );
   }
-//禁用半角符号自动转换为全角
-foreach(array('comment_text','the_content','the_excerpt','the_title') as $xx){
-  remove_filter($xx,'wptexturize');
-}
 
-function wp_hide_nag() {
-  remove_action( 'admin_notices', 'update_nag', 3 );
-}
-add_action('admin_menu','wp_hide_nag');
