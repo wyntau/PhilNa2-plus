@@ -17,5 +17,6 @@ function matt_random_redirect() {
   wp_redirect( get_permalink( $random_id ) );
   exit;
 }
-if ( isset( $_GET['random'] ) )
+if ( isset( $_GET['random'] ) ){
   add_action( 'template_redirect', 'matt_random_redirect' );
+}
