@@ -489,62 +489,62 @@ msgstr "错误: 您不能以这个名字提交评论.如果您是管理员,请�
 msgid "Error: you are not allowed to use the email that you entered.if you are the administrator you hava to login to comment."
 msgstr "错误: 您不能以这个邮箱地址提交评论.如果您是管理员,请登录后再评论."
 
-#: app/commentajax.php:36
+#: app/comment_ajax.php:36
 msgid "Error post id or comment page id."
 msgstr "错误的文章编号或评论编号."
 
-#: app/commentajax.php:44
+#: app/comment_ajax.php:44
 msgid "Error! can't find the comments"
 msgstr "错误! 无法找到评论."
 
-#: app/commentajax.php:76
-#: app/commentajax.php:231
+#: app/comment_ajax.php:76
+#: app/comment_ajax.php:231
 msgid "Error comment id"
 msgstr "错误的评论编号"
 
-#: app/commentajax.php:81
-#: app/commentajax.php:236
+#: app/comment_ajax.php:81
+#: app/comment_ajax.php:236
 #, php-format
 msgid "Whoops! I am sorry I can't find the comment width id  %1$s"
 msgstr "啊! 我很抱歉.无法找到评论编号为'%1$s'的评论"
 
-#: app/commentajax.php:105
+#: app/comment_ajax.php:105
 msgid "Error post ID"
 msgstr "错误的文章编号"
 
-#: app/commentajax.php:109
+#: app/comment_ajax.php:109
 msgid "Sorry, comments are closed for this item."
 msgstr "很抱歉, 该文章已关闭评论了."
 
-#: app/commentajax.php:113
+#: app/comment_ajax.php:113
 msgid "The post is in draft or pending"
 msgstr "文章被标记为草稿或正在等待发布."
 
-#: app/commentajax.php:117
+#: app/comment_ajax.php:117
 msgid "The post is in trash box"
 msgstr "文章被放在回收站了."
 
-#: app/commentajax.php:146
+#: app/comment_ajax.php:146
 msgid "Sorry, you must be logged in to post a comment."
 msgstr "抱歉, 您必须登陆后才能评论."
 
-#: app/commentajax.php:157
+#: app/comment_ajax.php:157
 msgid "Error: please fill the required fields (name, email)."
 msgstr "错误: 请填写相应的项目(昵称, 邮箱)."
 
-#: app/commentajax.php:165
+#: app/comment_ajax.php:165
 msgid "Error: please type a comment."
 msgstr "错误: 请输入评论内容."
 
-#: app/commentajax.php:178
+#: app/comment_ajax.php:178
 msgid "The comment you are trying to update is't here any more"
 msgstr "您要更新的这条评论可能已经不存在了."
 
-#: app/commentajax.php:181
+#: app/comment_ajax.php:181
 msgid "Update comment failed or you can't comment the same message."
 msgstr "评论更新失败或您您不能提交相同的内容."
 
-#: app/commentajax.php:194
+#: app/comment_ajax.php:194
 msgid "Sorry, Update comment failed."
 msgstr "抱歉, 评论更新失败."
 
@@ -634,7 +634,7 @@ msgid "Related Posts"
 msgstr "相关文章"
 
 #: app/relatedposts.php:75
-#: app/widgetpostlink.php:46
+#: app/widget_postlink.php:46
 msgid "Random Posts"
 msgstr "随机文章"
 
@@ -716,7 +716,7 @@ msgstr "底部小工具"
 msgid "This widget will show in bottom of the sidebar. Replace \"Meta\" widget"
 msgstr "这个小工具将显示在边侧栏底部. 替换\"管理\"."
 
-#: app/widgetpostlink.php:40
+#: app/widget_postlink.php:40
 msgid "Recent Posts"
 msgstr "最近文章"
 
