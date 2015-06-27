@@ -32,6 +32,5 @@ is_404() || get_sidebar(); // if 404 page, no sidebar!
 <div id="down" title="我要吐槽!"></div>
 <?php else:?><div id="down" title="我要入地!"></div><?php endif;?>
 </div><?php endif;?>
- <div style="position:fixed;bottom:2%;left:50%;margin-left:521px;display:block;"><a href="#" onclick="return false" title="雷锋联盟 成员"><img style="border:none;padding:3px;" src="http://isayme.com/wp-content/ibg.png"></a></div>
 </body>
 </html>
