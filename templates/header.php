@@ -23,9 +23,9 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
 <?php } ?>
 <?php is_404() || wp_head(); 
 if($GLOBALS['philnaopt']['enable_google_analytics']) {
-		if(!$GLOBALS['philnaopt']['exclude_admin_analytics'] || !current_user_can('manage_options')) {
-			echo $GLOBALS['philnaopt']['google_analytics_code'];
-		}
-	}
+    if(!$GLOBALS['philnaopt']['exclude_admin_analytics'] || !current_user_can('manage_options')) {
+      echo $GLOBALS['philnaopt']['google_analytics_code'];
+    }
+  }
 ?>
 </head>

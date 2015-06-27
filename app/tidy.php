@@ -11,11 +11,11 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
  */
 function philnaTidyHTML(){
 
-	if(is_feed()) return;
+  if(is_feed()) return;
 
-	if(class_exists('tidy')){
-		ob_start('philnaPHPTidyClass');
-	}
+  if(class_exists('tidy')){
+    ob_start('philnaPHPTidyClass');
+  }
 }
 add_action('template_redirect', 'philnaTidyHTML');
 
@@ -25,14 +25,14 @@ add_action('template_redirect', 'philnaTidyHTML');
  * @return unknown_type
  */
 function philnaPHPTidyClass($html){
-	$config = array(
-		'indent'         => false,
-		'output-xhtml'   => true,
-		'wrap'           => 99999,
-	);
+  $config = array(
+    'indent'         => false,
+    'output-xhtml'   => true,
+    'wrap'           => 99999,
+  );
 
-	$tidy = new tidy();
-	$tidy->parseString($html, $config, 'utf8');
-	$tidy->cleanRepair();
-	return $tidy;
+  $tidy = new tidy();
+  $tidy->parseString($html, $config, 'utf8');
+  $tidy->cleanRepair();
+  return $tidy;
 }

@@ -7,17 +7,17 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
 get_header();
 ?>
 <div id="wrap">
-	<div id="header" class="box">
-		<div id="caption" class="icon">
-			<?php philnaBlogTitleAndDesc(); ?>
-		</div>
-		<?php wp_nav_menu(array( 'theme_location'=>'primary','container_class' => 'navigation')); ?>
+  <div id="header" class="box">
+    <div id="caption" class="icon">
+      <?php philnaBlogTitleAndDesc(); ?>
+    </div>
+    <?php wp_nav_menu(array( 'theme_location'=>'primary','container_class' => 'navigation')); ?>
 
-		<?php //wp_page_menu('show_home=1&menu_class=navigation'); ?>
-		<div class="clear"></div>
-	</div>
+    <?php //wp_page_menu('show_home=1&menu_class=navigation'); ?>
+    <div class="clear"></div>
+  </div>
 <div id="content3">
-	<div id="cse-search-results"></div>
+  <div id="cse-search-results"></div>
 <script type="text/javascript">
   var googleSearchIframeName = "cse-search-results";
   var googleSearchFormName = "cse-search-box";

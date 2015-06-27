@@ -5,9 +5,9 @@
  */
 
 if ( extension_loaded('zlib') && substr_count($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') ) {
-	ob_start('ob_gzhandler');
+  ob_start('ob_gzhandler');
 } else {
-	ob_start();
+  ob_start();
 }
 header("Cache-Control: max-age=3600, public");
 header("Pragma: cache");
@@ -29,11 +29,11 @@ $jsDir = dirname(__FILE__) . '/js';
 echo $head;
 
 foreach ($jsFiles as $file) {
-	$devfile = $jsDir.'/dev/'.$file.'.js';
-	$minfile = $jsDir.'/'.$file.'.js';
-	if (file_exists($minfile)) {
-		include_once $minfile;
-	} else if (file_exists($devfile)) {
-		include_once $devfile;
-	}
+  $devfile = $jsDir.'/dev/'.$file.'.js';
+  $minfile = $jsDir.'/'.$file.'.js';
+  if (file_exists($minfile)) {
+    include_once $minfile;
+  } else if (file_exists($devfile)) {
+    include_once $devfile;
+  }
 }

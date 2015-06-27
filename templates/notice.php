@@ -12,9 +12,9 @@ $notice = '\''.addslashes($notice).'\'';
 $notice = preg_replace('/\n/','\n', $notice);
 ?>
 <script type="text/javascript">
-	/* <![CDATA[ */
-	var PHILNANOTICE = <?php echo $notice; ?>;
-	document.write(PHILNANOTICE);
-	/* ]]> */
+  /* <![CDATA[ */
+  var PHILNANOTICE = <?php echo $notice; ?>;
+  document.write(PHILNANOTICE);
+  /* ]]> */
 </script>
 <?php endif; ?>

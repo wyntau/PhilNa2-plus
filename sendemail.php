@@ -6,8 +6,8 @@
 //只可以用post方法
 if ($_SERVER["REQUEST_METHOD"] != "POST") {
     header('Allow: POST');
-	header("HTTP/1.1 405 Method Not Allowed");
-	header("Content-type: text/plain");
+  header("HTTP/1.1 405 Method Not Allowed");
+  header("Content-type: text/plain");
     exit;
 }
 
@@ -19,7 +19,7 @@ session_start();
 $adminEmail = get_option('admin_email');
 
 if(!$adminEmail){
-	fail(__('Admin\'s E_mail address is empty!', YHL));
+  fail(__('Admin\'s E_mail address is empty!', YHL));
 }
 
 // get post data
@@ -31,19 +31,19 @@ $content = isset($_POST['content']) ? stripslashes(trim($_POST['content'])) : nu
 
 // check post data
 if(!$name || !$from || !$subject){
-	fail(__('Error: please fill the required fields (name, email, subject)', YHL));
+  fail(__('Error: please fill the required fields (name, email, subject)', YHL));
 }
 
 if(!is_email($from)){
-	fail(__('Error: please enter a valid email address.', YHL));
+  fail(__('Error: please enter a valid email address.', YHL));
 }
 
 if($_SESSION['vcode'] !== $vcode) {
-	fail(__('Verification Code error', YHL));
+  fail(__('Verification Code error', YHL));
 }
 
 if(!$content){
-	fail(__('Please type the content', YHL));
+  fail(__('Please type the content', YHL));
 }
 
 // format $content to HTML by the 'the_content' filter
@@ -51,7 +51,7 @@ $content = apply_filters('the_content', $content);
 
 // data are ok? format the data and send
 if(!class_exists('PHPMailer')){
-	include_once ABSPATH . WPINC . '/class-phpmailer.php';
+  include_once ABSPATH . WPINC . '/class-phpmailer.php';
 }
 
 $mail = new PHPMailer();
@@ -91,12 +91,12 @@ $result = @$mail->Send();
 unset($_POST['vcode']);
 
 if($result){
-	$response =  sprintf(__('Congratulations, %1$s. I\'ve received your email. I\'ll be in touch as soon as I possibly can!',YHL),$name);
-	if(defined('DOING_AJAX')){
-		echo '<p class="success">', $response, '</p>';
-	}else{
-		wp_die($response, __('Success',YHL));
-	}
+  $response =  sprintf(__('Congratulations, %1$s. I\'ve received your email. I\'ll be in touch as soon as I possibly can!',YHL),$name);
+  if(defined('DOING_AJAX')){
+    echo '<p class="success">', $response, '</p>';
+  }else{
+    wp_die($response, __('Success',YHL));
+  }
 }else{
-	fail(__('Sorry! An error occurred. You may try again or other way to contact me.', YHL));
+  fail(__('Sorry! An error occurred. You may try again or other way to contact me.', YHL));
 }

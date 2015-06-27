@@ -8,7 +8,7 @@
     {
         echo <<<EOT
 <script type="text/javascript"> 
-	function grin(tag) 
+  function grin(tag) 
         {
         var myField;
         tag = ' ' + tag + ' ';

@@ -26,6 +26,6 @@ if($cacheavatar){
   return "<img title='{$alt}' alt='{$alt}' src='{$a}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
 }
 else{
-	return get_avatar($email, $size);
-	}
+  return get_avatar($email, $size);
+  }
 }
