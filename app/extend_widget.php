@@ -13,7 +13,7 @@ class Mixed_Widget extends WP_Widget {
 <?php echo $before_widget; ?>
 <div id="tab-title">
   <h3>
-    <span class="selected"><?php echo $instance[recent_comment_title];?></span> | <span><?php echo $instance[recent_post_title] ;?></span> | <span><?php echo $instance[random_post_title] ;?></span>
+    <span class="selected"><?php echo $instance['recent_comment_title'];?></span> | <span><?php echo $instance['recent_post_title'] ;?></span> | <span><?php echo $instance['random_post_title'] ;?></span>
   </h3>
 </div>
 <div id="tab-content">
@@ -59,7 +59,7 @@ class Man_Clock extends WP_Widget {
     extract( $args );
 ?>
 <?php echo $before_widget; ?>
-<h3 style="text-align:center"><span class="selected"><?php echo $instance[title];?></span></h3>
+<h3 style="text-align:center"><span class="selected"><?php echo $instance['title'];?></span></h3>
 <script charset="Shift_JIS"src="<?php bloginfo('template_url');?>/js/honehone_clock_wh.js"></script>
 <?php echo $after_widget; ?>
 <?php
@@ -97,7 +97,7 @@ class Mouse_Pet extends WP_Widget {
 ?>
 <?php echo $before_widget; ?>
   <h3 style="text-align:center">
-    <span class="selected"><?php echo $instance[title];?></span>
+    <span class="selected"><?php echo $instance['title'];?></span>
   </h3>
   <script charset="Shift_JIS"src="<?php bloginfo('template_url');?>/js/Mouse_Pet.js"></script>
 <?php echo $after_widget; ?>

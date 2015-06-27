@@ -18,6 +18,7 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
  */
 function Randomposts($limit = 5){
   global $wpdb, $id;
+  $output = '';
   $posts_widget_title = __('Random Posts',YHL);
   if(!$posts = wp_cache_get('widgetPostsLinkElse', 'philna')){
     $posts = get_posts("numberposts={$limit}&orderby=rand");
@@ -39,6 +40,7 @@ function Randomposts($limit = 5){
 
 function Recentposts($limit = 5){
   global $wpdb, $id;
+  $output = '';
   $posts_widget_title = __('Recent Posts',YHL);
   if(!$posts = wp_cache_get('widgetPostsLinkSingle', 'philna')){
     $posts = get_posts("numberposts={$limit}&orderby=post_date");
