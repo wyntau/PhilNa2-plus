@@ -566,32 +566,32 @@ jQuery(function($) {
   }
   l();
 
-  function g() {
-    var x = $("#smiles");
-    var w = $("#smiliebtn");
-    var y = $("#smiles_list a");
-    var v = function() {
-        x.hide(200)
-      };
-    w.toggle(function() {
-      var z = $(this).offset();
-      x.css({
-        left: z.left,
-        top: z.top + 18
-      }).slideDown(200);
-      return false
-    }, function() {
-      x.hide(200)
+  (function enableSmilies(){
+    var $smilies = $('#smiles');
+    var $smiliebtn = $('#smiliebtn');
+    var $smilie = $('#smiles_list a');
+
+    $smiliebtn.on('click', function(){
+      if(!$smilies.is(':visible')){
+        var offset = $(this).offset();
+        $smilies.css({
+          left: offset.left,
+          top: offset.top + 18
+        }).slideDown(200);
+      }else{
+        $smilies.hide(200);
+      }
+      return false;
     });
-    y.click(function() {
-      var z = $(this).attr("title");
-      $("#comment").focus();
-      h(z);
-      w.click();
-      return false
-    })
-  }
-  g();
+
+    $smilie.on('click', function(){
+      var title = $(this).attr('title');
+      $('#comment').focus();
+      h(title);
+      $smilies.hide(200);
+      return false;
+    });
+  })();
 
   function d() {
     var C = $("#contactbox");
