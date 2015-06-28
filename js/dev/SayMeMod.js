@@ -41,9 +41,6 @@ jQuery('#comment').bind('focus keyup input paste', function() {
 jQuery('#searchinput,#comment,#author,#email,#url').mouseover(function() {
   $(this).focus()
 });
-jQuery('.commentinfo a').attr({
-  target: "_blank"
-});
 (function($) {
   $.fn.lazyload = function(options) {
     var settings = {
