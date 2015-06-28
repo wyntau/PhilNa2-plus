@@ -6,31 +6,26 @@ jQuery(function($) {
   var r = [];
   r.push(f(window.location.href));
 
-  function a() {
-    $("#skiptocomment").click(function() {
-      $.scrollTo($("#commentstate"), 600, {
-        easing: "easeOutElastic"
-      });
-      return false
+  $("body").on('click', '#skiptocomment', function() {
+    $.scrollTo($("#commentstate"), 600, {
+      easing: "easeOutElastic"
     });
-    $("#addcomment").click(function() {
-      $.scrollTo($("#comment"), 600, {
-        easing: "easeOutQuart"
-      });
-      return false
-    })
-  }
-  a();
+    return false
+  });
 
-  function i() {
-    $("#top").click(function() {
-      $.scrollTo($("#header"), 700, {
-        easing: "easeOutBounce"
-      });
-      return false
-    })
-  }
-  i();
+  $("body").on('click', '#addcomment', function() {
+    $.scrollTo($("#comment"), 600, {
+      easing: "easeOutQuart"
+    });
+    return false
+  });
+
+  $("body").on('click', '#top', function() {
+    $.scrollTo($("#header"), 700, {
+      easing: "easeOutBounce"
+    });
+    return false
+  });
 
   function b() {
     var v = [];
@@ -86,14 +81,12 @@ jQuery(function($) {
           });
           imgEffection();
           k();
-          a();
           e();
           p();
           c();
           t();
           n();
           q();
-          l();
         };
       ajax({
         url: z,
@@ -516,43 +509,37 @@ jQuery(function($) {
   }
   q();
 
-  function l() {
-    $("#toggletrackbacks").toggle(function() {
-      $(this).addClass("open");
-      $("#pinglist").slideDown(200)
-    }, function() {
+  $("body").on('click', '#toggletrackbacks', function() {
+    if($(this).hasClass('open')){
       $(this).removeClass("open");
       $("#pinglist").slideUp(200)
-    })
-  }
-  l();
+    }else{
+      $(this).addClass("open");
+      $("#pinglist").slideDown(200)
+    }
+  });
 
-  (function enableSmilies(){
+  $('body').on('click', '#smiliebtn', function(){
     var $smilies = $('#smiles');
-    var $smiliebtn = $('#smiliebtn');
-    var $smilie = $('#smiles_list a');
-
-    $smiliebtn.on('click', function(){
-      if(!$smilies.is(':visible')){
-        var offset = $(this).offset();
-        $smilies.css({
-          left: offset.left,
-          top: offset.top + 18
-        }).slideDown(200);
-      }else{
-        $smilies.hide(200);
-      }
-      return false;
-    });
-
-    $smilie.on('click', function(){
-      var title = $(this).attr('title');
-      $('#comment').focus();
-      h(title);
+    if(!$smilies.is(':visible')){
+      var offset = $(this).offset();
+      $smilies.css({
+        left: offset.left,
+        top: offset.top + 18
+      }).slideDown(200);
+    }else{
       $smilies.hide(200);
-      return false;
-    });
-  })();
+    }
+    return false;
+  });
+  $('body').on('click', '#smiles_list a', function(){
+    var title = $(this).attr('title');
+    var $smilies = $('#smiles');
+    $('#comment').focus();
+    h(title);
+    $smilies.hide(200);
+    return false;
+  });
 
   function d() {
     var C = $("#contactbox");
