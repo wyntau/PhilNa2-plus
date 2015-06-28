@@ -33,7 +33,7 @@ function philnaFontsizeChange($selector){
   </ul>
   <script>
     jQuery(function($){
-      $('#fs-change li').click(function() {
+      $('body').on('click', '#fs-change li', function() {
         var selector = '<?php echo $selector ?>';
         var increment = 1;
         var fs_n = 13;

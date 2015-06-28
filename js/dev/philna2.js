@@ -84,9 +84,7 @@ jQuery(function($) {
               $('#content .post_content:first').slideDown(500)
             }
           });
-          homepage();
           imgEffection();
-          fontChange();
           addEditor();
           k();
           a();

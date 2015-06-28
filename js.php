@@ -22,7 +22,14 @@ Author URI: http://philna.com/
 */\n\n
 EOF;
 
-$jsFiles = array('easing', 'scrollTo', 'philna2','SayMeMod','Myjs');
+$jsFiles = array(
+  'easing',
+  'jquery.scrollTo',
+  'jquery.lazyload',
+  'philna2',
+  'SayMeMod',
+  'Myjs'
+);
 
 $jsDir = dirname(__FILE__) . '/js';
 
