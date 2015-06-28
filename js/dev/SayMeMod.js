@@ -21,7 +21,7 @@ jQuery(function($){
 
   (function enableStyleComment() {
     function addEditor(open, close) {
-      var a = $('#comment')[0];
+      var form = $('#comment')[0];
       if (document.selection) {
         form.focus();
         sel = document.selection.createRange();

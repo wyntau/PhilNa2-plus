@@ -38,41 +38,38 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
 <?php
 endwhile;
 ?>
-<?php endif;?>
+<?php endif; ?>
   </div>
 <?php
-function callback($buffer)
-{
-  $append_js=<<<EOT
-  <script type="text/javascript">
-    /* <![CDATA[ */
-  jQuery(document).ready(function() {
-  $('#expand_collapse,.archives-yearmonth').css({
-    cursor: "s-resize"
+function callback($buffer){
+  $append_js = <<<EOT
+<script type="text/javascript">
+  /* <![CDATA[ */
+  jQuery(function($) {
+    $('#expand_collapse,.archives-yearmonth').css({
+      cursor: "s-resize"
+    });
+    $('#archives ul li ul.archives-monthlisting').hide();
+    $('#archives ul li ul.archives-monthlisting:first').show();
+    $('#archives ul li span.archives-yearmonth').click(function() {
+      $(this).next().slideToggle('fast');
+      return false;
+    });
+    //以下下是全局的操作
+    $('#expand_collapse').on('click', function() {
+      var list = $('#archives ul li ul.archives-monthlisting');
+      if(list.is(':hidden')){
+        list.slideDown('fast');
+      }else{
+        list.slideUp('fast');
+      }
+    });
   });
-  $('#archives ul li ul.archives-monthlisting').hide();
-  $('#archives ul li ul.archives-monthlisting:first').show();
-  $('#archives ul li span.archives-yearmonth').click(function() {
-    $(this).next().slideToggle('fast');
-    return false;
-  });
-  //以下下是全局的操作
-  $('#expand_collapse').toggle(
-  function() {
-    $('#archives ul li ul.archives-monthlisting').slideDown('fast');
-  },
-  function() {
-    $('#archives ul li ul.archives-monthlisting').slideUp('fast');
-  });
-});
-    /* ]]> */
-  </script>
+  /* ]]> */
+</script>
 EOT;
-//$buffer=ob_get_contents();
-$buffer=str_replace('</body>',$append_js.'</body>',$buffer);
-  return $buffer;
+  return str_replace('</body>',$append_js.'</body>',$buffer);
 }
 ob_start("callback");
 get_footer();
 ob_end_flush();
-?>
