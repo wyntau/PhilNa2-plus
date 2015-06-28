@@ -79,8 +79,6 @@ function philnaHighLightKeyWords( array $keywords, $content ){
   }
   //$c = str_replace('<span></span>','',$c);
   return $content;
-
-
 }
 
 /**
@@ -98,6 +96,5 @@ function philnaHighlightWPSearchKeywords($content){
   }
 
   return philnaHighLightKeyWords( $keywords, $content );
-
 }
 add_filter('the_content', 'philnaHighlightWPSearchKeywords', 100);
