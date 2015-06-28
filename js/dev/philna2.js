@@ -67,43 +67,6 @@ jQuery(function($) {
   }
   i();
 
-  function u() {
-    var v = false;
-    var x = $("#philna_say");
-    var w = "loading";
-    x.click(function() {
-      if (v) {
-        return false
-      }
-      var z = function() {
-          x.hide(300, function() {
-            x.html("").addClass(w).show()
-          });
-          v = true
-        };
-      var y = function() {
-          x.html(lang.commonError);
-          x.removeClass(w);
-          v = false
-        };
-      var A = function(B) {
-          setTimeout(function() {
-            x.hide(0);
-            x.html(B).removeClass(w).show(300);
-            v = false
-          }, 3000)
-        };
-      o({
-        b: z,
-        e: y,
-        s: A,
-        fn: "philnaSay"
-      });
-      return false
-    })
-  }
-  u();
-
   function b() {
     var v = [];
     var w = [];

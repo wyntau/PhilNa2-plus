@@ -24,6 +24,25 @@ function philnaLoadJQuery(){
 }
 add_action('wp_enqueue_scripts', 'philnaLoadJQuery');
 
+function philnaLoadUtil(){
+
+  $dev = get_template_directory() . '/js/dev/util.js';
+  $min = get_template_directory() . '/js/util.js';
+
+  $dev_uri = get_template_directory_uri() . '/js/dev/util.js';
+  $min_uri = get_template_directory_uri() . '/js/util.js';
+
+  if(file_exists($min)){
+    $to_load = $min_uri;
+  }else{
+    $to_load = $dev_uri;
+  }
+  wp_enqueue_script('philnaUtil', $to_load, array('jquery-core'));
+?>
+<?php
+}
+add_action('wp_enqueue_scripts', 'philnaLoadUtil');
+
 //禁用半角符号自动转换为全角
 remove_filter('comment_text', 'wptexturize');
 remove_filter('the_content', 'wptexturize');
