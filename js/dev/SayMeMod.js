@@ -1,4 +1,4 @@
-jQuery(function() {
+jQuery(function($) {
   $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
   $('#up').mouseover(function() {
     up()
@@ -344,13 +344,13 @@ jQuery('.commentinfo a').attr({
 })(jQuery);
 
 function imgEffection() {
-  $("img").lazyload({
+  jQuery("img").lazyload({
     placeholder: themeurl + "/images/empty.gif",
     effect: "fadeIn"
   });
-  $("#content .post_content a:has(img),#content2 .post_content a:has(img)").slimbox();
-  $('.tg_t').click(function() {
-    $(this).next('.tg_c').slideToggle(400)
+  jQuery("#content .post_content a:has(img),#content2 .post_content a:has(img)").slimbox();
+  jQuery('.tg_t').click(function() {
+    jQuery(this).next('.tg_c').slideToggle(400)
   })
 }
 imgEffection();
@@ -448,7 +448,7 @@ jQuery('#tab-title span').mouseover(function() {
 });
 
 function homepage() {
-  $('#content .post_title').click(function() {
+  jQuery('#content .post_title').click(function() {
     var postContent = $(this).next().next();
     var id = $(this).parent().attr("id");
     var postId = id.replace(/^post-(.*)$/, '$1');
