@@ -39,12 +39,7 @@ function philnaCloseSidebar(){
   <div id="top_right">
     <ul id="menu-top_right">
 <?php
-  if(isset($_COOKIE['show_sidebar']) && $_COOKIE['show_sidebar'] == 'yes'){
-?>
-      <li id="close-sidebar" title="显示/关闭侧边栏"><a>关闭侧边栏</a></li>
-      <li id="show-sidebar" style="display:none;"title="显示/关闭侧边栏"><a>显示侧边栏</a></li>
-<?php
-  }else{
+  if(isset($_COOKIE['show_sidebar']) && $_COOKIE['show_sidebar'] == 'no'){
 ?>
       <style type="text/css">
         #content,#content2,#content3{
@@ -59,6 +54,11 @@ function philnaCloseSidebar(){
       </style>
       <li id="close-sidebar" style="display:none;" title="显示/关闭侧边栏"><a>关闭侧边栏</a></li>
       <li id="show-sidebar" title="显示/关闭侧边栏"><a>显示侧边栏</a></li>
+<?php
+  }else{
+?>
+      <li id="close-sidebar" title="显示/关闭侧边栏"><a>关闭侧边栏</a></li>
+      <li id="show-sidebar" style="display:none;"title="显示/关闭侧边栏"><a>显示侧边栏</a></li>
 <?php
   }
 ?>

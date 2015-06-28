@@ -34,6 +34,7 @@ foreach(array(
   TEMPLATEPATH . '/base',
   TEMPLATEPATH . '/app',
   TEMPLATEPATH . '/functions',
+  TEMPLATEPATH . '/hooks',
   TEMPLATEPATH . '/widgets',
   TEMPLATEPATH . '/components'
 ) as $dir){
