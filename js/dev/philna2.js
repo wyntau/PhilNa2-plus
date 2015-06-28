@@ -154,7 +154,7 @@ jQuery(function($) {
           // e();
           c();
           t();
-          q();
+          // q();
         };
       ajax({
         url: z,
@@ -428,9 +428,7 @@ jQuery(function($) {
           x.html(G[0]);
           $.scrollTo($("#commentstate"), 600);
           t();
-          // e();
           c();
-          // p()
         };
       ajax({
         url: A,
@@ -443,74 +441,74 @@ jQuery(function($) {
   }
   t();
 
-  function s() {
-    var x = $("#commentform");
-    var v = blogURL + "?do=ajax";
-    var B = "philnaAjaxComment";
-    var z = x.serialize();
-    var E = $("#ajaxbox");
-    var w = $("#respond");
-    var y = $("#submit");
-    var A = function() {
-        E.slideUp(300);
-        y.attr("disabled", false)
-      };
-    var D = function() {
-        E.slideDown(300);
-        y.attr("disabled", true)
-      };
-    var C = function(G) {
-        A();
-        if (G.responseText) {
-          alert(G.responseText)
-        } else {
-          alert(lang.commonError)
-        }
-      };
-    var F = function(G) {
-        A();
-        $("#comment").val("");
-        if ($("#updatecomment").length) {
-          var J = $("#updatecomment");
-          var I = J.val();
-          $("#comment-" + I).replaceWith(G).slideDown(300);
-          $.scrollTo($("#comment-" + I), 600);
-          J.remove();
-          y.val(lang.scomment)
-        } else {
-          $("#comments").append(G);
-          var H = $("#comments li:last").hide();
-          H.slideDown(400);
-          $("#commentcount").text($("#comments li:last .floor").text().replace(/\D/g, ""));
-          $("#welcome_words").html(lang.thankscm);
-          c()
-        }
-      };
-    ajax({
-      url: v,
-      type: "POST",
-      data: z,
-      beforeSend: D,
-      error: C,
-      success: F,
-      fn: B
-    })
-  }
-  function q() {
-    $("#commentform").submit(function() {
-      s();
-      return false
+  (function submitComment() {
+    function submitComment() {
+      var x = $("#commentform");
+      var v = blogURL + "?do=ajax";
+      var B = "philnaAjaxComment";
+      var z = x.serialize();
+      var E = $("#ajaxbox");
+      var w = $("#respond");
+      var y = $("#submit");
+      var A = function() {
+          E.slideUp(300);
+          y.attr("disabled", false)
+        };
+      var D = function() {
+          E.slideDown(300);
+          y.attr("disabled", true)
+        };
+      var C = function(G) {
+          A();
+          if (G.responseText) {
+            alert(G.responseText)
+          } else {
+            alert(lang.commonError)
+          }
+        };
+      var F = function(G) {
+          A();
+          $("#comment").val("");
+          if ($("#updatecomment").length) {
+            var J = $("#updatecomment");
+            var I = J.val();
+            $("#comment-" + I).replaceWith(G).slideDown(300);
+            $.scrollTo($("#comment-" + I), 600);
+            J.remove();
+            y.val(lang.scomment)
+          } else {
+            $("#comments").append(G);
+            var H = $("#comments li:last").hide();
+            H.slideDown(400);
+            $("#commentcount").text($("#comments li:last .floor").text().replace(/\D/g, ""));
+            $("#welcome_words").html(lang.thankscm);
+            c()
+          }
+        };
+      ajax({
+        url: v,
+        type: "POST",
+        data: z,
+        beforeSend: D,
+        error: C,
+        success: F,
+        fn: B
+      })
+    }
+
+    $('body').on('submit', '#commentform', function(){
+      submitComment();
+      return false;
     });
-    $("#commentform #comment").keydown(function(v) {
+    $('body').on('keydown', '#commentform #comment', function(v){
       if ((v.ctrlKey || v.altKey) && (v.keyCode == 13 || v.keyCode == 83)) {
-        s();
+        submitComment();
         return false
       }
-    })
-  }
-  q();
+    });
+  })();
 
-  function d() {
+  $('body').on('submit', '#contactform', function(){
     var C = $("#contactbox");
     var z = $("#contactform");
     var x = z.attr("action") + "?do=ajax";
@@ -538,10 +536,7 @@ jQuery(function($) {
       beforeSend: y,
       error: w,
       success: B
-    })
-  }
-  $("#contactform").submit(function() {
-    d();
-    return false
-  })
+    });
+    return false;
+  });
 });
