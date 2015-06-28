@@ -7,6 +7,26 @@
 defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinheli < http://philna.com/ >');
 
 /**
+ * include all PHP script
+ * @param string $dir
+ * @return unknown_type
+ */
+function philnaIncludeAll($dir){
+  $dir = realpath($dir);
+  if($dir){
+    $files = scandir($dir);
+    sort($files);
+    foreach($files as $file){
+      if($file == '.' || $file == '..'){
+        continue;
+      }elseif(preg_match('/\.php$/i', $file)){
+        include_once $dir.'/'.$file;
+      }
+    }
+  }
+}
+
+/**
  * 通过USER_Agent判断是否为机器人.
  *
  * @return Boolean
@@ -78,4 +98,9 @@ function fail($s) {
 // new feature of WordPress - post thumbnails
 if (function_exists('add_theme_support')) {
   add_theme_support('post-thumbnails');
+}
+
+//激活菜单项
+if ( function_exists('register_nav_menus') ) {
+  register_nav_menus(array('primary' => '头部导航栏'));
 }

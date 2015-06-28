@@ -25,68 +25,21 @@ define('PHILNA', 'philna2');
 // debug - if true the errors will display below footer when admin login
 define('PHILNA_DEBUG', false);
 
-// admin dir
-define('PHILNA_ADMIN', TEMPLATEPATH . '/admin');
-// app dir
-define('PHILNA_APP', TEMPLATEPATH . '/app');
-// base dir
-define('PHILNA_BASE', TEMPLATEPATH . '/base');
-// functions dir
-define('PHILNA_FUNC', TEMPLATEPATH . '/functions');
-// langeage dir
-define('PHILNA_LANG', TEMPLATEPATH . '/languages');
-// widget dir
-define('PHILNA_WIDGET', TEMPLATEPATH . '/widgets');
-
-//激活菜单项
-if ( function_exists('register_nav_menus') ) {
-  register_nav_menus(array('primary' => '头部导航栏'));
-}
-
 // Load theme textdomain
-load_theme_textdomain(YHL, PHILNA_LANG);
+load_theme_textdomain(YHL, TEMPLATEPATH . '/languages');
 
-// befor load my function we load the base
-// functions for other functions
-include_once PHILNA_BASE . '/options.php';
-include_once PHILNA_BASE . '/format.php';
-include_once PHILNA_BASE . '/base.php';
-include_once PHILNA_BASE . '/json.php';
-include_once PHILNA_BASE . '/ajax.php';
 
-// init philna options
-$GLOBALS['philnaopt'] = PhilNaGetOpt::getInstance();
-
-/**
- * include all PHP script
- * @param string $dir
- * @return unknown_type
- */
-function philnaIncludeAll($dir){
-  $dir = realpath($dir);
-  if($dir){
-    $files = scandir($dir);
-    sort($files);
-    foreach($files as $file){
-      if($file == '.' || $file == '..'){
-        continue;
-      }elseif(preg_match('/\.php$/i', $file)){
-        include_once $dir.'/'.$file;
-      }
-    }
-  }
+include_once TEMPLATEPATH . '/base/base.php';
+foreach(array(
+  TEMPLATEPATH . '/base',
+  TEMPLATEPATH . '/app',
+  TEMPLATEPATH . '/functions',
+  TEMPLATEPATH . '/widgets'
+) as $dir){
+  philnaIncludeAll($dir);
 }
-
-// include functions by yinheli
-philnaIncludeAll( PHILNA_APP );
-
-// include functions by user
-philnaIncludeAll( PHILNA_FUNC );
-
-// include functions by user
-philnaIncludeAll( PHILNA_WIDGET );
 
 // admin panel
-!is_admin() || include_once PHILNA_ADMIN . '/admin.php';
+!is_admin() || include_once TEMPLATEPATH . '/admin/admin.php';
 
 do_action('PhilNaReady');

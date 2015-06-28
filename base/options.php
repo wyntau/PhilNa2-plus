@@ -125,3 +125,6 @@ class PhilNaGetOpt implements ArrayAccess {
     }
   }
 }
+
+// init philna options
+$GLOBALS['philnaopt'] = PhilNaGetOpt::getInstance();
