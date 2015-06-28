@@ -29,11 +29,9 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
       <span class="author icon"><?php the_author_posts_link(); ?></span>
     </div>
     <div class="right">
-<?php if(is_single()): ?><ul id="fs-change">
-<li id="fs_dec"><a href="#" title="再小点再小点!">-</a></li>
-<li id="fs_n"><a href="#" title="我要返回地球">N</a></li>
-<li id="fs_inc"><a href="#" title="给点力吧">+</a></li>
-</ul><?php endif ;?>
+<?php if(is_single()): ?>
+<?php philnaFontsizeChange('.post_content,.post_content p'); ?>
+<?php endif ;?>
     <?php if(is_singular()): ?><span id="skiptocomment" class="comments_link"><a href="#comments"><?php _e('Skip to Comments', YHL)?></a></span><?php else: ?><span class="comments_link"><sup>{ </sup><?php comments_popup_link(__('No Comments',YHL), __('1 Comment', YHL), __('% Comments', YHL));?><sub> }</sub></span><?php endif; ?>
     <?php edit_post_link(__('Edit', YHL), '<span class="edit_link icon">', '</span>'); ?>
     </div>

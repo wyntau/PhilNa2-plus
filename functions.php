@@ -34,7 +34,8 @@ foreach(array(
   TEMPLATEPATH . '/base',
   TEMPLATEPATH . '/app',
   TEMPLATEPATH . '/functions',
-  TEMPLATEPATH . '/widgets'
+  TEMPLATEPATH . '/widgets',
+  TEMPLATEPATH . '/components'
 ) as $dir){
   philnaIncludeAll($dir);
 }

@@ -1,4 +1,4 @@
-$(function() {
+jQuery(function($) {
   Function.prototype.method = function(v, w) {
     if (!this.prototype[v]) {
       this.prototype[v] = w

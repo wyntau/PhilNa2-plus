@@ -1,4 +1,4 @@
-$(function() {
+jQuery(function() {
   $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
   $('#up').mouseover(function() {
     up()
@@ -35,13 +35,13 @@ function dn() {
   $wd.scrollTop($wd.scrollTop() + 1);
   fq = setTimeout("dn()", 40)
 }
-$('#comment').bind('focus keyup input paste', function() {
+jQuery('#comment').bind('focus keyup input paste', function() {
   $('#num').text($(this).attr("value").length)
 });
-$('#searchinput,#comment,#author,#email,#url').mouseover(function() {
+jQuery('#searchinput,#comment,#author,#email,#url').mouseover(function() {
   $(this).focus()
 });
-$('.commentinfo a').attr({
+jQuery('.commentinfo a').attr({
   target: "_blank"
 });
 (function($) {
@@ -412,30 +412,6 @@ function addEditor() {
 }
 addEditor();
 
-function fontChange() {
-  $('#fs-change li').click(function() {
-    var selector = '.post_content,.post_content p';
-    var increment = 1;
-    var fs_n = 13;
-    var fs_cur = $(selector).css('font-size');
-    var fs_cur_num = parseFloat(fs_cur, 10);
-    var id = $(this).attr('id');
-    switch (id) {
-    case 'fs_dec':
-      fs_cur_num -= increment;
-      break;
-    case 'fs_inc':
-      fs_cur_num += increment;
-      break;
-    case 'fs_n':
-    default:
-      fs_cur_num = fs_n
-    }
-    $(selector).css('font-size', fs_cur_num + 'px');
-    return false
-  })
-}
-fontChange();
 (function() {
   function SetCookie(c_name, value, expiredays) {
     var exdate = new Date();
@@ -445,7 +421,7 @@ fontChange();
   window['RootCookies'] = {};
   window['RootCookies']['SetCookie'] = SetCookie
 })();
-$('#close-sidebar').click(function() {
+jQuery('#close-sidebar').click(function() {
   RootCookies.SetCookie('show_sidebar', 'no', 30);
   $('#close-sidebar').hide();
   $('#show-sidebar').show();
@@ -456,7 +432,7 @@ $('#close-sidebar').click(function() {
     }, 1000)
   }, 500)
 });
-$('#show-sidebar').click(function() {
+jQuery('#show-sidebar').click(function() {
   RootCookies.SetCookie('show_sidebar', 'no', -1);
   $('#show-sidebar').hide();
   $('#close-sidebar').show();
@@ -466,7 +442,7 @@ $('#show-sidebar').click(function() {
     $('#sidebar').fadeIn(500)
   })
 });
-$('#tab-title span').mouseover(function() {
+jQuery('#tab-title span').mouseover(function() {
   $(this).addClass("selected").siblings().removeClass();
   $("#tab-content > ul").eq($('#tab-title span').index(this)).slideDown(250).siblings().slideUp(250)
 });
@@ -509,4 +485,4 @@ function homepage() {
   })
 }
 homepage();
-$('#content .post_content:first').slideDown(500);
+jQuery('#content .post_content:first').slideDown(500);

@@ -14,13 +14,13 @@ remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );//相邻文
 remove_action( 'wp_head', 'wp_generator' );//版本号
 remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );//短地址
 
+function philnaLoadJQuery(){
+  wp_enqueue_script('jquery-core');
+}
+add_action('wp_enqueue_scripts', 'philnaLoadJQuery');
+
 //禁用半角符号自动转换为全角
 remove_filter('comment_text', 'wptexturize');
 remove_filter('the_content', 'wptexturize');
 remove_filter('the_excerpt', 'wptexturize');
 remove_filter('the_title', 'wptexturize');
-
-// function wp_hide_nag() {
-//   remove_action( 'admin_notices', 'update_nag', 3 );
-// }
-// add_action('admin_menu','wp_hide_nag');

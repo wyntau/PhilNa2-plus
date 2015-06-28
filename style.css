@@ -309,12 +309,6 @@ overflow:auto;
 zoom:1;}
 #sidebar .blogroll li{float:left;width:30%;display:block;}
 
-/*change content font size*/
-#fs-change {PADDING: 0px 8px 0 0;FLOAT: left;}
-#fs-change LI {DISPLAY: inline; FLOAT: left; COLOR: #b4b4b4; MARGIN-LEFT: 5px;}
-#fs-change LI A {BORDER: #c8c8c8 1px solid; TEXT-ALIGN: center;  WIDTH: 16px; DISPLAY: block; HEIGHT: 16px;}
-#fs-change LI A:hover {BACKGROUND: #ebebeb; text-decoration: none;}
-
 /* Links Page */
 .linkpage ul{padding-right:10px;overflow:auto;}
 .linkpage ul li {list-style-type: none;}
