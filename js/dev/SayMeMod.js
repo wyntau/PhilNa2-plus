@@ -95,13 +95,13 @@ jQuery(function($){
   });
 
   (function enableHomeSlide() {
-    $('#content .post_title').click(function() {
+    $('body').on('click', '#content .post_title', function() {
       var postContent = $(this).next().next();
       var id = $(this).parent().attr("id");
       var postId = id.replace(/^post-(.*)$/, '$1');
       if (postContent.html() == "") {
         $.ajax({
-          url: "?action=ajax_post&id=" + postId,
+          url: "?do=ajax&action=philnaAjaxPost&id=" + postId,
           beforeSend: function() {
             $('#content .post_content').slideUp(150, function() {
               postContent.html('<p class="ajaxloading">' + lang.AjaxLoading + '</p>').show()

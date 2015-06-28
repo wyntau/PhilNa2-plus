@@ -56,7 +56,11 @@ if(isset($_GET['do']) && $_GET['do'] == 'ajax'){ // for ajax!
 class PhilNaAjax {
   // hold normal ajax function names
   private $ajaxFunctions = array(
-    'philnaSay', 'philnaAjaxGetComment', 'philnaAjaxComment', 'philnaModifyComment'
+    'philnaSay',
+    'philnaAjaxGetComment',
+    'philnaAjaxComment',
+    'philnaAjaxPost',
+    'philnaModifyComment'
   );
   // hooked on action 'template_redirect'
   private $hookTRAjaxFunctions = array(
