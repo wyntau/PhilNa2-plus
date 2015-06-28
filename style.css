@@ -320,12 +320,7 @@ zoom:1;}
 .handsome{color:green;}
 .beauty{color:red;}
 .sofa{float:left;color:red;font-weight:bold;padding-right:150px;font-size:13px;}
-/*close sidebar*/
-#top_right { display: block; padding: 0;height: 25x; float:right;}
-#top_right ul {float:right; margin: 0; padding: 0; position: relative;}
-#top_right ul *:hover { background-color: #666; color: #FFF; cursor:pointer;}
-#top_right ul a {display: block; color: #999; font-size: 12px; padding: 3px 15px 3px; margin: 0;}
-#top_right ul li { display: block; list-style: none; float: left; position: relative; margin-bottom:0; }
+
 
 #tab-title h3{font-size:14px;}
 #tab-title .selected{color:#356aa0;border-bottom:0px;} /*标题被选中时的样式*/

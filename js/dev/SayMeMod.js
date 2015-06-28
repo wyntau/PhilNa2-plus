@@ -372,36 +372,6 @@ function addEditor() {
 }
 addEditor();
 
-(function() {
-  function SetCookie(c_name, value, expiredays) {
-    var exdate = new Date();
-    exdate.setTime(exdate.getTime() + expiredays * 24 * 3600 * 1000);
-    document.cookie = c_name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString()) + ";path=/"
-  }
-  window['RootCookies'] = {};
-  window['RootCookies']['SetCookie'] = SetCookie
-})();
-jQuery('#close-sidebar').click(function() {
-  RootCookies.SetCookie('show_sidebar', 'no', 30);
-  $('#close-sidebar').hide();
-  $('#show-sidebar').show();
-  $('#sidebar').fadeOut(500);
-  window.setTimeout(function() {
-    $('#content,#content2,#content3,#footer').animate({
-      width: "920px"
-    }, 1000)
-  }, 500)
-});
-jQuery('#show-sidebar').click(function() {
-  RootCookies.SetCookie('show_sidebar', 'no', -1);
-  $('#show-sidebar').hide();
-  $('#close-sidebar').show();
-  $('#content,#content2,#content3,#footer').animate({
-    width: "662px"
-  }, 800, function() {
-    $('#sidebar').fadeIn(500)
-  })
-});
 jQuery('#tab-title span').mouseover(function() {
   $(this).addClass("selected").siblings().removeClass();
   $("#tab-content > ul").eq($('#tab-title span').index(this)).slideDown(250).siblings().slideUp(250)
