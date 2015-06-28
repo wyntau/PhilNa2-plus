@@ -85,7 +85,6 @@ jQuery(function($) {
             }
           });
           imgEffection();
-          addEditor();
           k();
           a();
           e();

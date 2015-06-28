@@ -1391,10 +1391,16 @@ td {
   float: left;
   color: #999;
   height: 16px;
+  cursor: pointer;
   line-height: 16px;
   font-weight: bold;
   background: #fafafa;
   text-decoration: none;
+  padding:0 5px;
+  border-right:1px solid #ddd;
+}
+#editor_tools a:first-child{
+  border-left:1px solid #ddd;
 }
 
 #editor_tools a:hover {

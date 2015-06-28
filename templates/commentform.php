@@ -10,17 +10,16 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
   <div id="respond_head">
     <h4><strong><?php _e('Leave a comment', YHL); ?></strong></h4>
     <?php philnaCommentSmilies(); ?>
-                <div id="editor_tools"> 
-    <a style="padding:0 5px;border-right:1px solid #ddd;border-left:1px solid #ddd;" href="javascript:SIMPALED.Editor.strong()">B</a>
-      <a style="padding:0 5px;border-right:1px solid #ddd;" href="javascript:SIMPALED.Editor.italic()">i</a> 
-      <a style="padding:0 5px;border-right:1px solid #ddd;" href="javascript:SIMPALED.Editor.em()">em</a>
-      <a style="padding:0 5px;border-right:1px solid #ddd;" href="javascript:SIMPALED.Editor.del()">del</a> 
-      <a style="padding:0 5px;border-right:1px solid #ddd;" href="javascript:SIMPALED.Editor.underline()">U</a> 
-      <a style="padding:0 5px;border-right:1px solid #ddd;" href="javascript:SIMPALED.Editor.ahref()">Link</a> 
-      <a style="padding:0 5px;border-right:1px solid #ddd;" href="javascript:SIMPALED.Editor.code()">Code</a>
-      <a style="padding:0 5px;border-right:1px solid #ddd;" href="javascript:SIMPALED.Editor.syntax()">Syntax</a> 
-      <a style="padding:0 5px;border-right:1px solid #ddd;" href="javascript:SIMPALED.Editor.quote()">Quote</a> 
-</div>
+    <div id="editor_tools">
+      <a data-editor="strong">B</a>
+      <a data-editor="italic">i</a>
+      <a data-editor="em">em</a>
+      <a data-editor="del">del</a>
+      <a data-editor="underline">U</a>
+      <a data-editor="ahref">Link</a>
+      <a data-editor="code">Code</a>
+      <a data-editor="quote">Quote</a>
+    </div>
     <div class="clear"></div>
   </div>
   <form id="commentform" action="<?php bloginfo('url'); ?>/wp-comments-post.php" method="post">

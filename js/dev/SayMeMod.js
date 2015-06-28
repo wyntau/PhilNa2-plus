@@ -235,8 +235,9 @@ jQuery(function($){
   }
   imgEffection();
 
-  function addEditor() {
-    function addEditor(a, b, c) {
+  function enableStyleComment() {
+    function addEditor(b, c) {
+      var a = $('#comment')[0];
       if (document.selection) {
         a.focus();
         sel = document.selection.createRange();
@@ -257,40 +258,43 @@ jQuery(function($){
         a.focus()
       }
     }
-    var g = document.getElementById('comment') || 0;
     var h = {
       strong: function() {
-        addEditor(g, '<strong>', '</strong>')
+        addEditor('<strong>', '</strong>')
       },
       em: function() {
-        addEditor(g, '<em>', '</em>')
+        addEditor('<em>', '</em>')
       },
       del: function() {
-        addEditor(g, '<del>', '</del>')
+        addEditor('<del>', '</del>')
       },
       underline: function() {
-        addEditor(g, '<u>', '</u>')
+        addEditor('<u>', '</u>')
       },
       italic: function() {
-        addEditor(g, '<i>', '</i>')
+        addEditor('<i>', '</i>')
       },
       quote: function() {
-        addEditor(g, '<blockquote>', '</blockquote>')
+        addEditor('<blockquote>', '</blockquote>')
       },
       ahref: function() {
         var a = prompt('Enter the URL', 'http://');
         if (a) {
-          addEditor(g, '<a target="_blank" href="' + a + '" rel="external">', '</a>')
+          addEditor('<a target="_blank" href="' + a + '" rel="external">', '</a>')
         }
       },
       code: function() {
-        addEditor(g, '<code>', '</code>')
+        addEditor('<code>', '</code>')
       }
     };
-    window['SIMPALED'] = {};
-    window['SIMPALED']['Editor'] = h
+
+    $('body').on('click', '#editor_tools a', function(){
+      var editor = $(this).data('editor');
+      h[editor] && h[editor]();
+      return false;
+    });
   }
-  addEditor();
+  enableStyleComment();
 
   jQuery('#tab-title span').mouseover(function() {
     $(this).addClass("selected").siblings().removeClass();
