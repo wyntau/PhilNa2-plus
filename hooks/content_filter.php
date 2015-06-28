@@ -29,4 +29,6 @@ function philnacopyright($content){
   }
   return $content.$after;
 }
-add_filter('the_content', 'philnacopyright', 0);
+if(!defined('DOING_AJAX')){
+  add_filter('the_content', 'philnacopyright', 0);
+}
