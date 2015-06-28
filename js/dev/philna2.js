@@ -94,7 +94,6 @@ jQuery(function($) {
           n();
           q();
           l();
-          g()
         };
       ajax({
         url: z,

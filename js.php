@@ -26,6 +26,7 @@ $jsFiles = array(
   'easing',
   'jquery.scrollTo',
   'jquery.lazyload',
+  'jquery.slimbox',
   'philna2',
   'SayMeMod',
   'Myjs'
