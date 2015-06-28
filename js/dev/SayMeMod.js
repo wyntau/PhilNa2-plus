@@ -23,23 +23,33 @@ jQuery(function($){
     function addEditor(open, close) {
       var form = $('#comment')[0];
       if (document.selection) {
-        form.focus();
         sel = document.selection.createRange();
-        close ? sel.text = open + sel.text + close : sel.text = open;
+        if(close){
+          sel.text = open + sel.text + close;
+        }else{
+          sel.text = open;
+        }
         form.focus()
       } else if (form.selectionStart || form.selectionStart == '0') {
         var selectionStart = form.selectionStart;
         var selectionEnd = form.selectionEnd;
         var f = selectionEnd;
-        close ? form.value = form.value.substring(0, selectionStart) + open + form.value.substring(selectionStart, selectionEnd) + close + form.value.substring(selectionEnd, form.value.length) : form.value = form.value.substring(0, selectionStart) + open + form.value.substring(selectionEnd, form.value.length);
-        close ? f += open.length + close.length : f += open.length - selectionEnd + selectionStart;
-        if (selectionStart == selectionEnd && close) f -= close.length;
+        if(close){
+          form.value = form.value.substring(0, selectionStart) + open + form.value.substring(selectionStart, selectionEnd) + close + form.value.substring(selectionEnd, form.value.length);
+          f += open.length + close.length;
+        }else{
+          form.value = form.value.substring(0, selectionStart) + open + form.value.substring(selectionEnd, form.value.length);
+          f += open.length - selectionEnd + selectionStart;
+        }
+        if (selectionStart == selectionEnd && close) {
+          f -= close.length;
+        }
         form.focus();
         form.selectionStart = f;
         form.selectionEnd = f
       } else {
         form.value += open + close;
-        form.focus()
+        form.focus();
       }
     }
     var h = {

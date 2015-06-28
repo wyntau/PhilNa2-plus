@@ -64,7 +64,7 @@ jQuery(function($) {
     var title = $(this).attr('title');
     var $smilies = $('#smiles');
     $('#comment').focus();
-    h(title);
+    fillComment(title);
     $smilies.hide(200);
     return false;
   });
@@ -224,23 +224,23 @@ jQuery(function($) {
   }
   j();
 
-  function h(y) {
-    var x = $('#comment')[0];
-    if (y) {
+  function fillComment(content) {
+    var comment = $('#comment')[0];
+    if (content) {
       if (document.selection) {
         sel = document.selection.createRange();
-        sel.text = y
+        sel.text = content;
       } else {
-        if (x.selectionStart || x.selectionStart == "0") {
-          var w = x.selectionStart;
-          var v = x.selectionEnd;
-          var z = w;
-          x.value = x.value.substring(0, w) + y + x.value.substring(v, x.value.length);
-          z += y.length;
-          x.selectionStart = z;
-          x.selectionEnd = z
+        if (comment.selectionStart || comment.selectionStart == "0") {
+          var selectionStart = comment.selectionStart;
+          var selectionEnd = comment.selectionEnd;
+          var z = selectionStart;
+          comment.value = comment.value.substring(0, selectionStart) + content + comment.value.substring(selectionEnd, comment.value.length);
+          z += content.length;
+          comment.selectionStart = z;
+          comment.selectionEnd = z
         } else {
-          x.value += y
+          comment.value += content
         }
       }
     }
@@ -270,9 +270,9 @@ jQuery(function($) {
           onAfter: function() {
             B.focus();
             if (A.replace(/\s|\t|\n/g, "") == "") {
-              h(z)
+              fillComment(z)
             } else {
-              h("\n\n" + z)
+              fillComment("\n\n" + z)
             }
           }
         })
