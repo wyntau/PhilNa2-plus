@@ -1,10 +1,13 @@
-jQuery('#comment').bind('focus keyup input paste', function() {
-  $('#num').text($(this).attr("value").length)
+jQuery(function($){
+  $('#comment').bind('focus keyup input paste', function() {
+    $('#num').text($(this).val().length)
+  });
+  $('#searchinput,#comment,#author,#email,#url').mouseover(function() {
+    $(this).focus()
+  });
 });
-jQuery('#searchinput,#comment,#author,#email,#url').mouseover(function() {
-  $(this).focus()
-});
-(function($) {
+
+jQuery(function($) {
   $.fn.lazyload = function(options) {
     var settings = {
       threshold: 0,
@@ -87,7 +90,7 @@ jQuery('#searchinput,#comment,#author,#email,#url').mouseover(function() {
     "right-of-fold": "$.rightoffold(a, {threshold : 0, container: window})",
     "left-of-fold": "!$.rightoffold(a, {threshold : 0, container: window})"
   })
-})(jQuery);
+});
 (function(w) {
   var E = w(window),
     u, f, F = -1,
@@ -303,116 +306,118 @@ jQuery('#searchinput,#comment,#author,#email,#url').mouseover(function() {
   }
 })(jQuery);
 
-function imgEffection() {
-  jQuery("img").lazyload({
-    placeholder: themeurl + "/images/empty.gif",
-    effect: "fadeIn"
-  });
-  jQuery("#content .post_content a:has(img),#content2 .post_content a:has(img)").slimbox();
-  jQuery('.tg_t').click(function() {
-    jQuery(this).next('.tg_c').slideToggle(400)
-  })
-}
-imgEffection();
-
-function addEditor() {
-  function addEditor(a, b, c) {
-    if (document.selection) {
-      a.focus();
-      sel = document.selection.createRange();
-      c ? sel.text = b + sel.text + c : sel.text = b;
-      a.focus()
-    } else if (a.selectionStart || a.selectionStart == '0') {
-      var d = a.selectionStart;
-      var e = a.selectionEnd;
-      var f = e;
-      c ? a.value = a.value.substring(0, d) + b + a.value.substring(d, e) + c + a.value.substring(e, a.value.length) : a.value = a.value.substring(0, d) + b + a.value.substring(e, a.value.length);
-      c ? f += b.length + c.length : f += b.length - e + d;
-      if (d == e && c) f -= c.length;
-      a.focus();
-      a.selectionStart = f;
-      a.selectionEnd = f
-    } else {
-      a.value += b + c;
-      a.focus()
-    }
+jQuery(function($){
+  function imgEffection() {
+    jQuery("img").lazyload({
+      placeholder: themeurl + "/images/empty.gif",
+      effect: "fadeIn"
+    });
+    jQuery("#content .post_content a:has(img),#content2 .post_content a:has(img)").slimbox();
+    jQuery('.tg_t').click(function() {
+      jQuery(this).next('.tg_c').slideToggle(400)
+    })
   }
-  var g = document.getElementById('comment') || 0;
-  var h = {
-    strong: function() {
-      addEditor(g, '<strong>', '</strong>')
-    },
-    em: function() {
-      addEditor(g, '<em>', '</em>')
-    },
-    del: function() {
-      addEditor(g, '<del>', '</del>')
-    },
-    underline: function() {
-      addEditor(g, '<u>', '</u>')
-    },
-    italic: function() {
-      addEditor(g, '<i>', '</i>')
-    },
-    quote: function() {
-      addEditor(g, '<blockquote>', '</blockquote>')
-    },
-    ahref: function() {
-      var a = prompt('Enter the URL', 'http://');
-      if (a) {
-        addEditor(g, '<a target="_blank" href="' + a + '" rel="external">', '</a>')
+  imgEffection();
+
+  function addEditor() {
+    function addEditor(a, b, c) {
+      if (document.selection) {
+        a.focus();
+        sel = document.selection.createRange();
+        c ? sel.text = b + sel.text + c : sel.text = b;
+        a.focus()
+      } else if (a.selectionStart || a.selectionStart == '0') {
+        var d = a.selectionStart;
+        var e = a.selectionEnd;
+        var f = e;
+        c ? a.value = a.value.substring(0, d) + b + a.value.substring(d, e) + c + a.value.substring(e, a.value.length) : a.value = a.value.substring(0, d) + b + a.value.substring(e, a.value.length);
+        c ? f += b.length + c.length : f += b.length - e + d;
+        if (d == e && c) f -= c.length;
+        a.focus();
+        a.selectionStart = f;
+        a.selectionEnd = f
+      } else {
+        a.value += b + c;
+        a.focus()
       }
-    },
-    code: function() {
-      addEditor(g, '<code>', '</code>')
     }
-  };
-  window['SIMPALED'] = {};
-  window['SIMPALED']['Editor'] = h
-}
-addEditor();
-
-jQuery('#tab-title span').mouseover(function() {
-  $(this).addClass("selected").siblings().removeClass();
-  $("#tab-content > ul").eq($('#tab-title span').index(this)).slideDown(250).siblings().slideUp(250)
-});
-
-function homepage() {
-  jQuery('#content .post_title').click(function() {
-    var postContent = $(this).next().next();
-    var id = $(this).parent().attr("id");
-    var postId = id.replace(/^post-(.*)$/, '$1');
-    if (postContent.html() == "") {
-      $.ajax({
-        url: "?action=ajax_post&id=" + postId,
-        beforeSend: function() {
-          $('#content .post_content').slideUp(150, function() {
-            postContent.html('<p class="ajaxloading">' + lang.AjaxLoading + '</p>').show()
-          })
-        },
-        success: function(data) {
-          postContent.hide(0).html(data).slideDown(500, function() {
-            $body.animate({
-              scrollTop: $(this).offset().top - 180
-            }, 500)
-          });
-          imgEffection()
+    var g = document.getElementById('comment') || 0;
+    var h = {
+      strong: function() {
+        addEditor(g, '<strong>', '</strong>')
+      },
+      em: function() {
+        addEditor(g, '<em>', '</em>')
+      },
+      del: function() {
+        addEditor(g, '<del>', '</del>')
+      },
+      underline: function() {
+        addEditor(g, '<u>', '</u>')
+      },
+      italic: function() {
+        addEditor(g, '<i>', '</i>')
+      },
+      quote: function() {
+        addEditor(g, '<blockquote>', '</blockquote>')
+      },
+      ahref: function() {
+        var a = prompt('Enter the URL', 'http://');
+        if (a) {
+          addEditor(g, '<a target="_blank" href="' + a + '" rel="external">', '</a>')
         }
-      });
-      return false
-    } else if (postContent.is(":hidden")) {
-      $('#content .post_content').slideUp(500);
-      postContent.slideDown(500, function() {
-        $body.animate({
-          scrollTop: $(this).offset().top - 180
-        }, 400)
-      });
-      return false
-    } else {
-      $(this).children('a').text(lang.LoadText);
-      window.location = $(this).children().attr('href')
-    }
-  })
-}
-homepage();
-jQuery('#content .post_content:first').slideDown(500);
+      },
+      code: function() {
+        addEditor(g, '<code>', '</code>')
+      }
+    };
+    window['SIMPALED'] = {};
+    window['SIMPALED']['Editor'] = h
+  }
+  addEditor();
+
+  jQuery('#tab-title span').mouseover(function() {
+    $(this).addClass("selected").siblings().removeClass();
+    $("#tab-content > ul").eq($('#tab-title span').index(this)).slideDown(250).siblings().slideUp(250)
+  });
+
+  function homepage() {
+    jQuery('#content .post_title').click(function() {
+      var postContent = $(this).next().next();
+      var id = $(this).parent().attr("id");
+      var postId = id.replace(/^post-(.*)$/, '$1');
+      if (postContent.html() == "") {
+        $.ajax({
+          url: "?action=ajax_post&id=" + postId,
+          beforeSend: function() {
+            $('#content .post_content').slideUp(150, function() {
+              postContent.html('<p class="ajaxloading">' + lang.AjaxLoading + '</p>').show()
+            })
+          },
+          success: function(data) {
+            postContent.hide(0).html(data).slideDown(500, function() {
+              $body.animate({
+                scrollTop: $(this).offset().top - 180
+              }, 500)
+            });
+            imgEffection()
+          }
+        });
+        return false
+      } else if (postContent.is(":hidden")) {
+        $('#content .post_content').slideUp(500);
+        postContent.slideDown(500, function() {
+          $body.animate({
+            scrollTop: $(this).offset().top - 180
+          }, 400)
+        });
+        return false
+      } else {
+        $(this).children('a').text(lang.LoadText);
+        window.location = $(this).children().attr('href')
+      }
+    })
+  }
+  homepage();
+  jQuery('#content .post_content:first').slideDown(500);
+});
