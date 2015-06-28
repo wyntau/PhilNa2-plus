@@ -151,7 +151,7 @@ jQuery(function($) {
           });
           imgEffection();
           k();
-          e();
+          // e();
           c();
           t();
           q();
@@ -245,9 +245,8 @@ jQuery(function($) {
       }
     }
   }
-  function e() {
-    var x = $(".reply");
-    var w = $(".quote");
+
+  (function replyAndQuote() {
     var v = function(B) {
         var C = $(B).attr("href").replace(/.*#comment-/, "");
         var z = $("#comment-" + C + " .name").text();
@@ -277,13 +276,13 @@ jQuery(function($) {
           }
         })
       };
-    x.click(function() {
+    $('body').on('click', '.reply', function() {
       var A = v(this);
       var z = '<a href="#comment-' + A.id + '">@' + A.name + " </a>\n";
       y(z);
       return false
     });
-    w.click(function() {
+    $('body').on('click', '.quote', function() {
       var A = v(this);
       var z = '<blockquote cite="#commentbody-' + A.id + '">';
       z += '\n<strong><a href="#comment-' + A.id + '">' + A.name + "</a> :</strong>";
@@ -292,9 +291,8 @@ jQuery(function($) {
       z = z.replace(/\t/g, "");
       y(z);
       return false
-    })
-  }
-  e();
+    });
+  })();
 
   function c() {
     var y = null;
@@ -430,7 +428,7 @@ jQuery(function($) {
           x.html(G[0]);
           $.scrollTo($("#commentstate"), 600);
           t();
-          e();
+          // e();
           c();
           // p()
         };
