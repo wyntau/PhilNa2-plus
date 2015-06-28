@@ -6,18 +6,17 @@ jQuery(function($){
     $(this).focus()
   });
 
-  function imgEffection() {
-    jQuery("img").lazyload({
+  $('body').on('click', '.tg_t', function(){
+    $(this).next('.tg_c').slideToggle(400);
+  });
+
+  (window.imgEffection = function() {
+    $("img").lazyload({
       placeholder: themeurl + "/images/empty.gif",
       effect: "fadeIn"
     });
-    jQuery("#content .post_content a:has(img),#content2 .post_content a:has(img)").slimbox();
-    jQuery('.tg_t').click(function() {
-      jQuery(this).next('.tg_c').slideToggle(400)
-    })
-  }
-  imgEffection();
-  window.imgEffection = imgEffection;
+    $("#content .post_content a:has(img),#content2 .post_content a:has(img)").slimbox();
+  })();
 
   (function enableStyleComment() {
     function addEditor(open, close) {
