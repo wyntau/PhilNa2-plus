@@ -69,28 +69,56 @@ jQuery(function($) {
     return false;
   });
 
-  function b() {
-    var v = [];
-    var w = [];
-    $("#header .navigation li").each(function(x) {
-      $(this).hover(function() {
-        var y = this;
-        $(y).addClass("hover");
-        clearTimeout(w[x]);
-        v[x] = setTimeout(function() {
-          $(y).find("ul:eq(0)").slideDown(200)
-        }, 200)
-      }, function() {
-        var y = this;
-        $(y).removeClass("hover");
-        clearTimeout(v[x]);
-        w[x] = setTimeout(function() {
-          $(y).find("ul:eq(0)").slideUp(200)
-        }, 200)
-      })
-    })
-  }
-  b();
+  $('body').on('mouseenter', '#header .navigation li', function(){
+    $(this).addClass('hover').find('ul:eq(0)').slideDown(200);
+  }).on('mouseleave', '#header .navigation li', function(){
+    $(this).removeClass('hover').find('ul:eq(0)').slideUp(200);
+  });
+
+  $('body').on('click', '#comments .action .modify', function(){
+    var commentID = $(this).attr("href").replace(/.*#comment-/, "");
+    var commentDOM = $('#comment-' + commentID);
+    var url = blogURL + "?do=ajax&id=" + commentID;
+    var fn = 'philnaModifyComment';
+    var beforeSend = function(){
+      $("#updatecomment").remove();
+      commentDOM.fadeTo(0, 0.7);
+    };
+    var error = function(res){
+      commentDOM.fadeTo(0, 1);
+      if(res.responseText){
+        alert(res.responseText);
+      }else{
+        alert(lang.commonError);
+      }
+    };
+    var success = function(res){
+      commentDOM.slideUp();
+      var $comment = $('#comment');
+      $("#author").val(res.name);
+      $("#email").val(res.email);
+      $("#url").val(res.url);
+      $comment.val(res.content);
+      $("#submit").val(lang.upcomment);
+      $("#commentform").append('<input id="updatecomment" type="hidden" name="update_comment_ID" value="' + commentID + '">');
+      $.scrollTo($comment, 600, {
+        easing: "easeOutBounce",
+        onAfter: function() {
+          $comment.focus()
+        }
+      });
+    };
+
+    ajax({
+      url: url,
+      dataType: 'json',
+      beforeSend: beforeSend,
+      error: error,
+      success: success,
+      fn: fn
+    });
+    return false;
+  });
 
   function k() {
     var w = $("#pagenavi a");
@@ -124,7 +152,6 @@ jQuery(function($) {
           imgEffection();
           k();
           e();
-          p();
           c();
           t();
           q();
@@ -269,55 +296,6 @@ jQuery(function($) {
   }
   e();
 
-  function p() {
-    var w = $("#comments .action .modify");
-    var v = $("#commentform");
-    w.click(function() {
-      var D = $(this).attr("href").replace(/.*#comment-/, "");
-      var C = $("#comment-" + D);
-      var y = blogURL + "?do=ajax&id=" + D;
-      var B = "philnaModifyComment";
-      var z = function() {
-          $("#updatecomment").remove();
-          C.fadeTo(0, 0.7)
-        };
-      var x = function(E) {
-          C.fadeTo(0, 1);
-          if (E.responseText) {
-            alert(E.responseText)
-          } else {
-            alert(lang.commonError)
-          }
-        };
-      var A = function(E) {
-          C.slideUp();
-          var F = $("#comment");
-          $("#author").val(E.name);
-          $("#email").val(E.email);
-          $("#url").val(E.url);
-          F.val(E.content);
-          $("#submit").val(lang.upcomment);
-          v.append('<input id="updatecomment" type="hidden" name="update_comment_ID" value="' + D + '">');
-          $.scrollTo(F, 600, {
-            easing: "easeOutBounce",
-            onAfter: function() {
-              F.focus()
-            }
-          })
-        };
-      ajax({
-        url: y,
-        dataType: "json",
-        beforeSend: z,
-        error: x,
-        success: A,
-        fn: B
-      });
-      return false
-    })
-  }
-  p();
-
   function c() {
     var y = null;
     var v = null;
@@ -454,7 +432,7 @@ jQuery(function($) {
           t();
           e();
           c();
-          p()
+          // p()
         };
       ajax({
         url: A,
@@ -509,7 +487,6 @@ jQuery(function($) {
           $("#welcome_words").html(lang.thankscm);
           c()
         }
-        p()
       };
     ajax({
       url: v,
