@@ -19,6 +19,12 @@ remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
+//禁用半角符号自动转换为全角
+remove_filter('comment_text', 'wptexturize');
+remove_filter('the_content', 'wptexturize');
+remove_filter('the_excerpt', 'wptexturize');
+remove_filter('the_title', 'wptexturize');
+
 // load jquery
 function philnaLoadJQuery(){
   wp_enqueue_script('jquery-core');
@@ -47,9 +53,3 @@ function philnaLoadStyle(){
   wp_enqueue_style('philnaStyle', get_stylesheet_directory_uri() . '/style.css');
 }
 add_action('wp_enqueue_scripts', 'philnaLoadStyle');
-
-//禁用半角符号自动转换为全角
-remove_filter('comment_text', 'wptexturize');
-remove_filter('the_content', 'wptexturize');
-remove_filter('the_excerpt', 'wptexturize');
-remove_filter('the_title', 'wptexturize');
