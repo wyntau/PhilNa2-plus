@@ -88,9 +88,9 @@ jQuery(function($){
     });
   })();
 
-  jQuery('#tab-title span').mouseover(function() {
-    $(this).addClass("selected").siblings().removeClass();
-    $("#tab-content > ul").eq($('#tab-title span').index(this)).slideDown(250).siblings().slideUp(250)
+  $('body').on('mouseover', '#tab-title span', function(){
+    $(this).addClass('selected').siblings().removeClass();
+    $("#tab-content > ul").eq($(this).index()).slideDown(250).siblings().slideUp(250);
   });
 
   (function enableHomeSlide() {

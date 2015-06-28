@@ -151,10 +151,8 @@ jQuery(function($) {
           });
           imgEffection();
           k();
-          // e();
           c();
           t();
-          // q();
         };
       ajax({
         url: z,
