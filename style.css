@@ -1447,14 +1447,14 @@ td {
   overflow: hidden;
 }
 
-.linkpage IMG {
-  PADDING-BOTTOM: 3px;
-  PADDING-LEFT: 0px;
-  WIDTH: 16px;
-  PADDING-RIGHT: 0px;
-  FLOAT: left;
-  HEIGHT: 16px;
-  PADDING-TOP: 3px;
+.linkpage img {
+  padding-bottom: 3px;
+  padding-left: 0px;
+  width: 16px;
+  padding-right: 0px;
+  float: left;
+  height: 16px;
+  padding-top: 3px;
 }
 
 /*Admin sofa*/
