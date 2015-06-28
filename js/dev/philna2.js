@@ -1,40 +1,5 @@
 jQuery(function($) {
-  Function.prototype.method = function(v, w) {
-    if (!this.prototype[v]) {
-      this.prototype[v] = w
-    }
-    return this
-  };
 
-  function m(v) {
-    return document.getElementById(v)
-  }
-  function o(v) {
-    url = v.u ? v.u : blogURL + "?do=ajax";
-    if (v.fn) {
-      url += "&action=" + v.fn
-    }
-    type = v.m ? v.m : "GET";
-    data = v.d ? v.d : null;
-    dataType = v.dt ? v.dt : "html";
-    beforeSend = v.b ? v.b : null;
-    error = v.e ? v.e : function() {
-      alert(lang.commonError);
-      document.body.style.cursor = "auto"
-    };
-    success = v.s ? v.s : function(w) {
-      alert(w)
-    };
-    $.ajax({
-      url: url,
-      type: type,
-      data: data,
-      dataType: dataType,
-      beforeSend: beforeSend,
-      error: error,
-      success: success
-    })
-  }
   function f(v) {
     return v.replace(/\?/g, "---WENHAO---").replace(/&/g, "---ANDHAO---").replace(/=/g, "---DENGHAO---")
   }
@@ -134,13 +99,13 @@ jQuery(function($) {
           l();
           g()
         };
-      o({
-        u: z,
-        m: "post",
-        d: C,
-        b: A,
-        e: y,
-        s: D
+      ajax({
+        url: z,
+        type: "post",
+        data: C,
+        beforeSend: A,
+        error: y,
+        success: D
       });
       return false
     })
@@ -180,12 +145,12 @@ jQuery(function($) {
             document.body.style.cursor = "auto";
             k()
           };
-        o({
-          u: A,
-          m: "post",
-          d: E,
-          b: C,
-          s: F
+        ajax({
+          url: A,
+          type: "post",
+          data: E,
+          beforeSend: C,
+          success: F
         })
       };
     $("#wpsearchform").submit(function() {
@@ -203,7 +168,7 @@ jQuery(function($) {
   j();
 
   function h(y) {
-    var x = m("comment");
+    var x = $('#comment')[0];
     if (y) {
       if (document.selection) {
         sel = document.selection.createRange();
@@ -310,12 +275,12 @@ jQuery(function($) {
             }
           })
         };
-      o({
-        u: y,
-        dt: "json",
-        b: z,
-        e: x,
-        s: A,
+      ajax({
+        url: y,
+        dataType: "json",
+        beforeSend: z,
+        error: x,
+        success: A,
         fn: B
       });
       return false
@@ -362,11 +327,11 @@ jQuery(function($) {
               left: L.left
             }).fadeTo(0, 0.95)
           };
-        o({
-          u: F,
-          b: G,
-          e: E,
-          s: I
+        ajax({
+          url: F,
+          beforeSend: G,
+          error: E,
+          success: I
         })
       };
     var C = function(E) {
@@ -386,7 +351,7 @@ jQuery(function($) {
       };
     w.hover(function() {
       var E = $(this).attr("href").replace(/.*#comment-/, "");
-      y = m("comment-" + E);
+      y = $('#comment-' + E)[0];
       if (!y) {
         v = setTimeout(function() {
           x(E)
@@ -461,11 +426,11 @@ jQuery(function($) {
           c();
           p()
         };
-      o({
-        u: A,
-        b: C,
-        e: z,
-        s: E
+      ajax({
+        url: A,
+        beforeSend: C,
+        error: z,
+        success: E
       });
       return false
     })
@@ -514,7 +479,7 @@ jQuery(function($) {
     var F = function(G) {
         A();
         $("#comment").val("");
-        if (m("updatecomment")) {
+        if ($("#updatecomment").length) {
           var J = $("#updatecomment");
           var I = J.val();
           $("#comment-" + I).replaceWith(G).slideDown(300);
@@ -531,13 +496,13 @@ jQuery(function($) {
         }
         p()
       };
-    o({
-      u: v,
-      m: "POST",
-      d: z,
-      b: D,
-      e: C,
-      s: F,
+    ajax({
+      url: v,
+      type: "POST",
+      data: z,
+      beforeSend: D,
+      error: C,
+      success: F,
       fn: B
     })
   }
@@ -614,13 +579,13 @@ jQuery(function($) {
         v.slideUp();
         C.html(D)
       };
-    o({
-      m: "post",
-      u: x,
-      d: A,
-      b: y,
-      e: w,
-      s: B
+    ajax({
+      type: "post",
+      url: x,
+      data: A,
+      beforeSend: y,
+      error: w,
+      success: B
     })
   }
   $("#contactform").submit(function() {
