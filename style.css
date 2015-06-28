@@ -315,15 +315,6 @@ zoom:1;}
 .linkpage ul li ul li {line-height:150%;margin: 5px 5px; float:left; text-align: center;display:block;width:124px!important;width:93px; height:22px;border:1px #6699CC dashed;  overflow:hidden;}
 .linkpage IMG {PADDING-BOTTOM: 3px;PADDING-LEFT: 0px;WIDTH: 16px;PADDING-RIGHT: 0px;FLOAT: left;HEIGHT: 16px;PADDING-TOP: 3px;}
 
-/* up and down */
-#updown{position:fixed;top:55%;left:50%;display:block;margin-left:-515px}
-#up,#comt,#down{background:url(images/updown.png) no-repeat;position:relative;cursor:pointer;height:25px;width:29px;margin:10px 0 0}
-#comt{background-position:left -30px;height:32px}
-#down{background-position:left -68px}
-#comt:hover{background-position:right -30px}
-#up:hover{background-position:right 0}
-#down:hover{background-position:right -68px}
-
 /*Admin sofa*/
 .admin{float:left;color:blue;font-weight:bold;}
 .handsome,.beauty{float:left;font-weight:bold;}
