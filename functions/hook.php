@@ -14,6 +14,11 @@ remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0 );//相邻文
 remove_action( 'wp_head', 'wp_generator' );//版本号
 remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );//短地址
 
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
+remove_action( 'admin_print_styles', 'print_emoji_styles' );
+
 function philnaLoadJQuery(){
   wp_enqueue_script('jquery-core');
 }
