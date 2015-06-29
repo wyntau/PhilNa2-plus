@@ -440,7 +440,7 @@ jQuery(function($) {
   t();
 
   (function submitComment() {
-    function submitComment() {
+    function submitForm() {
       var x = $("#commentform");
       var v = blogURL + "?do=ajax";
       var B = "philnaAjaxComment";
@@ -495,12 +495,12 @@ jQuery(function($) {
     }
 
     $('body').on('submit', '#commentform', function(){
-      submitComment();
+      submitForm();
       return false;
     });
     $('body').on('keydown', '#commentform #comment', function(v){
       if ((v.ctrlKey || v.altKey) && (v.keyCode == 13 || v.keyCode == 83)) {
-        submitComment();
+        submitForm();
         return false
       }
     });
