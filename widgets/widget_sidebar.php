@@ -1,7 +1,8 @@
 <?php
 
 /* 注册边侧栏 */
-if( function_exists('register_sidebar')){
+add_action( 'widgets_init', 'philnaSidebarInit' );
+function philnaSidebarInit(){
   //1 top widget
   register_sidebar(array(
     'id' => 'sidebar-1',
