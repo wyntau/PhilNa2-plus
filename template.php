@@ -13,7 +13,7 @@ get_header();
     <div id="caption" class="icon">
       <?php philnaBlogTitleAndDesc(); ?>
     </div>
-    <?php wp_nav_menu(array( 'theme_location'=>'primary','container_class' => 'navigation')); ?>
+    <?php wp_nav_menu(array('theme_location'=>'primary', 'container_class' => 'navigation')); ?>
     <?php philnaCloseSidebar() ?>
     <?php //wp_page_menu('show_home=1&menu_class=navigation'); ?>
     <div class="clear"></div>
