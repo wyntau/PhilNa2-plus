@@ -35,9 +35,6 @@ if(isset($_POST['Submit']) && isset($_POST['savephilnaopt'])){
     #philna-form tr{
       border-bottom: 2px solid #fff;
     }
-    #philna-form textarea{
-
-    }
   </style>
   <form id="philna-form" action="" method="post">
     <table class="form-table">
