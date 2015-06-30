@@ -16,7 +16,7 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
         <h3>Fantasy-time | <a href="<?php //bloginfo('home')?>/?random">随便看看</a></h3>
   <script charset="Shift_JIS"src="http://chabudai.sakura.ne.jp/blogparts/honehoneclock/honehone_clock_wh.js"></script>
   </div>-->
-<div class="widget box icon content no_webshot">
+<div class="widget box icon content">
     <div id="tab-title">
     <h3><span class="selected">最新评论</span> | <span>最新文章</span> | <span>随机文章</span></h3>
   </div>
@@ -29,7 +29,7 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
 <?php endif;//widget 1?>
 
 <?php if( !function_exists('dynamic_sidebar') || !dynamic_sidebar(2) ): ?>
-    <div class="widget box icon content tag_cloud no_webshot">
+    <div class="widget box icon content tag_cloud">
       <h3><?php _e('Tag Cloud',YHL); ?></h3>
     <?php wp_tag_cloud('unit=px&smallest=11&largest=18&order=RAND&number=30');//参数含义:单位(px),最小(11),最大(18),排序(随机) ?>
     </div>
@@ -42,12 +42,12 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
     //此处显示的是友情链接,如果只想让某个分类显示,请去后台查看相应的分类ID,然后在orderby=rand的后面添加如下内容 &category= ID 即可 如果还想显示显示的数目,请再添加&limit=数字?>
   </div>-->
 <?php endif;?>
-  <!--<div class="widget box icon content no_webshot">
+  <!--<div class="widget box icon content">
     <?php //get_calendar(); ?>
   </div>-->
 <?php endif; //widget 3 ?>
 <?php if( !function_exists('dynamic_sidebar') || !dynamic_sidebar(4) ): ?>
-  <div class="widget box icon content no_webshot">
+  <div class="widget box icon content">
     <h4><?php _e('Meta',YHL); ?></h4>
     <ul>
       <?php wp_register(); ?>

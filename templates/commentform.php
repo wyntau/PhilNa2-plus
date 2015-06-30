@@ -31,8 +31,8 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
       <div id="welcome_info">
         <?php echo my_avatar($user_email, 30);?>
         <p>
-        <?php _e('Logged in as', YHL); ?> <a class="no_webshot" href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><strong><?php echo $user_identity; ?></strong></a>.
-        <a class="no_webshot" href="<?php echo wp_logout_url( get_permalink() ); ?>" title="<?php _e('Log out of this account', YHL); ?>"><?php _e('Logout &raquo;', YHL); ?></a>
+        <?php _e('Logged in as', YHL); ?> <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><strong><?php echo $user_identity; ?></strong></a>.
+        <a href="<?php echo wp_logout_url( get_permalink() ); ?>" title="<?php _e('Log out of this account', YHL); ?>"><?php _e('Logout &raquo;', YHL); ?></a>
         </p>
         <p><?php _e('Welcome !',YHL);?></p>
         <div class="clear"></div>

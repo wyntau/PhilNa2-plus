@@ -33,7 +33,7 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
 <div id="post-<?php the_ID(); ?>" <?php post_class();?>>
   <<?php echo $postTitleTag; ?> class="post_title"><a class="icon" href="<?php the_permalink(); ?>" rel="bookmark inlinks permalink" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></<?php echo $postTitleTag; ?>>
   <div class="postinfo">
-    <div class="left no_webshot">
+    <div class="left">
       <span class="date icon"><?php the_time(__('F jS, Y', YHL)); ?></span>
       <span class="author icon"><?php the_author_posts_link(); ?></span>
     </div>

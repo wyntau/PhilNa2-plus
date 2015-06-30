@@ -12,7 +12,7 @@ is_404() || get_sidebar(); // if 404 page, no sidebar!
 ?>
 <!-- footer -->
 <div id="footer">
-  <div id="footer_content" class="box content no_webshot">
+  <div id="footer_content" class="box content">
     <a id="top" rel="nofollow" href="#header">TOP</a>
     <p>
     <a id="powered" class="icon" title="由WordPress强力驱动" href="http://wordpress.org">WordPress</a>
