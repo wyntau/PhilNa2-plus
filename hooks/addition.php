@@ -13,6 +13,11 @@ function philnaLoadStyle(){
 add_action('wp_enqueue_scripts', 'philnaLoadStyle');
 
 
+//激活菜单项
+if ( function_exists('register_nav_menus') ) {
+  register_nav_menus(array('primary' => '头部导航栏'));
+}
+
 // fallback to wp_page_menu to show home button
 add_filter('wp_page_menu_args', 'philna_page_menu_args');
 function philna_page_menu_args($args){
