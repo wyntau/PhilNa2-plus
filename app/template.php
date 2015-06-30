@@ -418,13 +418,13 @@ function philnaStripComment($var) {
  */
 function philnaStyleUrl($stylesheet_uri, $stylesheet_dir_uri){
   if(is_404()){
-    $file = TEMPLATEPATH.'/404.css';
+    $file = get_template_directory().'/404.css';
     $stylesheet_uri = $stylesheet_dir_uri.'/404.css';
   }else{
-    $file = TEMPLATEPATH.'/style.css';
+    $file = get_template_directory().'/style.css';
     // for degbug (when debug just rename style.css, this will load style.dev.css
     if(!file_exists($file)){
-      $file = TEMPLATEPATH.'style.dev.css';
+      $file = get_template_directory().'style.dev.css';
       $stylesheet_uri = $stylesheet_dir_uri.'/style.dev.css';
     }
   }

@@ -21,7 +21,7 @@ get_header();
     <?php else: ?>
       <div id="content">
     <?php endif;?>
-    <?php include_once TEMPLATEPATH . '/templates/notice.php';?>
-    <?php include_once TEMPLATEPATH . '/loop.php';?>
+    <?php include_once get_template_directory() . '/templates/notice.php';?>
+    <?php include_once get_template_directory() . '/loop.php';?>
   </div>
 <?php get_footer(); ?>

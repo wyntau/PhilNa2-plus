@@ -16,7 +16,7 @@ get_header();
     <div class="clear"></div>
   </div>
   <div id="content3">
-    <?php include_once TEMPLATEPATH . '/templates/notice.php';?>
+    <?php include_once get_template_directory() . '/templates/notice.php';?>
     <?php
 /**
  * loop
@@ -53,7 +53,7 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
 </div><?php /* end post */?>
 <?php
 endwhile;
-//include_once TEMPLATEPATH . '/templates/navigation.php';
+//include_once get_template_directory() . '/templates/navigation.php';
 comments_template();
 else: // if no posts
 ?>

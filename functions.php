@@ -26,22 +26,22 @@ define('PHILNA', 'philna2');
 define('PHILNA_DEBUG', false);
 
 // Load theme textdomain
-load_theme_textdomain(YHL, TEMPLATEPATH . '/languages');
+load_theme_textdomain(YHL, get_template_directory() . '/languages');
 
 
-include_once TEMPLATEPATH . '/base/base.php';
+include_once get_template_directory() . '/base/base.php';
 foreach(array(
-  TEMPLATEPATH . '/base',
-  TEMPLATEPATH . '/app',
-  TEMPLATEPATH . '/functions',
-  TEMPLATEPATH . '/hooks',
-  TEMPLATEPATH . '/widgets',
-  TEMPLATEPATH . '/components'
+  '/base',
+  '/app',
+  '/functions',
+  '/hooks',
+  '/widgets',
+  '/components'
 ) as $dir){
-  philnaIncludeAll($dir);
+  philnaIncludeAll(get_template_directory() . $dir);
 }
 
 // admin panel
-!is_admin() || include_once TEMPLATEPATH . '/admin/admin.php';
+!is_admin() || include_once get_template_directory() . '/admin/admin.php';
 
 do_action('PhilNaReady');

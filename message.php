@@ -18,7 +18,7 @@ get_header();
     <div class="clear"></div>
   </div>
   <div id="content3">
-    <?php include_once TEMPLATEPATH . '/templates/notice.php';?>
+    <?php include_once get_template_directory() . '/templates/notice.php';?>
     <?php
 // no direct access
 defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinheli < http://philna.com/ >');
@@ -76,7 +76,7 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
 </div><?php /* end post */?>
 <?php
 endwhile;
-//include_once TEMPLATEPATH . '/templates/navigation.php';
+//include_once get_template_directory() . '/templates/navigation.php';
 comments_template();
 else: // if no posts
 ?>

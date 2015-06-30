@@ -19,7 +19,7 @@ function philnaHeadImage($format = ''){
     return $opt;
   }
 
-  $imagesDir = TEMPLATEPATH.'/images/headers';
+  $imagesDir = get_template_directory().'/images/headers';
 
   // get all images
   $allImages = scandir($imagesDir);

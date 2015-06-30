@@ -12,5 +12,5 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
  * @return unknown_type
  */
 function philnaDynamic(){
-  include_once TEMPLATEPATH . '/loop.php';
+  include_once get_template_directory() . '/loop.php';
 }

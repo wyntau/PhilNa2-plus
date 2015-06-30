@@ -43,7 +43,7 @@ function philnaLoadJS(){
   $jsFileURI = get_bloginfo('template_directory') . '/js.php';
 
   // add a version (timestamp)
-  $jsFile = TEMPLATEPATH.'/js/philna2.js';
+  $jsFile = get_template_directory().'/js/philna2.js';
   if(file_exists($jsFile)){
     $jsFileURI .= '?v='.date('YmdHis', filemtime($jsFile));
   }

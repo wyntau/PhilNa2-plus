@@ -7,7 +7,7 @@
 defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinheli < http://philna.com/ >');
 $GLOBALS['philnaopt'] = PhilNaGetOpt::getInstance();
 if(is_archive() || is_search()){
-  include_once TEMPLATEPATH . '/templates/loophead.php';
+  include_once get_template_directory() . '/templates/loophead.php';
 }
 
 if( have_posts() ) :
@@ -59,7 +59,7 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
 <?php
 endwhile;
 do_action('philnaEndloop');
-include_once TEMPLATEPATH . '/templates/navigation.php';
+include_once get_template_directory() . '/templates/navigation.php';
 comments_template();
 else: // if no posts
 ?>

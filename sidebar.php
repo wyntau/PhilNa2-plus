@@ -8,8 +8,8 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
 ?>
 <div id="sidebar">
   <?php
-  include_once TEMPLATEPATH . '/searchform.php';
-  include_once TEMPLATEPATH . '/templates/feed.php';
+  include_once get_template_directory() . '/searchform.php';
+  include_once get_template_directory() . '/templates/feed.php';
   do_action('philnaWidgetsStart'); // widgets start hook?>
 <?php if( !function_exists('dynamic_sidebar') || !dynamic_sidebar(1) ): ?>
 <!--<div class="widget box icon content">

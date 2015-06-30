@@ -64,7 +64,7 @@ endif;
 <!--comment form-->
 <?php
 if(comments_open()):
-  include_once TEMPLATEPATH . '/templates/commentform.php';
+  include_once get_template_directory() . '/templates/commentform.php';
 else:
 ?>
 <div class="box message">

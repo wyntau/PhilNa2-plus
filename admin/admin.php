@@ -6,9 +6,6 @@
 // no direct access
 defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinheli < http://philna.com/ >');
 
-
-if(is_admin()) include_once dirname(__FILE__).'/hooks.php';
-
 class PhilNaAdmin {
   private $stringOpt = array();
   private $boolOpt = array();
@@ -65,6 +62,9 @@ class PhilNaAdmin {
 
 // admin options
 if(is_admin()){
+  // add hooks
+  include_once dirname(__FILE__).'/hooks.php';
+  // default theme option type
   $philnaDefaultOptType = array(
     'string' => array(
       'keywords',
