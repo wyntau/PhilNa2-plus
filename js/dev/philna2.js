@@ -177,7 +177,6 @@ jQuery(function($) {
           });
           imgEffection();
           k();
-          t();
         };
       ajax({
         url: z,
@@ -192,7 +191,7 @@ jQuery(function($) {
   }
   k();
 
-  function j() {
+  (function enableAjaxSearch() {
     var x = $("#searchbox");
     var w = $("#searchinput");
     var z = $("#searchbtn");
@@ -244,8 +243,7 @@ jQuery(function($) {
       x.addClass("searching");
       return false
     })
-  }
-  j();
+  })();
 
   function fillComment(content) {
     var comment = $('#comment')[0];
@@ -405,12 +403,9 @@ jQuery(function($) {
       };
   })();
 
-  function t() {
-    var w = $("#commentnavi a");
-    var v = $("#commentnavi").html();
-    var y = $("#commentnavi");
-    var x = $("#comments");
-    w.click(function() {
+  (function enableAjaxCommentsPage() {
+    $('body').on('click', '#commentnavi a', function() {
+      var v = $("#commentnavi").html();
       var D = $(this).attr("href").split(/(\?|&)action=cpage_ajax.*$/)[0];
       var B = 1;
       if (/comment-page-/i.test(D)) {
@@ -429,25 +424,23 @@ jQuery(function($) {
       var A = blogURL + "?do=ajax&action=philnaAjaxCommentsPage&postid=" + postID + "&page=" + B;
       var C = function() {
           document.body.style.cursor = "wait";
-          y.html(lang.ajaxloading)
+          $("#commentnavi").html(lang.ajaxloading)
         };
       var z = function(G) {
           document.body.style.cursor = "auto";
-          y.html(v);
+          $("#commentnavi").html(v);
           if (G.responseText) {
             alert(G.responseText)
           } else {
             alert(lang.commonError)
           }
-          t()
         };
       var E = function(H) {
           document.body.style.cursor = "auto";
           var G = H.split("<!--PHILNA-AJAX-COMMENT-PAGE-->");
-          y.html(G[1]);
-          x.html(G[0]);
+          $("#commentnavi").html(G[1]);
+          $("#comments").html(G[0]);
           $.scrollTo($("#commentstate"), 600);
-          t();
         };
       ajax({
         url: A,
@@ -457,8 +450,7 @@ jQuery(function($) {
       });
       return false
     })
-  }
-  t();
+  })();
 
   (function submitComment() {
     function submitForm() {
