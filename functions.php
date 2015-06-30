@@ -42,6 +42,8 @@ foreach(array(
 }
 
 // admin panel
-!is_admin() || include_once get_template_directory() . '/admin/admin.php';
+if(is_admin()){
+  include_once get_template_directory() . '/admin/admin.php';
+}
 
 do_action('PhilNaReady');
