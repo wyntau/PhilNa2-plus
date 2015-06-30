@@ -146,11 +146,9 @@ jQuery(function($) {
     return false;
   });
 
-  function k() {
-    var w = $("#pagenavi a");
-    var v = $("#pagenavi");
-    var x = $("#pagenavi").html();
-    w.click(function() {
+  (function enableAjaxPostPage() {
+    $('body').on('click', '#pagenavi a', function() {
+      var x = $("#pagenavi").html();
       var z = $(this).attr("href");
       hrefs.push(escapeHref(z));
       var C = "do=ajax&action=philnaDynamic";
@@ -158,11 +156,11 @@ jQuery(function($) {
       var B = $("#content2,#content,#content3");
       var A = function() {
           document.body.style.cursor = "wait";
-          v.html(lang.ajaxloading)
+          $("#pagenavi").html(lang.ajaxloading)
         };
       var y = function() {
           alert(lang.commonError);
-          v.html(x);
+          $("#pagenavi").html(x);
           document.body.style.cursor = "auto";
           k()
         };
@@ -176,7 +174,6 @@ jQuery(function($) {
             }
           });
           imgEffection();
-          k();
         };
       ajax({
         url: z,
@@ -188,8 +185,7 @@ jQuery(function($) {
       });
       return false
     })
-  }
-  k();
+  })();
 
   (function enableAjaxSearch() {
     var x = $("#searchbox");
