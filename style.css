@@ -224,6 +224,14 @@ a img {
   background-position: -80px -343px;
 }
 
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: " ";
+}
+.clearfix:after {
+  clear: both;
+}
+
 .clear {
   clear: both;
 }
