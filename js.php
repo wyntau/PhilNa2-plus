@@ -28,7 +28,6 @@ $jsFiles = array(
   'jquery.lazyload',
   'jquery.slimbox',
   'philna2',
-  'SayMeMod',
   'Myjs'
 );
 
