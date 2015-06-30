@@ -26,11 +26,11 @@ jQuery(function($) {
     });
   }
 
-  function f(v) {
+  function escapeHref(v) {
     return v.replace(/\?/g, "---WENHAO---").replace(/&/g, "---ANDHAO---").replace(/=/g, "---DENGHAO---")
   }
-  var r = [];
-  r.push(f(window.location.href));
+  var hrefs = [];
+  hrefs.push(escapeHref(window.location.href));
 
   $("body").on('click', '#skiptocomment', function() {
     $.scrollTo($("#commentstate"), 600, {
@@ -152,9 +152,9 @@ jQuery(function($) {
     var x = $("#pagenavi").html();
     w.click(function() {
       var z = $(this).attr("href");
-      r.push(f(z));
+      hrefs.push(escapeHref(z));
       var C = "do=ajax&action=philnaDynamic";
-      C += (r[r.length - 2]) ? "&lastQuery=" + r[r.length - 2] : "";
+      C += (hrefs[hrefs.length - 2]) ? "&lastQuery=" + hrefs[hrefs.length - 2] : "";
       var B = $("#content2,#content,#content3");
       var A = function() {
           document.body.style.cursor = "wait";
@@ -177,7 +177,6 @@ jQuery(function($) {
           });
           imgEffection();
           k();
-          c();
           t();
         };
       ajax({
@@ -214,8 +213,8 @@ jQuery(function($) {
     var y = function(B) {
         var A = blogURL + "?s=" + B;
         var E = "do=ajax&action=philnaDynamic";
-        r.push(f(A));
-        E += (r[r.length - 2]) ? "&lastQuery=" + r[r.length - 2] : "";
+        hrefs.push(escapeHref(A));
+        E += (hrefs[hrefs.length - 2]) ? "&lastQuery=" + hrefs[hrefs.length - 2] : "";
         var D = $("#content,#content2,#content3");
         var C = function() {
             document.body.style.cursor = "wait"
@@ -318,24 +317,49 @@ jQuery(function($) {
     });
   })();
 
-  function c() {
-    var y = null;
+  (function enableAjaxTips() {
     var v = null;
     var z = {};
-    var B = $("#comments");
-    var D = $('#comments .comment_content a[href^="#comment-"]');
-    D.each(function() {
-      if ($(this).text().match(/^@/)) {
-        $(this).addClass("atreply")
+
+    $('body').on('mouseenter', '#comments .comment_content a[href^="#comment-"]', function(E){
+      if (!$(this).text().match(/^@/)) {
+        return; // not a reply comment
+      }
+      var E = $(this).attr("href").replace(/.*#comment-/, "");
+      var y = $('#comment-' + E)[0];
+      if (!y) {
+        v = setTimeout(function() {
+          fetchTip(E)
+        }, 200)
+      } else {
+        v = setTimeout(function() {
+          showTip(E)
+        }, 200)
       }
     });
-    var w = $("#comments .comment_content a.atreply");
-    var x = function(J) {
+
+    $('body').on('mouseleave', '#comments .comment_content a[href^="#comment-"]', function(E){
+      clearTimeout(v);
+      hideTip();
+    });
+
+    $('body').on('mousemove', '#comments .comment_content a[href^="#comment-"]', function(E){
+      z.left = E.clientX + 18;
+      z.top = E.pageY + 18;
+      $(".tip").css({
+        left: z.left,
+        top: z.top
+      })
+    });
+
+    $('body').on('click', '#comments .comment_content a[href^="#comment-"]', false);
+
+    function fetchTip(J) {
         var F = blogURL + "?do=ajax&action=philnaAjaxGetComment&id=" + J;
         var H = null;
         var G = function() {
             var K = '<li class="loadingtip box comment tip content">' + lang.ajaxloading + "</li>";
-            B.append(K);
+            $('#comments').append(K);
             H = $(".tip");
             H.hide().css({
               top: z.top,
@@ -364,13 +388,13 @@ jQuery(function($) {
           success: I
         })
       };
-    var C = function(E) {
-        $("#comment-" + E).clone().attr("id", "").appendTo(B).hide().addClass("tip").css({
+    function showTip(E) {
+        $("#comment-" + E).clone().attr("id", "").appendTo('#comments').hide().addClass("tip").css({
           top: z.top,
           left: z.left
         }).fadeTo(0, 0.95).fadeIn(300)
       };
-    var A = function() {
+    function hideTip() {
         $(".tip").fadeOut(300, function() {
           if ($(this).hasClass("ajax")) {
             $(this).removeClass("ajax tip")
@@ -379,35 +403,7 @@ jQuery(function($) {
           }
         })
       };
-    w.hover(function() {
-      var E = $(this).attr("href").replace(/.*#comment-/, "");
-      y = $('#comment-' + E)[0];
-      if (!y) {
-        v = setTimeout(function() {
-          x(E)
-        }, 200)
-      } else {
-        v = setTimeout(function() {
-          C(E)
-        }, 200)
-      }
-    }, function() {
-      clearTimeout(v);
-      A()
-    });
-    w.click(function() {
-      return false
-    });
-    $("#comments a.atreply").mousemove(function(E) {
-      z.left = E.clientX + 18;
-      z.top = E.pageY + 18;
-      $(".tip").css({
-        left: z.left,
-        top: z.top
-      })
-    })
-  }
-  c();
+  })();
 
   function t() {
     var w = $("#commentnavi a");
@@ -424,7 +420,7 @@ jQuery(function($) {
           B = D.split(/cpage=/)[1].split(/(\/|#|&).*$/)[0]
         }
       }
-      if (r.length >= 2) {
+      if (hrefs.length >= 2) {
         var F = $(".post").attr("id").replace(/\D/g, "");
         if (F) {
           postID = F
@@ -452,7 +448,6 @@ jQuery(function($) {
           x.html(G[0]);
           $.scrollTo($("#commentstate"), 600);
           t();
-          c();
         };
       ajax({
         url: A,
@@ -506,7 +501,6 @@ jQuery(function($) {
             H.slideDown(400);
             $("#commentcount").text($("#comments li:last .floor").text().replace(/\D/g, ""));
             $("#welcome_words").html(lang.thankscm);
-            c()
           }
         };
       ajax({
