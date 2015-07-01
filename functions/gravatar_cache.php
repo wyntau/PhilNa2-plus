@@ -12,6 +12,13 @@ function philna_get_avatar($avatar, $id_or_email, $size = '42', $default = '', $
     return $avatar;
   }
 
+  $dir = '/wp-content/avatar';
+  $dir_full = ABSPATH . $dir;
+
+  if(!file_exists($dir_full) || !is_writable($dir_full)){
+    return $avatar;
+  }
+
   $user = false;
   if ( is_numeric( $id_or_email ) ) {
     $id = (int) $id_or_email;
@@ -30,13 +37,13 @@ function philna_get_avatar($avatar, $id_or_email, $size = '42', $default = '', $
 
   $hash = md5( strtolower( $email ) );
 
-  $path = '/wp-content/avatar/'. $hash. '.jpg';
-  $path_default = '/wp-content/avatar/default.jpg';
+  $path = $dir . '/'. $hash. '.jpg';
+  $path_default = $dir . '/default.jpg';
 
   $path_full = ABSPATH . $path;
 
-  $avatar_url = get_site_url() . $path;
-  $avatar_default = get_site_url() . $path_default;
+  $avatar_url = home_url() . $path;
+  $avatar_default = home_url() . $path_default;
 
   $delta = 24 * 60 * 60 * 14; //設定14天, 單位:秒
   if ( empty($default) ) {
