@@ -14,7 +14,7 @@ Note:
   3.Ajax判断(自动调用已定义的函数)
 */
 // debug all
-// error_reporting(E_ALL);
+error_reporting(E_ALL);
 
 // hide error (note: 开启隐藏所有错误时, 一旦出现严重错误将导致'白屏')
 error_reporting(0);

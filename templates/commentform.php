@@ -29,7 +29,7 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
     <div id="comment_author_info" class="right">
       <?php if($user_ID):global $user_email ?>
       <div id="welcome_info">
-        <?php echo my_avatar($user_email, 30);?>
+        <?php echo get_avatar($user_email, 30);?>
         <p>
         <?php _e('Logged in as', YHL); ?> <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><strong><?php echo $user_identity; ?></strong></a>.
         <a href="<?php echo wp_logout_url( get_permalink() ); ?>" title="<?php _e('Log out of this account', YHL); ?>"><?php _e('Logout &raquo;', YHL); ?></a>
@@ -41,7 +41,7 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
       <?php if($comment_author_email):?>
       <div id="welcome_back">
         <div id="welcome_info">
-          <?php echo my_avatar($comment_author_email, 30); ?>
+          <?php echo get_avatar($comment_author_email, 30); ?>
           <p id="welcome_words"><?php printf(__('Hey! %1s, Welcome Back!'), $comment_author); ?></p>
           <p><a id="edit_profile" href="javascript:void(0);"><?php _e('Edit your profile?'); ?></a></p>
           <div class="clear"></div>

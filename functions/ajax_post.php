@@ -13,4 +13,3 @@ function philnaAjaxPost(){
     return;
   }
 }
-add_action('init', 'philnaAjaxPost');

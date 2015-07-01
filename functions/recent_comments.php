@@ -43,7 +43,7 @@ function philnaRecentcomments($args='number=5&status=approve'){
     $comment_author_link = '<a href="'.get_comment_link($rcm).'" rel="external nofollow" title="'.$l_excerpt.'">'.$author.'</a>';
 
     if($rcm->comment_type == ''){
-      $output .= '<li class="r_item"><div class="row">'.my_avatar($rcm->comment_author_email, 30).'<span class="r_name">'.$comment_author_link.'</span><span class="r_excerpt">'.$s_excerpt.'</span></div><div class="clear"></div></li>'."\n";
+      $output .= '<li class="r_item"><div class="row">'.get_avatar($rcm->comment_author_email, 30).'<span class="r_name">'.$comment_author_link.'</span><span class="r_excerpt">'.$s_excerpt.'</span></div><div class="clear"></div></li>'."\n";
     }elseif($rcm->comment_type == 'pingback'){
       $output .= '<li class="r_item r_pingback"><span class="rc_label name">' . __('Pingback:') . '</span>'.$comment_author_link.'</li>';
     }elseif($rcm->comment_type == 'trackback'){

@@ -29,6 +29,7 @@ function philnacopyright($content){
   }
   return $content.$after;
 }
+// not apend copyright when using ajax_post
 if(!defined('DOING_AJAX')){
   add_filter('the_content', 'philnacopyright', 0);
 }

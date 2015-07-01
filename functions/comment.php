@@ -32,7 +32,7 @@ function philnaComments($comment, $args = array(), $depth = 1){
 ?>
 <li id="comment-<?php comment_ID() ?>" <?php comment_class(); ?>>
   <div class="the_avatar left">
-    <a rel="nofollow" class="reply" href="#comment-<?php comment_ID() ?>" title="回复这个南瓜?"><?php echo my_avatar($comment->comment_author_email, 30); ?></a>
+    <a rel="nofollow" class="reply" href="#comment-<?php comment_ID() ?>" title="回复这个南瓜?"><?php echo get_avatar($comment->comment_author_email, 30); ?></a>
 <?php handsome_beauty($comment->comment_author_email);?>
   </div>
   <div class="comment_body left">

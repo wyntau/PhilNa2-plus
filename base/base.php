@@ -94,8 +94,3 @@ function fail($s) {
     die;
   }
 }
-
-// new feature of WordPress - post thumbnails
-if (function_exists('add_theme_support')) {
-  add_theme_support('post-thumbnails');
-}
