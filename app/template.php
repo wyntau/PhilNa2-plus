@@ -410,30 +410,6 @@ function philnaStripComment($var) {
 }
 
 /**
- * filter style uri
- *
- * @param string $stylesheet_uri
- * @param string $stylesheet_dir_uri
- * @return unknown_type
- */
-function philnaStyleUrl($stylesheet_uri, $stylesheet_dir_uri){
-  if(is_404()){
-    $file = get_template_directory().'/404.css';
-    $stylesheet_uri = $stylesheet_dir_uri.'/404.css';
-  }else{
-    $file = get_template_directory().'/style.css';
-    // for degbug (when debug just rename style.css, this will load style.dev.css
-    if(!file_exists($file)){
-      $file = get_template_directory().'style.dev.css';
-      $stylesheet_uri = $stylesheet_dir_uri.'/style.dev.css';
-    }
-  }
-  // return the link with a version id (timestamp)
-  return $stylesheet_uri.'?v='.date('YmdHi', filemtime($file));
-}
-add_filter('stylesheet_uri', 'philnaStyleUrl', 10, 2);
-
-/**
  * login logo
  *
  * @return null

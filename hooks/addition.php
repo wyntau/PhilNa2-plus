@@ -1,18 +1,5 @@
 <?php
 
-// load jquery
-function philnaLoadJQuery(){
-  wp_enqueue_script('jquery-core');
-}
-add_action('wp_enqueue_scripts', 'philnaLoadJQuery');
-
-// load styles
-function philnaLoadStyle(){
-  wp_enqueue_style('philnaStyle', get_stylesheet_uri(), array(), NULL);
-}
-add_action('wp_enqueue_scripts', 'philnaLoadStyle');
-
-
 //激活菜单项
 if ( function_exists('register_nav_menus') ) {
   register_nav_menus(array('primary' => '头部导航栏'));
