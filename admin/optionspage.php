@@ -198,12 +198,12 @@ if(isset($_POST['Submit']) && isset($_POST['savephilnaopt'])){
           <th scope="row"><?php _e('<h5>PhilNa say</h5>',YHL); ?></th>
           <td class="form-field">
             <label>
-            <input id="show_philna_say" name="show_philna_say" type="checkbox" <?php if($o['show_philna_say']) echo "checked='checked'"; ?> />
+            <input id="philna_say_enable" name="philna_say_enable" type="checkbox" <?php if($o['philna_say_enable']) echo "checked='checked'"; ?> />
             <?php _e('Show philna say on header',YHL); ?>
             </label><br/>
             <label>
             <?php  _e('Say what?(One sentence per line)',YHL); ?>
-            <textarea name="philna_say" id="philna_say" cols="50" rows="8"><?php echo($o['philna_say']); ?></textarea>
+            <textarea name="philna_say_list" id="philna_say_list" cols="50" rows="8"><?php echo($o['philna_say_list']); ?></textarea>
             </label>
           </td>
         </tr>

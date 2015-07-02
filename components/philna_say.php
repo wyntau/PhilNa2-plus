@@ -12,8 +12,8 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
  * @return unknown_type
  */
 function philnaSay(){
-  if($GLOBALS['philnaopt']['show_philna_say'] && $GLOBALS['philnaopt']['philna_say']){
-    $words = explode("\n", $GLOBALS['philnaopt']['philna_say']);
+  if($GLOBALS['philnaopt']['philna_say_enable'] && $GLOBALS['philnaopt']['philna_say_list']){
+    $words = explode("\n", $GLOBALS['philnaopt']['philna_say_list']);
     $word = $words[ mt_rand(0, count($words) - 1) ];
 
     if(defined('DOING_AJAX')){
