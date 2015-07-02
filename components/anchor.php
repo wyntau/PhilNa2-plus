@@ -1,7 +1,6 @@
 <?php
 
-function philnaUpDown(){
-  if(!is_page()){
+function philna_anchor(){
 ?>
   <style>
     /* up and down */
@@ -38,20 +37,11 @@ function philnaUpDown(){
     }
   </style>
   <div id="updown">
-    <div id="up" title="我要上天!"></div>
-<?php
-  }
-  if(is_single()){
-?>
-    <div id="comt" title="查看评论"></div>
-    <div id="down" title="我要吐槽!"></div>
-<?php
-  } else {
-?>
-    <div id="down" title="我要入地!"></div>
-<?php
-  }
-?>
+    <div id="up"></div>
+<?php if(is_singular()){ ?>
+    <div id="comt"></div>
+<?php } ?>
+    <div id="down"></div>
   </div>
   <script>
     // up down anchor scroll
@@ -102,4 +92,4 @@ function philnaUpDown(){
 <?php
 }
 
-add_action('wp_footer', 'philnaUpDown');
+add_action('wp_footer', 'philna_anchor');
