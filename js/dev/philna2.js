@@ -161,7 +161,7 @@ jQuery(function($) {
       hrefs.push(escapeHref(z));
       var C = "do=ajax&action=philnaDynamic";
       C += (hrefs[hrefs.length - 2]) ? "&lastQuery=" + hrefs[hrefs.length - 2] : "";
-      var B = $("#content2,#content,#content3");
+      var B = $("#content");
       var A = function() {
           document.body.style.cursor = "wait";
           $("#pagenavi").html(lang.ajaxloading)
@@ -218,7 +218,7 @@ jQuery(function($) {
         var E = "do=ajax&action=philnaDynamic";
         hrefs.push(escapeHref(A));
         E += (hrefs[hrefs.length - 2]) ? "&lastQuery=" + hrefs[hrefs.length - 2] : "";
-        var D = $("#content,#content2,#content3");
+        var D = $("#content");
         var C = function() {
             document.body.style.cursor = "wait"
           };
@@ -642,7 +642,7 @@ jQuery(function($) {
   });
 
   (function enableHomeSlide() {
-    $('body').on('click', '#content .post_title', function() {
+    $('body').on('click', '#content.content-list .post_title', function() {
       var postContent = $(this).next().next();
       var id = $(this).parent().attr("id");
       var postId = id.replace(/^post-(.*)$/, '$1');
@@ -650,7 +650,7 @@ jQuery(function($) {
         $.ajax({
           url: "?do=ajax&action=philnaAjaxPost&id=" + postId,
           beforeSend: function() {
-            $('#content .post_content').slideUp(150, function() {
+            $('#content.content-list .post_content').slideUp(150, function() {
               postContent.html('<p class="ajaxloading">' + lang.AjaxLoading + '</p>').show()
             })
           },
@@ -665,7 +665,7 @@ jQuery(function($) {
         });
         return false
       } else if (postContent.is(":hidden")) {
-        $('#content .post_content').slideUp(500);
+        $('#content.content-list .post_content').slideUp(500);
         postContent.slideDown(500, function() {
           $body.animate({
             scrollTop: $(this).offset().top - 180
@@ -677,6 +677,6 @@ jQuery(function($) {
         window.location = $(this).children().attr('href')
       }
     });
-    $('#content .post_content:first').slideDown(500);
+    $('#content.content-list .post_content:first').slideDown(500);
   })();
 });

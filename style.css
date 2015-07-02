@@ -101,7 +101,7 @@ body {
   text-decoration: none;
 }
 
-#content,#content2,#content3 {
+#content{
   float: left;
   width: 662px;
 }
@@ -1667,7 +1667,6 @@ body {
   min-width: 100px;
   opacity: .8
 }
-/*#content p img,#content2 p img,#content3 p img{padding:3px;box-shadow:3px 3px 6px #666;}*/
 .con_tsina {
   background: url(images/16weibo.png) no-repeat 0 0;
   padding-left: 20px;

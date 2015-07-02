@@ -17,7 +17,7 @@ get_header();
     <?php wp_nav_menu(array( 'theme_location'=>'primary','container_class' => 'navigation')); ?>
     <div class="clear"></div>
   </div>
-  <div id="content3">
+  <div id="content">
     <?php include_once get_template_directory() . '/templates/notice.php';?>
     <?php
 // no direct access

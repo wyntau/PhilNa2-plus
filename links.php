@@ -13,7 +13,7 @@ get_header();
     <?php philnaCloseSidebar() ?>
     <div class="clear"></div>
   </div>
-  <div id="content3">
+  <div id="content">
     <?php
 if( have_posts() ) :
   // post loop start

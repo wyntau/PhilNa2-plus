@@ -15,7 +15,7 @@ get_header();
     <?php philnaCloseSidebar() ?>
     <div class="clear"></div>
   </div>
-  <div id="content3">
+  <div id="content">
     <?php include_once get_template_directory() . '/templates/notice.php';?>
     <?php
 /**

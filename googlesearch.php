@@ -16,7 +16,7 @@ get_header();
     <?php //wp_page_menu('show_home=1&menu_class=navigation'); ?>
     <div class="clear"></div>
   </div>
-<div id="content3">
+<div id="content">
   <div id="cse-search-results"></div>
 <script type="text/javascript">
   var googleSearchIframeName = "cse-search-results";

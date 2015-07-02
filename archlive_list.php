@@ -14,7 +14,7 @@ get_header();
     <?php //wp_page_menu('show_home=1&menu_class=navigation'); ?>
     <div class="clear"></div>
   </div>
-  <div id="content3">
+  <div id="content">
     <?php
 if( have_posts() ) :
   while( have_posts() ) :

@@ -61,10 +61,12 @@ function philnaHeadImage($format = ''){
  * @return unknown_type
  */
 function philnaHeaderBackgroudImage(){
-  $img = get_bloginfo('template_directory') . '/images/headers/' . philnaHeadImage();
-        if(!$GLOBALS['philnaopt']['no_home_slide'])
-        $homeslide=trim($GLOBALS['philnaopt']['homeslide']) ? '#content .post_content{display:none;}' : '';
-        else $homeslide='';
+  $img = get_template_directory_uri() . '/images/headers/' . philnaHeadImage();
+  if(!$GLOBALS['philnaopt']['no_home_slide']){
+    $homeslide = trim($GLOBALS['philnaopt']['homeslide']) ? '.content-list .post_content{display:none;}' : '';
+  }else{
+    $homeslide='';
+  }
   $style = <<<EOF
 <style type="text/css">
 #header {

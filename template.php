@@ -16,12 +16,8 @@ get_header();
     <?php wp_nav_menu(array('theme_location'=>'primary', 'container_class' => 'navigation')); ?>
     <?php philnaCloseSidebar() ?>
   </div>
-  <?php if(is_single() || is_page()):?>
-      <div id="content2">
-    <?php else: ?>
-      <div id="content">
-    <?php endif;?>
-    <?php include_once get_template_directory() . '/templates/notice.php';?>
-    <?php include_once get_template_directory() . '/loop.php';?>
+  <div id="content" <?php if(!is_singular()) echo 'class=" content-list"'; ?>>
+  <?php include_once get_template_directory() . '/templates/notice.php';?>
+  <?php include_once get_template_directory() . '/loop.php';?>
   </div>
 <?php get_footer(); ?>
