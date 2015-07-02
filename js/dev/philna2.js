@@ -31,7 +31,7 @@ jQuery(function($) {
       placeholder: themeurl + "/images/empty.gif",
       effect: "fadeIn"
     });
-    $("#content .post_content a:has(img),#content2 .post_content a:has(img)").slimbox();
+    $("#content .post_content a:has(img)").slimbox();
   })();
 
   function escapeHref(v) {

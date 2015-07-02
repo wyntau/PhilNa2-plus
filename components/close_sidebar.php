@@ -42,7 +42,7 @@ function philnaCloseSidebar(){
   if(isset($_COOKIE['show_sidebar']) && $_COOKIE['show_sidebar'] == 'no'){
 ?>
       <style type="text/css">
-        #content,#content2,#content3{
+        #content{
           width:920px;
         }
         #footer {
@@ -80,7 +80,7 @@ function philnaCloseSidebar(){
         $('#show-sidebar').show();
         $('#sidebar').fadeOut(500);
         window.setTimeout(function() {
-          $('#content,#content2,#content3,#footer').animate({
+          $('#content,#footer').animate({
             width: "920px"
           }, 1000);
         }, 500);
@@ -89,7 +89,7 @@ function philnaCloseSidebar(){
         RootCookies.SetCookie('show_sidebar', 'yes', 30);
         $('#show-sidebar').hide();
         $('#close-sidebar').show();
-        $('#content,#content2,#content3,#footer').animate({
+        $('#content,#footer').animate({
           width: "662px"
         }, 800, function() {
           $('#sidebar').fadeIn(500);
