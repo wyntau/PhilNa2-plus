@@ -83,8 +83,8 @@ if(isset($_POST['Submit']) && isset($_POST['savephilnaopt'])){
         <tr valign="top">
           <th scope="row"><?php _e('<h5>Gavatar</h5>',YHL);?></th>
           <td class="form-field">
-            <input id="cacheavatar" name="cacheavatar" type="checkbox" value="checkbox" <?php if($o['cacheavatar']) echo "checked='checked'"; ?> />
-            <label for="cacheavatar">开启Gavatar头像缓存.</label><br/>
+            <input id="gravatar_cache" name="gravatar_cache" type="checkbox" value="checkbox" <?php if($o['gravatar_cache']) echo "checked='checked'"; ?> />
+            <label for="gravatar_cache">开启Gavatar头像缓存.</label><br/>
             如需使用头像缓存,请先在wp-content目录建立avatar文件夹,并设置此文件夹权限为777,文件夹中放置一张default.jpg.
           </td>
         </tr>

@@ -85,7 +85,7 @@ if(is_admin()){
       'excerpt_length'
     ),
     'bool' => array(
-      'cacheavatar',
+      'gravatar_cache',
       'google_cse',
       'notice',
       'showad',

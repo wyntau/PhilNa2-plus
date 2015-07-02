@@ -8,7 +8,7 @@
 add_filter('get_avatar', 'philna_get_avatar', 1, 5);
 function philna_get_avatar($avatar, $id_or_email, $size = '42', $default = '', $alt = ''){
 
-  if(!(bool)$GLOBALS['philnaopt']['cacheavatar']){
+  if(!(bool)$GLOBALS['philnaopt']['gravatar_cache']){
     return $avatar;
   }
 
