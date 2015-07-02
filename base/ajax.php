@@ -40,13 +40,6 @@ function getAjaxAction() {
   }
 }
 
-if(isset($_GET['do']) && $_GET['do'] == 'ajax'){ // for ajax!
-  defined('DOING_AJAX') || define('DOING_AJAX', true);
-  if(isset($_GET['action']) && $_GET['action'] == 'philnaAjaxGetComment'){
-    defined('PHILNATIP') || define('PHILNATIP', true);
-  }
-}
-
 /**
  * Ajax
  *
