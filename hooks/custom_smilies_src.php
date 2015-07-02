@@ -44,6 +44,6 @@ $wpsmiliestrans = array(
 );
 
 function custom_smilies_src($src, $img){
-    return get_bloginfo('template_directory').'/images/smilies/' . $img;
+    return get_template_directory_uri().'/images/smilies/' . $img;
 }
 add_filter('smilies_src', 'custom_smilies_src', 10, 2);

@@ -58,10 +58,10 @@ function philna_javascript_uri(){
   $thepostID = ', postID=';
   $thepostID .= !is_home() ? $post->ID : 'null';
   $jslang = philnaJSLanguage();
-  $themeurl=get_bloginfo('template_directory');
+  $themeurl=get_template_directory_uri();
 
   // javascript loader
-  $jsFileURI = get_bloginfo('template_directory') . '/js.php';
+  $jsFileURI = get_template_directory_uri() . '/js.php';
 
   // add a version (timestamp)
   $jsFile = get_template_directory().'/js/philna2.js';

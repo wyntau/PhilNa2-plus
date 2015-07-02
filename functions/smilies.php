@@ -6,7 +6,7 @@
  */
 function philnaCommentSmilies(){
   global $wpsmiliestrans;
-  $path = get_bloginfo('template_directory').'/images/smilies/';
+  $path = get_template_directory_uri().'/images/smilies/';
   $output = '';
   $smilies = array_unique($wpsmiliestrans);
   $startimg = '<a id="smiliebtn" href="javascript:void(0);"><img src="'.$path.'33.gif'.'" alt="" title="'.__('Add a smiley?', YHL).'"/></a>';
