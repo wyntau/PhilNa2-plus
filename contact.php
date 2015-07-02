@@ -11,16 +11,15 @@ get_header();
 ?>
 <div id="wrap">
   <div id="header" class="box">
-    <div id="caption" class="icon">
+    <div id="caption" class="icon clearfix">
       <?php philnaBlogTitleAndDesc(); ?>
     </div>
     <?php wp_page_menu('show_home=1&menu_class=navigation'); ?>
-    <div class="clear"></div>
   </div>
   <div id="content">
     <div id="post-<?php the_ID(); ?>" <?php post_class();?>>
     <h1 class="post_title"><a class="icon" href="<?php the_permalink(); ?>" rel="bookmark inlinks permalink" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
-    <div class="postinfo">
+    <div class="postinfo clearfix">
       <div class="left">
         <span class="date icon"><?php the_time(__('F jS, Y', YHL)); ?></span>
         <span class="author icon"><?php the_author_posts_link(); ?></span>
@@ -28,11 +27,9 @@ get_header();
       <div class="right">
       <?php edit_post_link(__('Edit', YHL), '<span class="edit_link icon">', '</span>'); ?>
       </div>
-      <div class="clear"></div>
     </div>
-    <div class="post_content content">
-    <?php the_content(__('Read more...', YHL)); ?>
-      <div class="clear"></div>
+    <div class="post_content content clearfix">
+      <?php the_content(__('Read more...', YHL)); ?>
       <?php wp_link_pages('before=<div class="content_pages icon"><strong>'. __('Pages:', YHL).'&after=</strong></div>'); ?>
     </div>
   </div><?php /* end post */?>

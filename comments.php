@@ -15,7 +15,7 @@ if( post_password_required() ):
 <?php return; endif;?>
 
 <!--comment satae-->
-<div id="commentstate" class="box content">
+<div id="commentstate" class="box content clearfix">
   <div class="left">
       <span id="commentnum"><?php _e('Comments', YHL); ?> ( <span id="commentcount"><?php echo count($comments); ?></span> )</span>
   </div>
@@ -24,7 +24,6 @@ if( post_password_required() ):
     <?php if(is_single()):?><?php if(pings_open()):?><a id="addtrackback" class="addtrackback" rel="nofollow" href="<?php trackback_url(); ?>" title="<?php _e('Use this link to send a trackback to this post.', YHL);?>"><?php _e('Trackback', YHL);?></a><?php endif; ?><?php endif; ?>
     <?php if(comments_open()) : ?><a id="addcomment" class="addcomment" rel="nofollow" href="#respond" title="<?php _e('Add a comment', YHL);?>"><?php _e('Leave a comment', YHL); ?></a><?php endif; ?>
   </div>
-  <div class="clear"></div>
 </div>
 
 <!--list comment-->
@@ -73,14 +72,13 @@ else:
 <?php endif; ?>
 <?php if(is_single()):?>
 <!--trackpbacks state-->
-<div id="trackbackstate" class="box message">
+<div id="trackbackstate" class="box message clearfix">
   <div class="left">
       <span id="trackbacknum"><?php _e('Trackbacks &amp; Pingbacks', YHL); ?> ( <?php echo count($GLOBALS['trackbacks']); ?> )</span>
   </div>
   <div class="right">
       <span><a id="toggletrackbacks" class="icon" rel="nofollow" title="<?php __('Show/Hide the list',YHL);?>" href="javascript:void(0);"><?php _e('Toggle the list',YHL); ?></a></span>
   </div>
-  <div class="clear"></div>
 </div>
 
 <!--list trackbacks-->

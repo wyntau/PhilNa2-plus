@@ -8,7 +8,7 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
 
 get_header();
 ?>
-<div id="wrap">
+<div id="wrap" class="clearfix">
   <div id="header" class="box clearfix">
     <div id="caption" class="icon">
       <?php philnaBlogTitleAndDesc(); ?>

@@ -335,7 +335,7 @@ function philnaCommentClass(array $class){
   if(defined('PHILNATIP')){
     $class = array_merge($class, array('tip'));
   }
-  $class = array_merge($class, array('box', 'icon', 'content'));
+  $class = array_merge($class, array('box', 'icon', 'content', 'clearfix'));
   return array_unique($class);
 }
 add_filter('comment_class', 'philnaCommentClass');

@@ -36,7 +36,7 @@ function philnaComments($comment, $args = array(), $depth = 1){
 <?php handsome_beauty($comment->comment_author_email);?>
   </div>
   <div class="comment_body left">
-    <div class="comment_head">
+    <div class="comment_head clearfix">
       <div class="commentinfo left">
         <span class="name webshot"><?php comment_author_link(); ?></span>
         <span class="time"><?php comment_time(__('M jS, Y @ H:i', YHL))?></span>
@@ -56,18 +56,14 @@ function philnaComments($comment, $args = array(), $depth = 1){
         <?php endif; ?>
         <?php if($user_ID) edit_comment_link(__('Edit', YHL)); ?>
       </div>
-      <div class="clear"></div>
     </div>
-    <div class="comment_content">
+    <div class="comment_content clearfix">
       <?php if( ! $comment->comment_approved ): ?>
       <p class="alert"><strong><?php _e('Your comment is awaiting moderation.', YHL); ?></strong></p>
       <?php endif; ?>
       <?php comment_text(); ?>
-      <div class="clear"></div>
     </div>
   </div>
-  <div class="clear"></div>
-
 <?php
 
 }
@@ -86,10 +82,9 @@ function philnaPings($comment, $args = array(), $depth = 1){
   $GLOBALS['comment'] = $comment;
 ?>
 <li id="comment-<?php comment_ID() ?>" <?php comment_class(); ?>>
-  <div class="pings_head">
+  <div class="pings_head clearfix">
     <span class="time left"><?php comment_time(__('M jS, Y @ H:i', YHL)); echo ' | #', $index; ?></span>
     <?php if($user_ID) edit_comment_link(__('Edit', YHL), '<span class="action right">', '</span>'); ?>
-    <div class="clear"></div>
   </div>
   <span class="pingtype">
     <?php comment_type( __('Comment: ', YHL), __('Trackback: ', YHL), __('Pingback: ', YHL) ); ?>

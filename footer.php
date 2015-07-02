@@ -21,7 +21,6 @@ is_404() || get_sidebar(); // if 404 page, no sidebar!
     <p id="footerinfo">PhilNa2 by yinheli(http://philna.com) <?php do_action('philnaFooterInfo'); ?>Modified by <a target="_blank" href="http://ISayMe.com" title="集成功能扩展">自说Me话</a><!--不知道大家能否给我保留这个链接呢?算是大家帮我做个外链吧.多谢了-->. <span id="loadstate"><?php _e('页面加载: '); echo get_num_queries(), 'queries.'; ?> <?php timer_stop(1); ?> seconds.</span></p> 
   </div>
 </div>
-<div class="clear"></div>
 </div><!--#wrap-->
 <?php wp_footer(); ?>
 </body>

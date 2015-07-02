@@ -7,14 +7,11 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
 get_header();
 ?>
 <div id="wrap">
-  <div id="header" class="box">
+  <div id="header" class="box clearfix">
     <div id="caption" class="icon">
       <?php philnaBlogTitleAndDesc(); ?>
     </div>
     <?php wp_nav_menu(array( 'theme_location'=>'primary','container_class' => 'navigation')); ?>
-
-    <?php //wp_page_menu('show_home=1&menu_class=navigation'); ?>
-    <div class="clear"></div>
   </div>
 <div id="content">
   <div id="cse-search-results"></div>

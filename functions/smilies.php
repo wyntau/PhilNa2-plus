@@ -13,7 +13,7 @@ function philnaCommentSmilies(){
   foreach ($smilies as $title=>$smilies){
     $output .= '<a title=" '.$title.' " href="#" rel="nofollow"><img src="'.$path.$smilies.'" alt=""/></a>';
   }
-  $output = '<div id="smiles" class="hide"><div id="smiles_list">'.$output.'<div class="clear"></div></div></div>'."\n";
+  $output = '<div id="smiles" class="hide"><div id="smiles_list" class="clearfix">'.$output.'</div></div>'."\n";
 
   echo $startimg,$output;
 }

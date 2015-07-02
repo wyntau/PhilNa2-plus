@@ -23,7 +23,7 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
 <?php if( is_single() ): ?>  <div id="position" class="box message"><a class="right_arrow icon" title="<?php _e('Back to homepage', YHL); ?>" href="<?php echo get_settings('home'); ?>/"><?php _e('Home', YHL); ?></a> &gt; <?php the_category(', '); ?> &gt; <?php the_title();?></div><?php echo "\n"; endif; ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class();?>>
   <<?php echo $postTitleTag; ?> class="post_title"><a class="icon" href="<?php the_permalink(); ?>" rel="bookmark inlinks permalink" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></<?php echo $postTitleTag; ?>>
-  <div class="postinfo">
+  <div class="postinfo clearfix">
     <div class="left">
       <span class="date icon"><?php the_time(__('F jS, Y', YHL)); ?></span>
       <span class="author icon"><?php the_author_posts_link(); ?></span>
@@ -35,9 +35,8 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
     <?php if(is_singular()): ?><span id="skiptocomment" class="comments_link"><a href="#comments"><?php _e('Skip to Comments', YHL)?></a></span><?php else: ?><span class="comments_link"><sup>{ </sup><?php comments_popup_link(__('No Comments',YHL), __('1 Comment', YHL), __('% Comments', YHL));?><sub> }</sub></span><?php endif; ?>
     <?php edit_post_link(__('Edit', YHL), '<span class="edit_link icon">', '</span>'); ?>
     </div>
-    <div class="clear"></div>
   </div>
-  <div class="post_content content fontsize13"><?php 
+  <div class="post_content content fontsize13 clearfix"><?php 
   if(is_bot() || is_single()) : the_content();
   elseif(trim($GLOBALS['philnaopt']['homeslide'])||trim($GLOBALS['philnaopt']['no_home_slide'])) : the_excerpt(); 
   elseif($count >=1 &&$count <=1) :the_excerpt(); 
@@ -51,10 +50,9 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
     <?php the_tags('<span class="tag icon">', ', ', '</span>');?>
   </div>
   <?php endif; // meta ?>
-</div><?php /* end post */?>
+  </div><?php /* end post */?>
 <?php if(is_single())://无觅插件,请在无觅设置中选择自定义位置?>
-<div id="wumiiDisplayDiv" class="box content center"></div>
-<div class="clear"></div>
+  <div id="wumiiDisplayDiv" class="box content center"></div>
 <?php endif;?>
 <?php
 endwhile;

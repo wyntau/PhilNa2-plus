@@ -10,12 +10,11 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
 get_header();
 ?>
 <div id="wrap">
-  <div id="header" class="box">
+  <div id="header" class="box clearfix">
     <div id="caption" class="icon">
       <?php philnaBlogTitleAndDesc(); ?>
     </div>
     <?php wp_nav_menu(array( 'theme_location'=>'primary','container_class' => 'navigation')); ?>
-    <div class="clear"></div>
   </div>
   <div id="content">
     <?php include_once get_template_directory() . '/templates/notice.php';?>
@@ -32,7 +31,7 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
 ?>
 <div id="post-<?php the_ID(); ?>" <?php post_class();?>>
   <<?php echo $postTitleTag; ?> class="post_title"><a class="icon" href="<?php the_permalink(); ?>" rel="bookmark inlinks permalink" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></<?php echo $postTitleTag; ?>>
-  <div class="postinfo">
+  <div class="postinfo clearfix">
     <div class="left">
       <span class="date icon"><?php the_time(__('F jS, Y', YHL)); ?></span>
       <span class="author icon"><?php the_author_posts_link(); ?></span>
@@ -41,9 +40,8 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
     <?php if(is_singular()): ?><span id="skiptocomment" class="comments_link"><a href="#comments"><?php _e('Skip to Comments', YHL)?></a></span><?php else: ?><span class="comments_link"><sup>{ </sup><?php comments_popup_link(__('No Comments',YHL), __('1 Comment', YHL), __('% Comments', YHL));?><sub> }</sub></span><?php endif; ?>
     <?php edit_post_link(__('Edit', YHL), '<span class="edit_link icon">', '</span>'); ?>
     </div>
-    <div class="clear"></div>
   </div>
-  <div class="post_content content">
+  <div class="post_content content clearfix">
 <div align="center"><h2>在此留言就可以上墙哦</h2></div>
 <div align="center"><b>信春哥.原地满血,爆极品神器.</b>想要满血吗?赶紧来说几句吧!</div>
   <!-- start 读者墙 -->
@@ -69,7 +67,6 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
 <?php
     the_content(__('Read more...', YHL));
     ?>
-    <div class="clear"></div>
     <?php if( is_singular() ) wp_link_pages('before=<div class="content_pages icon"><strong>'. __('Pages:', YHL).'&after=</strong></div>'); ?>
     <?php /* PhilNa hook */ do_action('philnaStatement');?>
   </div>
