@@ -15,8 +15,8 @@ class anti_spam {
       if ( stripos($_SERVER['HTTP_ACCEPT_LANGUAGE'], 'zh') === false ) {
         add_filter( 'comments_open', create_function('', "return false;") ); // 關閉評論
       } else {
-        ob_start(create_function('$input','return preg_replace("#textarea(.*?)name=(["\'])comment(["\'])(.+)/textarea>#",
-        "textarea$1name=$2w$3$4/textarea><textarea name="comment" cols="100%" rows="4" style="display:none"></textarea>",$input);') );
+        ob_start(create_function('$input','return preg_replace("#textarea(.*?)name=([\"\'])comment([\"\'])(.+)/textarea>#",
+        "textarea$1name=$2w$3$4/textarea><textarea name=\"comment\" cols=\"100%\" rows=\"4\" style=\"display:none\"></textarea>",$input);') );
       }
     }
   }
@@ -42,18 +42,27 @@ class anti_spam {
     }
     // 已確定為 spam
     if ( !empty($_POST['spam_confirmed']) ) {
+
       // 方法一: 直接擋掉, 將 die(); 前面兩斜線刪除即可.
       //die();
+
       // 方法二: 標記為 spam, 留在資料庫檢查是否誤判.
       add_filter('pre_comment_approved', create_function('', 'return "spam";'));
       $comment['comment_content'] = "[ 小墙判断这是Spam! ]\n". $_POST['spam_confirmed'];
       $this->add_black( $comment );
     } else {
+
       // 檢查頭像
       $f = md5( strtolower($comment['comment_author_email']) );
       $g = sprintf( "http://%d.gravatar.com", (hexdec($f{0}) % 2) ) .'/avatar/'. $f .'?d=404';
+
+      // php获取头信息可能超时, 所以设置超时时间为2秒
+      $max_execution_time = ini_get('max_execution_time');
+      ini_set('max_execution_time', 2);
       $headers = @get_headers( $g );
-      if ( !preg_match("|200|", $headers[0]) ) {
+      ini_set('max_execution_time', $max_execution_time);
+
+      if ( !$headers || !preg_match("|200|", $headers[0]) ) {
         // 沒頭像的列入待審
         add_filter('pre_comment_approved', create_function('', 'return "0";'));
         //$this->add_black( $comment );
