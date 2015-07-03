@@ -74,7 +74,7 @@ if (!function_exists('utf8_excerpt')) {
       $text = apply_filters('the_content', $text);
       $text = str_replace(']]>', ']]&gt;', $text);
       $text = trim($text);
-      if($length > mb_strlen(strip_tags($text), 'utf-8')) {
+      if($length > mb_strlen(strip_tags($text), 'UTF-8')) {
         $text = strip_tags($text, $allowd_tag);
         return $text;
       }
@@ -94,7 +94,7 @@ if (!function_exists('utf8_excerpt')) {
           else if(!$in_tag)
             $num++;
         }
-        $text = mb_substr ($text,0,$i, 'utf-8');
+        $text = mb_substr ($text,0,$i, 'UTF-8');
       }
     }
     $text = force_balance_tags($text);
