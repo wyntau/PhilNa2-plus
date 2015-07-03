@@ -296,6 +296,7 @@ function philna_set_update_comment_cookie($comment, $user){
   if ( $user->exists() )
     return;
   // set cookie for update this comment
+  $secure = ( 'https' === parse_url( home_url(), PHP_URL_SCHEME ) );
   $key = md5($comment->comment_ID . COOKIEHASH);
-  setcookie('comment_author_can_update_id_' . $key . '_' . COOKIEHASH, md5($comment->comment_ID), time() + (60 * 30), COOKIEPATH, COOKIE_DOMAIN);
+  setcookie('comment_author_can_update_id_' . $key . '_' . COOKIEHASH, md5($comment->comment_ID), time() + (60 * 30), COOKIEPATH, COOKIE_DOMAIN, $secure);
 }
