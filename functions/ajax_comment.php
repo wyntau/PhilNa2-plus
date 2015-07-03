@@ -72,32 +72,87 @@ function philnaAjaxGetComment(){
  */
 function philnaAjaxComment(){
 
-  // the follow code mostly copyed from wp2.9 (wp-comments-post.php)
+  // the follow code mostly copyed from wp4.2 (wp-comments-post.php)
 
-  global $wpdb, $user_ID;
+  global $user_ID;
+
+  nocache_headers();
 
   $comment_post_ID = isset($_POST['comment_post_ID']) ? (int) $_POST['comment_post_ID'] : 0;
 
-  $status = $wpdb->get_row( $wpdb->prepare("SELECT post_status, comment_status FROM $wpdb->posts WHERE ID = %d", $comment_post_ID) );
+  $post = get_post($comment_post_ID);
 
-  if ( empty($status->comment_status) ) {
-    //do_action('comment_id_not_found', $comment_post_ID);
-    //exit;
+  if ( empty( $post->comment_status ) ) {
+    /**
+     * Fires when a comment is attempted on a post that does not exist.
+     *
+     * @since 1.5.0
+     *
+     * @param int $comment_post_ID Post ID.
+     */
+    do_action( 'comment_id_not_found', $comment_post_ID );
+    exit;
     fail(__('Error post ID', YHL));
-  } else if ( !comments_open($comment_post_ID) ) {
-    //do_action('comment_closed', $comment_post_ID);
-    //wp_die( __('Sorry, comments are closed for this item.') );
+  }
+
+  // get_post_status() will get the parent status for attachments.
+  $status = get_post_status($post);
+
+  $status_obj = get_post_status_object($status);
+
+  if ( ! comments_open( $comment_post_ID ) ) {
+    /**
+     * Fires when a comment is attempted on a post that has comments closed.
+     *
+     * @since 1.5.0
+     *
+     * @param int $comment_post_ID Post ID.
+     */
+    do_action( 'comment_closed', $comment_post_ID );
+    // wp_die( __( 'Sorry, comments are closed for this item.' ), 403 );
     fail(__('Sorry, comments are closed for this item.', YHL));
-  } else if ( in_array($status->post_status, array('draft', 'pending') ) ) {
-    //do_action('comment_on_draft', $comment_post_ID);
-    //exit;
-    fail(__('The post is in draft or pending', YHL));
-  } else if ( 'trash' == $status->post_status ) {
-    //do_action('comment_on_trash', $comment_post_ID);
-    //exit;
+  }elseif ( 'trash' == $status ) {
+    /**
+     * Fires when a comment is attempted on a trashed post.
+     *
+     * @since 2.9.0
+     *
+     * @param int $comment_post_ID Post ID.
+     */
+    do_action( 'comment_on_trash', $comment_post_ID );
+    // exit;
     fail(__('The post is in trash box', YHL));
-  } else {
-    do_action('pre_comment_on_post', $comment_post_ID);
+  }elseif ( ! $status_obj->public && ! $status_obj->private ) {
+    /**
+     * Fires when a comment is attempted on a post in draft mode.
+     *
+     * @since 1.5.1
+     *
+     * @param int $comment_post_ID Post ID.
+     */
+    do_action( 'comment_on_draft', $comment_post_ID );
+    // exit;
+    fail(__('The post is in draft or pending', YHL));
+  }elseif ( post_password_required( $comment_post_ID ) ) {
+    /**
+     * Fires when a comment is attempted on a password-protected post.
+     *
+     * @since 2.9.0
+     *
+     * @param int $comment_post_ID Post ID.
+     */
+    do_action( 'comment_on_password_protected', $comment_post_ID );
+    // exit;
+    fail(__('The post is a password-protected post', YHL));
+  }else {
+    /**
+     * Fires before a comment is posted.
+     *
+     * @since 2.8.0
+     *
+     * @param int $comment_post_ID Post ID.
+     */
+    do_action( 'pre_comment_on_post', $comment_post_ID );
   }
 
   $comment_author       = ( isset($_POST['author']) )  ? trim(strip_tags($_POST['author'])) : null;
@@ -109,15 +164,16 @@ function philnaAjaxComment(){
 
   // If the user is logged in
   $user = wp_get_current_user();
-  if ( $user->ID ) {
-    if ( empty( $user->display_name ) ){
+  if ( $user->exists() ) {
+    if ( empty( $user->display_name ) )
       $user->display_name=$user->user_login;
-    }
-    $comment_author       = $wpdb->escape($user->display_name);
-    $comment_author_email = $wpdb->escape($user->user_email);
-    $comment_author_url   = $wpdb->escape($user->user_url);
-    if ( current_user_can('unfiltered_html') ) {
-      if ( wp_create_nonce('unfiltered-html-comment_' . $comment_post_ID) != $_POST['_wp_unfiltered_html_comment'] ) {
+    $comment_author       = wp_slash($user->display_name);
+    $comment_author_email = wp_slash($user->user_email);
+    $comment_author_url   = wp_slash($user->user_url);
+    if ( current_user_can( 'unfiltered_html' ) ) {
+      if ( ! isset( $_POST['_wp_unfiltered_html_comment'] )
+        || ! wp_verify_nonce( $_POST['_wp_unfiltered_html_comment'], 'unfiltered-html-comment_' . $comment_post_ID )
+      ) {
         kses_remove_filters(); // start with a clean slate
         kses_init_filters(); // set up the filters
       }
@@ -133,7 +189,7 @@ function philnaAjaxComment(){
 
   $comment_type = '';
 
-  if ( get_option('require_name_email') && !$user->ID ) {
+  if ( get_option('require_name_email') && !$user->exists() ) {
     if ( 6 > strlen($comment_author_email) || '' == $comment_author ){
       //wp_die( __('Error: please fill the required fields (name, email).') );
       fail(__('Error: please fill the required fields (name, email).', YHL));
@@ -143,9 +199,10 @@ function philnaAjaxComment(){
     }
   }
 
-  if ( '' == $comment_content )
+  if ( '' == $comment_content ){
     //wp_die( __('Error: please type a comment.') );
     fail(__('Error: please type a comment.', YHL));
+  }
 
   $comment_parent = isset($_POST['comment_parent']) ? absint($_POST['comment_parent']) : 0;
 
@@ -184,17 +241,22 @@ function philnaAjaxComment(){
 
     $comment_id = wp_new_comment( $commentdata );
 
-    $comment = get_comment($comment_id);
-    if ( !$user->ID ) {
-      $comment_cookie_lifetime = apply_filters('comment_cookie_lifetime', 30000000);
-      setcookie('comment_author_' . COOKIEHASH, $comment->comment_author, time() + $comment_cookie_lifetime, COOKIEPATH, COOKIE_DOMAIN);
-      setcookie('comment_author_email_' . COOKIEHASH, $comment->comment_author_email, time() + $comment_cookie_lifetime, COOKIEPATH, COOKIE_DOMAIN);
-      setcookie('comment_author_url_' . COOKIEHASH, esc_url($comment->comment_author_url), time() + $comment_cookie_lifetime, COOKIEPATH, COOKIE_DOMAIN);
+    if ( ! $comment_id ) {
+      // wp_die( __( "<strong>ERROR</strong>: The comment could not be saved. Please try again later." ) );
+      fail( __( "Error: The comment could not be saved. Please try again later.", YHL) );
     }
 
-    // set cookie for update this comment
-    $key = md5($comment_id.COOKIEHASH);
-    setcookie('comment_author_can_update_id_'.$key.'_'. COOKIEHASH, md5($comment_id), time() + (60 * 30), COOKIEPATH, COOKIE_DOMAIN);
+    $comment = get_comment($comment_id);
+
+    /**
+     * Perform other actions when comment cookies are set.
+     *
+     * @since 3.4.0
+     *
+     * @param object $comment Comment object.
+     * @param WP_User $user   User object. The user may not exist.
+     */
+    do_action( 'set_comment_cookies', $comment, $user );
   }
 
   defined('DOING_AJAX_COMMENT') || define('DOING_AJAX_COMMENT', true);
@@ -227,4 +289,13 @@ function philnaModifyComment(){
   );
 
   echo philnaJSON($data);
+}
+
+add_action('set_comment_cookies', 'philna_set_update_comment_cookie', 20, 2);
+function philna_set_update_comment_cookie($comment, $user){
+  if ( $user->exists() )
+    return;
+  // set cookie for update this comment
+  $key = md5($comment->comment_ID . COOKIEHASH);
+  setcookie('comment_author_can_update_id_' . $key . '_' . COOKIEHASH, md5($comment->comment_ID), time() + (60 * 30), COOKIEPATH, COOKIE_DOMAIN);
 }
