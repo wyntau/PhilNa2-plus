@@ -103,7 +103,7 @@ function philnaAjaxComment(){
   $comment_author       = ( isset($_POST['author']) )  ? trim(strip_tags($_POST['author'])) : null;
   $comment_author_email = ( isset($_POST['email']) )   ? trim($_POST['email']) : null;
   $comment_author_url   = ( isset($_POST['url']) )     ? trim($_POST['url']) : null;
-  $comment_content      = ( isset($_POST['w']) ) ? trim($_POST['w']) : trim($_POST['comment']);
+  $comment_content      = ( isset($_POST['comment']) ) ? trim($_POST['comment']) : null;
 
   $update_comment_ID = ( isset($_POST['update_comment_ID']) ) ?  (int)$_POST['update_comment_ID'] : 0; //取得是否为更新评论
 
