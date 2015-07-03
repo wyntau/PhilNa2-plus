@@ -4,7 +4,7 @@ class anti_spam {
   function anti_spam() {
     if ( !current_user_can('read') ) {
       add_action('template_redirect', array($this, 'w_tb'), 1);
-      add_action('init', array($this, 'gate'), 1);
+      add_action('pre_comment_on_post', array($this, 'gate'), 1);
       add_action('preprocess_comment', array($this, 'sink'), 1);
     }
   }
@@ -23,15 +23,15 @@ class anti_spam {
   // 檢查
   function gate() {
     $w = 'w';
-    if ( !empty($_POST[$w]) && empty($_POST['comment']) ) {
-      $_POST['comment'] = $_POST[$w];
-    } else {
+    if(!empty($_POST['comment'])){
       $request = $_SERVER['REQUEST_URI'];
       $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '隐瞒';
       $IP      = isset($_SERVER["HTTP_X_FORWARDED_FOR"]) ? $_SERVER["HTTP_X_FORWARDED_FOR"] . '(通过代理)' : $_SERVER["REMOTE_ADDR"];
       $way     = isset($_POST[$w]) ? '手动操作' : '未经评论表格';
       $spamcom = isset($_POST['comment']) ? $_POST['comment'] : '';
       $_POST['spam_confirmed'] = "请求: " . $request . "\n來路: " . $referer . "\nIP: " . $IP . "\n方式: " . $way . "\n內容: " . $spamcom . "\n -- 记录成功 --";
+    }else{
+      $_POST['comment'] = $_POST[$w];
     }
   }
   // 處理
