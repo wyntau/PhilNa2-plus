@@ -74,7 +74,7 @@ function philnaAjaxComment(){
 
   // the follow code mostly copyed from wp4.2 (wp-comments-post.php)
 
-  global $user_ID;
+  global $wpdb, $user_ID;
 
   nocache_headers();
 
@@ -202,6 +202,25 @@ function philnaAjaxComment(){
   if ( '' == $comment_content ){
     //wp_die( __('Error: please type a comment.') );
     fail(__('Error: please type a comment.', YHL));
+  }
+
+  // 增加: 檢查重覆評論功能
+  $dupe = "SELECT comment_ID FROM $wpdb->comments WHERE comment_post_ID = '$comment_post_ID' AND ( comment_author = '$comment_author' ";
+  if ( $comment_author_email ) $dupe .= "OR comment_author_email = '$comment_author_email' ";
+  $dupe .= ") AND comment_content = '$comment_content' LIMIT 1";
+  if ( $wpdb->get_var($dupe) ) {
+      fail(__('Duplicate comment detected; it looks as though you&#8217;ve already said that!'));
+  }
+
+  // 增加: 檢查評論太快功能
+  if ( $lasttime = $wpdb->get_var( $wpdb->prepare("SELECT comment_date_gmt FROM $wpdb->comments WHERE comment_author = %s ORDER BY comment_date DESC LIMIT 1", $comment_author) ) ) {
+  $time_lastcomment = mysql2date('U', $lasttime, false);
+  $time_newcomment  = mysql2date('U', current_time('mysql', 1), false);
+  $flood_die = apply_filters('comment_flood_filter', false, $time_lastcomment, $time_newcomment);
+  if ( $flood_die ) {
+      fail(__('您评论太快了, 请稍等~'));
+      // fail(__('You are posting comments too quickly.  Slow down.'));
+    }
   }
 
   $comment_parent = isset($_POST['comment_parent']) ? absint($_POST['comment_parent']) : 0;
