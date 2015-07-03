@@ -51,9 +51,6 @@ $postTitleTag = is_singular() ? 'h1' : 'h2';
   </div>
   <?php endif; // meta ?>
   </div><?php /* end post */?>
-<?php if(is_single())://无觅插件,请在无觅设置中选择自定义位置?>
-  <div id="wumiiDisplayDiv" class="box content center"></div>
-<?php endif;?>
 <?php
 endwhile;
 do_action('philnaEndloop');
