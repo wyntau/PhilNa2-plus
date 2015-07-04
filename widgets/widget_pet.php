@@ -11,9 +11,7 @@ class PhilnaMousePet extends WP_Widget {
     extract( $args );
     echo $before_widget;
 ?>
-    <h3 style="text-align:center">
-      <span class="selected"><?php echo $instance['title'];?></span>
-    </h3>
+    <h3><?php echo $instance['title'];?></h3>
     <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="160" height="70" id="philna_man_clock" align="middle">
       <param name="allowScriptAccess" value="always" />
       <param name="movie" value="<?php echo get_template_directory_uri() . '/swf/mouse_pet.swf' ?>" />
