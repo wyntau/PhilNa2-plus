@@ -17,7 +17,8 @@ get_header();
     <?php philnaCloseSidebar() ?>
   </div>
   <div id="content" <?php if(!is_singular()) echo 'class=" content-list"'; ?>>
-  <?php include_once get_template_directory() . '/templates/notice.php';?>
-  <?php include_once get_template_directory() . '/loop.php';?>
+    <?php include_once get_template_directory() . '/templates/notice.php';?>
+    <?php include_once get_template_directory() . '/loop.php';?>
   </div>
-<?php get_footer(); ?>
+<?php
+get_footer();

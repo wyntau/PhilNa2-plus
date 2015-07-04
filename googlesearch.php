@@ -24,4 +24,5 @@ get_header();
     </script>
     <script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script>
   </div>
-<?php get_footer(); ?>
+<?php
+get_footer();

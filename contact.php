@@ -91,4 +91,5 @@ get_header();
   } //endif;/*allowed_tags*/
   ?>
 </div>
-<?php get_footer(); ?>
+<?php
+get_footer();
