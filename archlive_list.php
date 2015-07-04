@@ -27,6 +27,7 @@ if(have_posts()){
         </div>
       </div>
       <div class="post_content content clearfix">
+        <?php the_content(__('Read more...', YHL)); ?>
         <?php archives_list_SHe(); ?>
       </div>
     </div>
