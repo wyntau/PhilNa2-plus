@@ -20,7 +20,7 @@ class PhilnaManClock extends WP_Widget {
       <param name="quality" value="high" />
       <param name="bgcolor" value="#ffffff" />
       <param name="wmode" value="transparent" />
-      <embed wmode="transparent" src="<?php echo get_template_directory_uri() . '/swf/honehone_clock_wh.swf' ?>" quality="high" bgcolor="#ffffff" width="220" height="80" name="philna_man_clock" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
+      <embed wmode="transparent" src="<?php echo get_template_directory_uri() . '/swf/honehone_clock_wh.swf' ?>" quality="high" bgcolor="#ffffff" width="230" height="80" name="philna_man_clock" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />
     </object>
 <?php
     echo $after_widget;
