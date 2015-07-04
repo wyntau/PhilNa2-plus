@@ -1,6 +1,7 @@
 <?php
 /* <<小牆>> Anti-Spam v1.84 by Willin Kan. */
 class anti_spam {
+  static $var = 'www';
   function anti_spam() {
     if ( !current_user_can('read') ) {
       add_action('template_redirect', array($this, 'w_tb'), 1);
@@ -16,13 +17,13 @@ class anti_spam {
         add_filter( 'comments_open', create_function('', "return false;") ); // 關閉評論
       } else {
         ob_start(create_function('$input','return preg_replace("#textarea(.*?)name=([\"\'])comment([\"\'])(.+)/textarea>#",
-        "textarea$1name=$2w$3$4/textarea><textarea name=\"comment\" cols=\"100%\" rows=\"4\" style=\"display:none\"></textarea>",$input);') );
+        "textarea$1name=$2' . self::$var . '$3$4/textarea><textarea name=\"comment\" cols=\"100%\" rows=\"4\" style=\"display:none\"></textarea>",$input);') );
       }
     }
   }
   // 檢查
   function gate() {
-    $w = 'w';
+    $w = self::$var;
     if(!empty($_POST['comment'])){
       $request = $_SERVER['REQUEST_URI'];
       $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '隐瞒';
