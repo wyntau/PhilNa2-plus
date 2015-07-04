@@ -636,11 +636,6 @@ jQuery(function($) {
     });
   })();
 
-  $('body').on('mouseover', '#tab-title span', function(){
-    $(this).addClass('selected').siblings().removeClass();
-    $("#tab-content > ul").eq($(this).index()).slideDown(250).siblings().slideUp(250);
-  });
-
   (function enableHomeSlide() {
     $('body').on('click', '#content.content-list .post_title', function() {
       var postContent = $(this).next().next();

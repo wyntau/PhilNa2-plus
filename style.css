@@ -1493,39 +1493,6 @@ td {
   font-size: 13px;
 }
 
-#tab-title h3 {
-  font-size: 14px;
-}
-
-#tab-title .selected {
-  color: #356aa0;
-  border-bottom: 0px;
-} /*标题被选中时的样式*/
-#tab-title span {
-  padding: 5px 5px 5px 5px;
-  border: 0px solid #ccf;
-  border-right: 0px;
-  margin-left: 0px;
-  cursor: pointer;
-}
-
-#tab-content .hide {
-  display: none;
-} /*默认让第一块内容显示，其余隐藏*/
-#tab-content ul {
-  overflow: hidden;
-}
-
-#tab-content ul li {
-  padding-top: 5px;
-  overflow: hidden;
-}
-
-#tab-content ul li img.avatar {
-  height: 20px;
-  width: 20px;
-}
-
 /*readerwall v2*/
 body {
   overflow-x: hidden;

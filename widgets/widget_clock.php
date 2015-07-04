@@ -41,7 +41,4 @@ class PhilnaManClock extends WP_Widget {
 <?php
   }
 }
-function philna_register_widget_man_clock(){
-  return register_widget("PhilnaManClock");
-}
-add_action('widgets_init', 'philna_register_widget_man_clock');
+add_action('widgets_init', create_function('', 'return register_widget("PhilnaManClock");'));
