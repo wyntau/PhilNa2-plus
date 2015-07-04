@@ -41,5 +41,40 @@ function archives_list_SHe(){
       $output = '<div class="errorbox">Sorry, no posts matched your criteria.</div>';
     }
   }
-  echo $output;
-}
+?>
+  <style>
+    #expand_collapse,.archives-yearmonth{
+      cursor: s-resize
+    }
+    #archives ul li ul.archives-monthlisting{
+      display: none;
+    }
+    #archives ul:first-child li ul.archives-monthlisting{
+      display: block;
+    }
+  </style>
+  <p><a id="expand_collapse" href="#">全部展开/收缩</a></p>
+  <div id="archives">
+  <?php echo $output; ?>
+  </div>
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    jQuery(function($) {
+      $('#archives ul li span.archives-yearmonth').click(function() {
+        $(this).next().slideToggle('fast');
+        return false;
+      });
+      //以下下是全局的操作
+      $('#expand_collapse').on('click', function() {
+        var list = $('#archives ul li ul.archives-monthlisting');
+        if(list.is(':hidden')){
+          list.slideDown('fast');
+        }else{
+          list.slideUp('fast');
+        }
+      });
+    });
+    /* ]]> */
+  </script>
+<?php
+} // endfunction
