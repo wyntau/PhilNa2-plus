@@ -16,8 +16,7 @@ class anti_spam {
       if ( stripos($_SERVER['HTTP_ACCEPT_LANGUAGE'], 'zh') === false ) {
         add_filter( 'comments_open', create_function('', "return false;") ); // 關閉評論
       } else {
-        ob_start(create_function('$input','return preg_replace("#textarea(.*?)name=([\"\'])comment([\"\'])(.+)/textarea>#",
-        "textarea$1name=$2' . self::$form_name . '$3$4/textarea><textarea name=\"comment\" cols=\"100%\" rows=\"4\" style=\"display:none\"></textarea>",$input);') );
+        ob_start(create_function('$input','return preg_replace("#textarea(.*?)name=([\\"\'])comment([\\"\'])(.+)/textarea>#", "textarea$1name=$2' . self::$form_name . '$3$4/textarea><textarea name=\\"comment\\" cols=\\"100%\\" rows=\\"4\\" style=\\"display:none\\"></textarea>",$input);') );
       }
     }
   }
