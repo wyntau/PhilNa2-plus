@@ -183,8 +183,6 @@ function philnaAjaxPostComment(){
       //wp_die( __('Sorry, you must be logged in to post a comment.') );
       fail(__('Sorry, you must be logged in to post a comment.', YHL));
     }
-    // PhilNa check email and name
-    do_action('philnaCheckEmailAndName', $comment_author, $comment_author_email);
   }
 
   $comment_type = '';
