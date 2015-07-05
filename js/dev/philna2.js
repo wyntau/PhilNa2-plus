@@ -571,9 +571,9 @@ jQuery(function($) {
       var postContent = $(this).next().next();
       var id = $(this).parent().attr("id");
       var postId = id.replace(/^post-(.*)$/, '$1');
-      if (postContent.html() == "") {
+      if (postContent.html().replace(/^\s*\n*\s*$/g, '') == '') {
         $.ajax({
-          url: "?do=ajax&action=philnaAjaxPost&id=" + postId,
+          url: "?do=ajax&action=philnaAjaxGetExcerpt&id=" + postId,
           beforeSend: function() {
             $('#content.content-list .post_content').slideUp(150, function() {
               postContent.html('<p class="ajaxloading">' + lang.AjaxLoading + '</p>').show()

@@ -52,7 +52,7 @@ class PhilNaAjax {
     'philnaSay',
     'philnaAjaxGetComment',
     'philnaAjaxPostComment',
-    'philnaAjaxPost',
+    'philnaAjaxGetExcerpt',
     'philnaModifyComment'
   );
   // hooked on action 'template_redirect'
