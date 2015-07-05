@@ -10,16 +10,7 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
   <div id="respond_head" class="clearfix">
     <h4><strong><?php _e('Leave a comment', YHL); ?></strong></h4>
     <?php philnaCommentSmilies(); ?>
-    <div id="editor_tools">
-      <a data-editor="strong">B</a>
-      <a data-editor="italic">i</a>
-      <a data-editor="em">em</a>
-      <a data-editor="del">del</a>
-      <a data-editor="underline">U</a>
-      <a data-editor="ahref">Link</a>
-      <a data-editor="code">Code</a>
-      <a data-editor="quote">Quote</a>
-    </div>
+    <?php philna_RTF_comment_form(); ?>
   </div>
   <form id="commentform" action="<?php echo site_url('/wp-comments-post.php'); ?>" method="post" class="clearfix">
     <div id="commentbox" class="left">
