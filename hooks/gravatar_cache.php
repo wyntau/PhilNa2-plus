@@ -5,8 +5,8 @@
  *如果不想使用头像缓存的话,请将$cacheswitch设置为0
 *****************************************/
 
-add_filter('get_avatar', 'philna_get_avatar', 1, 5);
-function philna_get_avatar($avatar, $id_or_email, $size = '42', $default = '', $alt = ''){
+add_filter('get_avatar', 'philna_gravatar_cache', 1, 5);
+function philna_gravatar_cache($avatar, $id_or_email, $size = '42', $default = '', $alt = ''){
 
   if(!(bool)$GLOBALS['philnaopt']['gravatar_cache']){
     return $avatar;
