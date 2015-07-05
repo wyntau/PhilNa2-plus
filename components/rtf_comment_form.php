@@ -33,14 +33,14 @@ function philna_RTF_comment_form($form_id = '#comment'){
     }
   </style>
   <div id="editor_tools">
-    <a data-editor="strong">B</a>
-    <a data-editor="italic">i</a>
-    <a data-editor="em">em</a>
-    <a data-editor="del">del</a>
-    <a data-editor="underline">U</a>
-    <a data-editor="ahref">Link</a>
-    <a data-editor="code">Code</a>
-    <a data-editor="quote">Quote</a>
+    <a data-format="strong">B</a>
+    <a data-format="italic">i</a>
+    <a data-format="em">em</a>
+    <a data-format="del">del</a>
+    <a data-format="underline">U</a>
+    <a data-format="ahref">Link</a>
+    <a data-format="code">Code</a>
+    <a data-format="quote">Quote</a>
   </div>
   <script>
     jQuery(function($){
@@ -107,8 +107,8 @@ function philna_RTF_comment_form($form_id = '#comment'){
       };
 
       $('body').on('click', '#editor_tools a', function(){
-        var editor = $(this).data('editor');
-        formats[editor] && formats[editor]();
+        var format = $(this).data('format');
+        formats[format] && formats[format]();
         return false;
       });
     });
