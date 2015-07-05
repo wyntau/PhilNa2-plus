@@ -1,9 +1,9 @@
 <?php
 /*****************************************************
- 函数名称：wp_login_failed_notify v1.0 by DH.huahua.
+ 函数名称：philna_login_failed_notify v1.0 by DH.huahua.
  函数作用：有错误登录wp后台就会email通知博主
 ******************************************************/
-function wp_login_failed_notify(){
+function philna_login_failed_notify(){
   date_default_timezone_set('PRC');
   $admin_email = get_bloginfo ('admin_email');
   $to = $admin_email;
@@ -19,4 +19,4 @@ function wp_login_failed_notify(){
   $headers = "$from\nContent-Type: text/html; charset=" . get_option('blog_charset') . "\n";
   wp_mail( $to, $subject, $message, $headers );
 }
-add_action('wp_login_failed', 'wp_login_failed_notify');
+add_action('wp_login_failed', 'philna_login_failed_notify');
