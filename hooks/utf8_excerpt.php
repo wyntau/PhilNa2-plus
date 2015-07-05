@@ -57,49 +57,48 @@ if (!function_exists('mb_substr')) {
     }
 }
 
-if (!function_exists('utf8_excerpt')) {
-  function utf8_excerpt ($text) {
-    global $post;
-    if ( '' == $text ) {
-      $my_length= $GLOBALS['philnaopt']['excerpt_length'] ? $GLOBALS['philnaopt']['excerpt_length'] : '220';
-      $home_excerpt_length = $my_length;//250;//get_option('home_excerpt_length');
-      $archive_excerpt_length = $my_length;//250;//get_option('archive_excerpt_length');
-      $allowd_tag = '<a><b><blockquote><br><cite><code><dd><del><div><dl><dt><em><h1><h2><h3><h4><h5><h6><i><img><li><ol><p><span><strong><ul>';
-      if (is_home()) {
-        $length = $home_excerpt_length;
-      } else {
-        $length = $archive_excerpt_length;
-      }
-      $text = $post->post_content;
-      $text = apply_filters('the_content', $text);
-      $text = str_replace(']]>', ']]&gt;', $text);
-      $text = trim($text);
-      if($length > mb_strlen(strip_tags($text), 'UTF-8')) {
-        $text = strip_tags($text, $allowd_tag);
-        return $text;
-      }
-      $more_position = stripos ($text, "<!--more-->");
-      if ($more_position !== false) {
-          $text = substr ($text, 0, $more_position);
-      }else {
-        $text = strip_tags($text, $allowd_tag);
-        $text = trim($text);
-        $num = 0;
-        $in_tag = false;
-        for ($i=0; $num<$length || $in_tag; $i++) {
-          if(mb_substr($text, $i, 1) == '<')
-            $in_tag = true;
-          else if(mb_substr($text, $i, 1) == '>')
-            $in_tag = false;
-          else if(!$in_tag)
-            $num++;
-        }
-        $text = mb_substr ($text,0,$i, 'UTF-8');
-      }
+
+add_filter('get_the_excerpt', 'philna_utf8_excerpt', 9);
+function philna_utf8_excerpt ($text) {
+  global $post;
+  if ( '' == $text ) {
+    $my_length= $GLOBALS['philnaopt']['excerpt_length'] ? $GLOBALS['philnaopt']['excerpt_length'] : '220';
+    $home_excerpt_length = $my_length;//250;//get_option('home_excerpt_length');
+    $archive_excerpt_length = $my_length;//250;//get_option('archive_excerpt_length');
+    $allowd_tag = '<a><b><blockquote><br><cite><code><dd><del><div><dl><dt><em><h1><h2><h3><h4><h5><h6><i><img><li><ol><p><span><strong><ul>';
+    if (is_home()) {
+      $length = $home_excerpt_length;
+    } else {
+      $length = $archive_excerpt_length;
     }
-    $text = force_balance_tags($text);
-    $text .= "<p class='more-link'><a href='".get_permalink()."'>阅读更多&raquo;</a></p>";
-    return $text;
+    $text = $post->post_content;
+    $text = apply_filters('the_content', $text);
+    $text = str_replace(']]>', ']]&gt;', $text);
+    $text = trim($text);
+    if($length > mb_strlen(strip_tags($text), 'UTF-8')) {
+      $text = strip_tags($text, $allowd_tag);
+      return $text;
+    }
+    $more_position = stripos ($text, "<!--more-->");
+    if ($more_position !== false) {
+        $text = substr ($text, 0, $more_position);
+    }else {
+      $text = strip_tags($text, $allowd_tag);
+      $text = trim($text);
+      $num = 0;
+      $in_tag = false;
+      for ($i=0; $num<$length || $in_tag; $i++) {
+        if(mb_substr($text, $i, 1) == '<')
+          $in_tag = true;
+        else if(mb_substr($text, $i, 1) == '>')
+          $in_tag = false;
+        else if(!$in_tag)
+          $num++;
+      }
+      $text = mb_substr ($text,0,$i, 'UTF-8');
+    }
   }
+  $text = force_balance_tags($text);
+  $text .= "<p class='more-link'><a href='".get_permalink()."'>阅读更多&raquo;</a></p>";
+  return $text;
 }
-add_filter('get_the_excerpt', 'utf8_excerpt', 9);
