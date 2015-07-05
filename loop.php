@@ -91,7 +91,7 @@ if( have_posts() ){
     </div>
 <?php
   }//endwhile;
-  do_action('philnaEndloop');
+  do_action('philna_loop_end');
   include_once get_template_directory() . '/templates/navigation.php';
   comments_template();
 }else{ // if no posts

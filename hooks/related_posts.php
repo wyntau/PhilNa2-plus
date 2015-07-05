@@ -10,7 +10,7 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
  * related posts
  *
  */
-function philnaRelatedPosts( $args = '' ){
+function philna_get_related_posts( $args = '' ){
   global $wpdb, $post, $id;
 
   $cacheID = $id.md5($args);
@@ -91,10 +91,10 @@ function philnaRelatedPosts( $args = '' ){
  *
  * @return unknown_type
  */
-function philnaInsertRelatedPosts(){
+function philna_post_insert_related_posts(){
   if(!is_singular()) return;
 
-  if(! $relatedPosts = philnaRelatedPosts()){
+  if(! $relatedPosts = philna_get_related_posts()){
     return;
   }
 
@@ -102,13 +102,13 @@ function philnaInsertRelatedPosts(){
   echo $relatedPosts;
   echo '</div>'."\n\n";
 }
-add_action('philnaEndloop', 'philnaInsertRelatedPosts');
+add_action('philna_loop_end', 'philna_post_insert_related_posts');
 
 /**
  * Insert related post links to feed
  * @return unknown_type
  */
-function philnaFeedRelatedPosts($content){
+function philna_feed_insert_related_posts($content){
   global $id;
   $comment_num = get_comments_number($id);
   if($comment_num==0):
@@ -120,7 +120,7 @@ function philnaFeedRelatedPosts($content){
   endif;
   if(is_feed()){
     $content .='<p>'.$rss_comment_tip.'</p>';
-    $content .= philnaRelatedPosts('limit=8&excerpt_length=0');}
+    $content .= philna_get_related_posts('limit=8&excerpt_length=0');}
   return $content;
 }
-add_filter('the_content', 'philnaFeedRelatedPosts', 0);
+add_filter('the_content', 'philna_feed_insert_related_posts', 0);
