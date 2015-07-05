@@ -7,13 +7,10 @@
 defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinheli < http://philna.com/ >');
 
 class PhilNaAdmin {
-  private $stringOpt = array();
-  private $boolOpt = array();
+
   private $opt = array();
 
-  public function __construct(array $opt){
-    $this->stringOpt = isset($opt['string']) ? (array)$opt['string'] : array();
-    $this->boolOpt = isset($opt['bool']) ? (array)$opt['bool'] : array();
+  public function __construct(){
     add_action('admin_menu', array($this,'_admin'));
   }
 
@@ -39,14 +36,21 @@ class PhilNaAdmin {
   }
 
   public function save($data){
+
     if(!$_POST) return;
-    foreach($data as $key=>$value){
-      if(in_array($key, $this->stringOpt)){
-        $this->opt[$key] = rtrim( preg_replace('/\n\s*\r/', '', $value) );
-        $this->opt[$key] = str_replace('<!--', '', $this->opt[$key]);
-        $this->opt[$key] = str_replace('-->', '', $this->opt[$key]);
-      }elseif(in_array($key, $this->boolOpt)){
-        $this->opt[$key] = (bool)$value;
+    $optDefines = $GLOBALS['philnaopt']['optDefines'];
+    foreach($data as $key => $value){
+      if(array_key_exists($key, $optDefines)){
+        if($optDefines[$key][0] == 'string'){
+          if($value == '' && isset($optDefines[$key][1])){
+            $value = $optDefines[$key][1];
+          }
+          $this->opt[$key] = rtrim( preg_replace('/\n\s*\r/', '', $value) );
+          $this->opt[$key] = str_replace('<!--', '', $this->opt[$key]);
+          $this->opt[$key] = str_replace('-->', '', $this->opt[$key]);
+        }else if($optDefines[$key][0] == 'bool'){
+          $this->opt[$key] = (bool)$value;
+        }
       }
     }
     do_action('savePhilNaOpt');
@@ -64,56 +68,5 @@ class PhilNaAdmin {
 if(is_admin()){
   // add hooks
   include_once dirname(__FILE__).'/hooks.php';
-  // default theme option type
-  $philnaDefaultOptType = array(
-    'string' => array(
-
-      'keywords',
-      'description',
-
-      'post_list_type',
-      'title_loading_text',
-      'ajax_loading_text',
-
-      'excerpt_length',
-
-      'google_cse_cx',
-
-      'google_analytics_code',
-
-      'notice_content',
-
-      'handsome',
-      'beauty',
-
-      'ad',
-
-      'feed_url',
-      'feed_url_email',
-      'rss_additional',
-
-      'headimg',
-
-      'philna_say_list'
-    ),
-    'bool' => array(
-      'gravatar_cache',
-
-      'google_cse',
-
-      'enable_google_analytics',
-      'exclude_admin_analytics',
-
-      'notice',
-
-      'showad',
-
-      'feed',
-      'feed_email',
-      'rss_additional_show',
-
-      'philna_say_enable'
-    )
-  );
-  new PhilNaAdmin($philnaDefaultOptType);
+  new PhilNaAdmin();
 }

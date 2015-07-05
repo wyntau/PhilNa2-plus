@@ -86,11 +86,18 @@ class PhilNaGetOpt implements ArrayAccess {
    * @return null|mix
    */
   public function offsetGet($key){
-    if (array_key_exists($key, $this->philnaOpt)) {
-      if (is_string($this->philnaOpt[$key])) {
-        return stripslashes($this->philnaOpt[$key]);
-      } else {
-        return $this->philnaOpt[$key];
+    if($key == 'optDefines'){
+      return $this->philnaOptDefines;
+    }else if (array_key_exists($key, $this->philnaOptDefines)) {
+      $value = $this->philnaOpt[$key];
+
+      if($this->philnaOptDefines[$key][0] == 'string'){
+        if(!$value && array_key_exists(1, $this->philnaOptDefines[$key])){
+          $value = $this->philnaOptDefines[$key][1];
+        }
+        return stripslashes($value);
+      }else{
+        return $value;
       }
     } else {
       return null;
@@ -124,6 +131,51 @@ class PhilNaGetOpt implements ArrayAccess {
       return false;
     }
   }
+
+  /**
+   * 选项的类型及默认值
+   * @var array
+   */
+  private $philnaOptDefines = array(
+    'keywords' => array('string'),
+    'description' => array('string'),
+
+    'post_list_type' => array('string'),
+    'title_loading_text' => array('string', '页面载入中......'),
+    'ajax_loading_text' => array('string', 'AjaxLoading......'),
+
+    'excerpt_length' => array('string', '220'),
+
+    'gravatar_cache' => array('bool'),
+
+    'google_cse' => array('bool'),
+    'google_cse_cx' => array('string'),
+
+    'enable_google_analytics' => array('bool'),
+    'exclude_admin_analytics' => array('bool'),
+    'google_analytics_code' => array('string'),
+
+    'notice' => array('bool'),
+    'notice_content' => array('string'),
+
+    'handsome' => array('string'),
+    'beauty' => array('string'),
+
+    'showad' => array('bool'),
+    'ad' => array('string'),
+
+    'feed' => array('bool'),
+    'feed_email' => array('bool'),
+    'feed_url' => array('string'),
+    'feed_url_email' => array('string'),
+    'rss_additional_show' => array('bool'),
+    'rss_additional' => array('string'),
+
+    'headimg' => array('string'),
+
+    'philna_say_enable' => array('bool'),
+    'philna_say_list' => array('string')
+  );
 }
 
 // init philna options

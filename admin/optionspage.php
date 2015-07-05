@@ -63,15 +63,15 @@ if(isset($_POST['Submit']) && isset($_POST['savephilnaopt'])){
             <label for="title_loading_text"><?php _e('( 点击标题变成的文字, 默认为"页面载入中......")', YHL); ?></label><br/>
             <input type="text" name="title_loading_text" id="title_loading_text" class="code" value="<?php echo($o['title_loading_text']); ?>"><br/><br/>
             <?php _e('Ajax加载文字',YHL); ?>
-            <label for="title_loading_text"><?php _e('( Ajax加载时的提示文字, 默认为"AjaxLoading......")', YHL); ?></label><br/>
-            <input type="text" name="title_loading_text" id="title_loading_text" class="code" value="<?php echo($o['title_loading_text']); ?>">
+            <label for="ajax_loading_text"><?php _e('( Ajax加载时的提示文字, 默认为"AjaxLoading......")', YHL); ?></label><br/>
+            <input type="text" name="ajax_loading_text" id="ajax_loading_text" class="code" value="<?php echo($o['ajax_loading_text']); ?>">
           </td>
         </tr>
          <tr valign="top">
           <th scope="row"><h5>首页文章截断长度</h5></th>
           <td class="form-field">
             <label for="excerpt_length">默认为220,请根据自己的需要进行调整(手动加More标签时无效,显示more标签之前的内容)</label><br/>
-            <input type="text" name="excerpt_length" id="excerpt_length" class="code" value="<?php echo($o['excerpt_length']); ?>"><br/><br/>
+            <input type="text" name="excerpt_length" id="excerpt_length" class="code" value="<?php echo($o['excerpt_length'] ); ?>"><br/><br/>
           </td>
         </tr>
 

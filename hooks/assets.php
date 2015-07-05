@@ -32,7 +32,6 @@ function philnaLoadJQuery(){
  * @return unknown_type
  */
 function philnaJSLanguage(){
-$blogtitle=get_bloginfo('name');
   $lang = array(
     'commonError'=>__('Sorry! An error occurred', YHL),
     'ajaxloading'=>'<span class="ajaxloading">'.__('Loading...', YHL).'</span>',
@@ -40,9 +39,9 @@ $blogtitle=get_bloginfo('name');
     'scomment'=>__('Submit Comment', YHL),
     'upcomment'=>__('Update Comment', YHL),
     'thankscm'=>__('Thanks for your comment', YHL),
-    'blogName'=>$blogtitle ? $blogtitle :__('自说Me话'),//博客标题
-    'ajaxLoadingText'=>$GLOBALS['philnaopt']['ajax_loading_text'] ? $GLOBALS['philnaopt']['ajax_loading_text'] : __('AjaxLoading......', YHL),//Ajaxloading提示
-    'titleLoadingText'=>$GLOBALS['philnaopt']['title_loading_text'] ? $GLOBALS['philnaopt']['title_loading_text'] : __('页面载入中......', YHL),//点击标题变成的文字
+    'blogName'=>get_bloginfo('name') ? get_bloginfo('name') : __('自说Me话'),//博客标题
+    'ajaxLoadingText'=>$GLOBALS['philnaopt']['ajax_loading_text'],//Ajaxloading提示
+    'titleLoadingText'=>$GLOBALS['philnaopt']['title_loading_text'],//点击标题变成的文字
   );
 
   return ', lang='.philnaJSON($lang);
