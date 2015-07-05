@@ -53,21 +53,21 @@ class anti_spam {
       $this->add_black( $comment );
     } else {
 
-      // 檢查頭像
-      $f = md5( strtolower($comment['comment_author_email']) );
-      $g = sprintf( "http://%d.gravatar.com", (hexdec($f{0}) % 2) ) .'/avatar/'. $f .'?d=404';
+      // // 檢查頭像, 国内开启此方法后, 可能会导致超时
+      // $f = md5( strtolower($comment['comment_author_email']) );
+      // $g = sprintf( "http://%d.gravatar.com", (hexdec($f{0}) % 2) ) .'/avatar/'. $f .'?d=404';
 
-      // php获取头信息可能超时, 所以设置超时时间为2秒
-      $max_execution_time = ini_get('max_execution_time');
-      ini_set('max_execution_time', 2);
-      $headers = @get_headers( $g );
-      ini_set('max_execution_time', $max_execution_time);
+      // // php获取头信息可能超时, 所以设置超时时间为2秒
+      // $max_execution_time = ini_get('max_execution_time');
+      // ini_set('max_execution_time', 2);
+      // $headers = @get_headers( $g );
+      // ini_set('max_execution_time', $max_execution_time);
 
-      if ( !$headers || !preg_match("|200|", $headers[0]) ) {
-        // 沒頭像的列入待審
-        add_filter('pre_comment_approved', create_function('', 'return "0";'));
-        //$this->add_black( $comment );
-        }
+      // if ( !$headers || !preg_match("|200|", $headers[0]) ) {
+      //   // 沒頭像的列入待審
+      //   add_filter('pre_comment_approved', create_function('', 'return "0";'));
+      //   //$this->add_black( $comment );
+      // }
     }
     return $comment;
   }
