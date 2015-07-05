@@ -460,7 +460,7 @@ jQuery(function($) {
     function submitForm() {
       var x = $("#commentform");
       var v = blogURL + "?do=ajax";
-      var B = "philnaAjaxComment";
+      var B = "philnaAjaxPostComment";
       var z = x.serialize();
       var E = $("#ajaxbox");
       var w = $("#respond");

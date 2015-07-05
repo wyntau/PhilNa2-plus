@@ -51,7 +51,7 @@ class PhilNaAjax {
   private $ajaxFunctions = array(
     'philnaSay',
     'philnaAjaxGetComment',
-    'philnaAjaxComment',
+    'philnaAjaxPostComment',
     'philnaAjaxPost',
     'philnaModifyComment'
   );

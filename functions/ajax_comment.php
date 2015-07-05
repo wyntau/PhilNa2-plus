@@ -70,7 +70,7 @@ function philnaAjaxGetComment(){
  * ajax update and new comment
  * @return unknown_type
  */
-function philnaAjaxComment(){
+function philnaAjaxPostComment(){
 
   // the follow code mostly copyed from wp4.2 (wp-comments-post.php)
 
