@@ -10,7 +10,7 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
  * @param unknown_type $format
  * @return unknown_type
  */
-function philnaHeadImage($format = ''){
+function philna_get_header_background_image($format = ''){
   // the option form db
   $opt = $GLOBALS['philnaopt']['headimg'];
   $opt = $opt ? $opt : 'default.jpg';
@@ -60,8 +60,8 @@ function philnaHeadImage($format = ''){
  * add css style for #header
  * @return unknown_type
  */
-function philnaHeaderBackgroudImage(){
-  $img = get_template_directory_uri() . '/images/headers/' . philnaHeadImage();
+function philna_header_backgroud_image(){
+  $img = get_template_directory_uri() . '/images/headers/' . philna_get_header_background_image();
   if(!$GLOBALS['philnaopt']['no_home_slide']){
     $homeslide = trim($GLOBALS['philnaopt']['homeslide']) ? '.content-list .post_content{display:none;}' : '';
   }else{
@@ -76,4 +76,4 @@ function philnaHeaderBackgroudImage(){
 EOF;
   echo $style;
 }
-add_action('wp_head', 'philnaHeaderBackgroudImage', 99);
+add_action('wp_head', 'philna_header_backgroud_image', 99);
