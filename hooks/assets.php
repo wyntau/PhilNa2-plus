@@ -41,8 +41,8 @@ $blogtitle=get_bloginfo('name');
     'upcomment'=>__('Update Comment', YHL),
     'thankscm'=>__('Thanks for your comment', YHL),
     'blogName'=>$blogtitle ? $blogtitle :__('自说Me话'),//博客标题
-    'AjaxLoading'=>$GLOBALS['philnaopt']['AjaxLoading'] ? $GLOBALS['philnaopt']['AjaxLoading'] : __('AjaxLoading......', YHL),//Ajaxloading提示
-    'LoadText'=>$GLOBALS['philnaopt']['LoadText'] ? $GLOBALS['philnaopt']['LoadText'] : __('页面载入中......', YHL),//点击标题变成的文字
+    'ajaxLoadingText'=>$GLOBALS['philnaopt']['ajax_loading_text'] ? $GLOBALS['philnaopt']['ajax_loading_text'] : __('AjaxLoading......', YHL),//Ajaxloading提示
+    'titleLoadingText'=>$GLOBALS['philnaopt']['title_loading_text'] ? $GLOBALS['philnaopt']['title_loading_text'] : __('页面载入中......', YHL),//点击标题变成的文字
   );
 
   return ', lang='.philnaJSON($lang);

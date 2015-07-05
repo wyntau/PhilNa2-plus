@@ -576,7 +576,7 @@ jQuery(function($) {
           url: "?do=ajax&action=philnaAjaxGetExcerpt&id=" + postId,
           beforeSend: function() {
             $('#content.content-list .post_content').slideUp(150, function() {
-              postContent.html('<p class="ajaxloading">' + lang.AjaxLoading + '</p>').show()
+              postContent.html('<p class="ajaxloading">' + lang.ajaxLoadingText + '</p>').show()
             })
           },
           success: function(data) {
@@ -598,7 +598,7 @@ jQuery(function($) {
         });
         return false
       } else {
-        $(this).children('a').text(lang.LoadText);
+        $(this).children('a').text(lang.titleLoadingText);
         window.location = $(this).children().attr('href')
       }
     });

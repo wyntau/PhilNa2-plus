@@ -67,37 +67,52 @@ if(is_admin()){
   // default theme option type
   $philnaDefaultOptType = array(
     'string' => array(
+
       'keywords',
       'description',
-      'google_cse_cx',
-      'notice_content',
-      'ad',
-      'feed_url',
-      'feed_url_email',
-      'rss_additional',
-      'headimg',
-      'philna_say_list',
 
       'post_list_type',
       'title_loading_text',
       'ajax_loading_text',
 
+      'excerpt_length',
+
+      'google_cse_cx',
+
       'google_analytics_code',
+
+      'notice_content',
+
       'handsome',
       'beauty',
-      'excerpt_length'
+
+      'ad',
+
+      'feed_url',
+      'feed_url_email',
+      'rss_additional',
+
+      'headimg',
+
+      'philna_say_list'
     ),
     'bool' => array(
       'gravatar_cache',
+
       'google_cse',
+
+      'enable_google_analytics',
+      'exclude_admin_analytics',
+
       'notice',
+
       'showad',
+
       'feed',
       'feed_email',
       'rss_additional_show',
-      'philna_say_enable',
-      'enable_google_analytics',
-      'exclude_admin_analytics'
+
+      'philna_say_enable'
     )
   );
   new PhilNaAdmin($philnaDefaultOptType);
