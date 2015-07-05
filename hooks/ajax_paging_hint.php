@@ -12,7 +12,7 @@ defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinhel
  *
  * @return unknown_type
  */
-function philnaAjaxPagingiHint() {
+function philna_ajax_paging_hint() {
   if(!defined('DOING_AJAX')) return;
 
   $refer = isset($_POST['lastQuery']) ? $_POST['lastQuery'] : '';
@@ -30,4 +30,4 @@ function philnaAjaxPagingiHint() {
   ' <a href="',$refer ,'" title="', __('Back to last page', YHL), '">', __('Back to last page', YHL), '?</a>',
   '</div>';
 }
-add_action('philnaLoopStart', 'philnaAjaxPagingiHint');
+add_action('philna_loop_start', 'philna_ajax_paging_hint');

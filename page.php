@@ -23,7 +23,7 @@ get_header();
     // no direct access
     if( have_posts() ){
       // post loop start
-      do_action('philnaLoopStart'); /* philna hook */
+      do_action('philna_loop_start'); /* philna hook */
       while( have_posts() ){
         the_post();
         $postTitleTag = is_singular() ? 'h1' : 'h2';

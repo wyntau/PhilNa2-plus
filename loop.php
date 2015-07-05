@@ -12,7 +12,7 @@ if(is_archive() || is_search()){
 
 if( have_posts() ){
   // post loop start
-  do_action('philnaLoopStart'); /* philna hook */
+  do_action('philna_loop_start'); /* philna hook */
   $count=1;
   while( have_posts() ){
     the_post();
