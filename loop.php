@@ -10,10 +10,11 @@ if(is_archive() || is_search()){
   include_once get_template_directory() . '/templates/loophead.php';
 }
 
+global $wp_query;
+
 if( have_posts() ){
   // post loop start
   do_action('philna_loop_start'); /* philna hook */
-  $count=1;
   while( have_posts() ){
     the_post();
     $postTitleTag = is_singular() ? 'h1' : 'h2';
@@ -64,15 +65,17 @@ if( have_posts() ){
 <?php
         if(is_bot() || is_single()){
           the_content();
-        }else if(trim($GLOBALS['philnaopt']['homeslide']) || trim($GLOBALS['philnaopt']['no_home_slide'])){
-          the_excerpt();
-        }else if($count ==1){
+        }else if($GLOBALS['philnaopt']['post_list_type'] != 'ajax' || $wp_query->current_post == 0){
           the_excerpt();
         } //endif;
-        $count++;
 
         if( is_singular() ){
-          wp_link_pages('link_before=<span>&link_after=</span>&before=<div class="content_pages post-pagenavi icon"><strong>'. __('Pages:', YHL).'&after=</strong></div>');
+          wp_link_pages(array(
+            'link_before' => '<span>',
+            'link_after' => '</span>',
+            'before' => '<div class="content_pages post-pagenavi icon"><strong>' . __('Pages:', YHL),
+            'after' => '</strong></div>'
+          ));
         }
 
         do_action('philnaStatement');

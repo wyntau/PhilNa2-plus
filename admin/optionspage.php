@@ -52,24 +52,19 @@ if(isset($_POST['Submit']) && isset($_POST['savephilnaopt'])){
         </tr>
 
         <tr valign="top">
-          <th scope="row"><?php _e('<h5>LoadText</h5>',YHL);?></th>
+          <th scope="row"><?php _e('<h5>文章列表效果</h5>',YHL);?></th>
           <td class="form-field">
-            <?php _e('LoadText',YHL); ?>
-            <label for="LoadText"><?php _e('( 点击标题变成的文字 默认为 "页面载入中......")', YHL); ?></label><br/>
-            <input type="text" name="LoadText" id="LoadText" class="code" value="<?php echo($o['LoadText']); ?>"><br/><br/>
-            <?php _e('AjaxLoading',YHL); ?>
-            <label for="AjaxLoading"><?php _e('( Ajax加载时的提示文字 默认为"AjaxLoading......" ,文章伸缩用户请无视此选项)', YHL); ?></label><br/>
-            <input type="text" name="AjaxLoading" id="AjaxLoading" class="code" value="<?php echo($o['AjaxLoading']); ?>"><br/>
-          </td>
-        </tr>
-
-        <tr valign="top">
-          <th scope="row"><?php _e('<h5>首页文章伸缩或Ajax加载</h5>',YHL);?></th>
-          <td class="form-field">
-            <input id="homeslide" name="homeslide" type="checkbox" value="checkbox" <?php if($o['homeslide']) echo "checked='checked'"; ?> />
-            <label for="homeslide">勾选则首页文章伸缩,否则为Ajax加载</label><br/><br/>
-            <input id="no_home_slide" name="no_home_slide" type="checkbox" value="checkbox" <?php if($o['no_home_slide']) echo "checked='checked'"; ?> />
-            <label for="no_home_slide">关闭首页文章伸缩以及Ajax加载效果<br />(勾选此项会使上面的选择失效,首页无伸缩,无Ajax加载)</label><br/>
+            <select name="post_list_type" id="post_list_type" value="<?php echo $o['post_list_type'] ?>">
+              <option value="" <?php if($o['post_list_type'] == '') echo 'selected="selected"' ?>>无效果</option>
+              <option value="ajax" <?php if($o['post_list_type'] == 'ajax') echo 'selected="selected"' ?>>Ajax加载</option>
+              <option value="slide" <?php if($o['post_list_type'] == 'slide') echo 'selected="selected"' ?>>文章伸缩</option>
+            </select><br />
+            <?php _e('标题加载文字',YHL); ?>
+            <label for="title_loading_text"><?php _e('( 点击标题变成的文字, 默认为"页面载入中......")', YHL); ?></label><br/>
+            <input type="text" name="title_loading_text" id="title_loading_text" class="code" value="<?php echo($o['title_loading_text']); ?>"><br/><br/>
+            <?php _e('Ajax加载文字',YHL); ?>
+            <label for="title_loading_text"><?php _e('( Ajax加载时的提示文字, 默认为"AjaxLoading......")', YHL); ?></label><br/>
+            <input type="text" name="title_loading_text" id="title_loading_text" class="code" value="<?php echo($o['title_loading_text']); ?>">
           </td>
         </tr>
          <tr valign="top">
@@ -190,7 +185,7 @@ if(isset($_POST['Submit']) && isset($_POST['savephilnaopt'])){
           <th scope="row"><?php _e('<h5>Header background image</h5>',YHL); ?></th>
           <td class="form-field">
             <label><?php _e('Select an Image (at least size 920 px by 145 px .You can upload more files to <code>themes\philna2\images\headers</code> :)',YHL); ?><br/>
-            <select name="headimg"><?php echo philnaHeadImage('option'); ?></select>
+            <select name="headimg"><?php echo philna_get_header_background_image('option'); ?></select>
             </label><br/>
           </td>
         </tr>

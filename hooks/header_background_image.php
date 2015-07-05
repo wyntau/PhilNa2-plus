@@ -62,16 +62,16 @@ function philna_get_header_background_image($format = ''){
  */
 function philna_header_backgroud_image(){
   $img = get_template_directory_uri() . '/images/headers/' . philna_get_header_background_image();
-  if(!$GLOBALS['philnaopt']['no_home_slide']){
-    $homeslide = trim($GLOBALS['philnaopt']['homeslide']) ? '.content-list .post_content{display:none;}' : '';
+  if($GLOBALS['philnaopt']['post_list_type'] == 'slide'){
+    $post_list_style = '.content-list .post_content{display:none;}';
   }else{
-    $homeslide='';
+    $post_list_style = '';
   }
   $style = <<<EOF
 <style type="text/css">
 #header {
   background: #fff url($img) no-repeat;
-}$homeslide
+}$post_list_style
 </style>\n
 EOF;
   echo $style;

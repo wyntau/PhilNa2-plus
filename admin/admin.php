@@ -77,8 +77,11 @@ if(is_admin()){
       'rss_additional',
       'headimg',
       'philna_say_list',
-      'LoadText',
-      'AjaxLoading',
+
+      'post_list_type',
+      'title_loading_text',
+      'ajax_loading_text',
+
       'google_analytics_code',
       'handsome',
       'beauty',
@@ -93,10 +96,8 @@ if(is_admin()){
       'feed_email',
       'rss_additional_show',
       'philna_say_enable',
-      'homeslide',
       'enable_google_analytics',
-      'exclude_admin_analytics',
-      'no_home_slide'
+      'exclude_admin_analytics'
     )
   );
   new PhilNaAdmin($philnaDefaultOptType);
