@@ -61,7 +61,7 @@ class PhilNaAjax {
   );
   // hooked on action 'init'
   private $hookInitAjaxFunction = array(
-    'philnaAjaxCommentsPage',
+    'philnaAjaxGetCommentsPage',
   );
 
   private $allFunctions = array();

@@ -425,7 +425,7 @@ jQuery(function($) {
           postID = F
         }
       }
-      var A = blogURL + "?do=ajax&action=philnaAjaxCommentsPage&postid=" + postID + "&page=" + B;
+      var A = blogURL + "?do=ajax&action=philnaAjaxGetCommentsPage&postid=" + postID + "&page=" + B;
       var C = function() {
           document.body.style.cursor = "wait";
           $("#commentnavi").html(lang.ajaxloading)

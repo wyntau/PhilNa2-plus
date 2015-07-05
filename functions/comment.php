@@ -148,7 +148,7 @@ function philnaWelcomeCommentAuthorBack($email = ''){
 /**ajax comment page
  * @return unknown_type
  */
-function philnaAjaxCommentsPage(){
+function philnaAjaxGetCommentsPage(){
   global $post,$wp_query, $wp_rewrite;
   $postid = isset($_GET['postid']) ? $_GET['postid'] : null;
   $pageid = isset($_GET['page']) ? $_GET['page'] : null;
