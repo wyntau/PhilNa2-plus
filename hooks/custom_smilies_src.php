@@ -43,7 +43,7 @@ $wpsmiliestrans = array(
   ':sad:'      => '30.gif',
 );
 
-function custom_smilies_src($src, $img){
+add_filter('smilies_src', 'philna_custom_smilies_src', 10, 2);
+function philna_custom_smilies_src($src, $img){
     return get_template_directory_uri().'/images/smilies/' . $img;
 }
-add_filter('smilies_src', 'custom_smilies_src', 10, 2);
