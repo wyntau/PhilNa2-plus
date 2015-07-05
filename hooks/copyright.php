@@ -6,13 +6,19 @@
 // no direct access
 defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinheli < http://philna.com/ >');
 
+add_filter('the_content', 'philna_copyright', 0);
 /**
  * hook on feed content
  * you can add copyright... and so on
  * @param unknown_type $content
  * @return unknown_type
  */
-function philnacopyright($content){
+function philna_copyright($content){
+  // not apend copyright when using ajax_post
+  if(defined('DOING_AJAX')){
+    return $content;
+  }
+
   $after = '';
   if(is_feed() || is_single()){
     if($GLOBALS['philnaopt']['rss_additional_show'] && $GLOBALS['philnaopt']['rss_additional']){
@@ -28,8 +34,4 @@ function philnacopyright($content){
     }
   }
   return $content.$after;
-}
-// not apend copyright when using ajax_post
-if(!defined('DOING_AJAX')){
-  add_filter('the_content', 'philnacopyright', 0);
 }
