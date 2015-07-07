@@ -12,6 +12,10 @@ function philna_gravatar_cache($avatar, $id_or_email, $size = '42', $default = '
     return $avatar;
   }
 
+  if(!$id_or_email){
+    return $avatar;
+  }
+
   $dir = '/wp-content/avatar';
   $dir_full = ABSPATH . $dir;
 
