@@ -1,4 +1,36 @@
 <?php
+
+function get_headers_with_stream_context($url, $context, $assoc = 0) {
+  // is not a valid url
+  if(!filter_var($url, FILTER_VALIDATE_URL)){
+    return false;
+  }
+
+  $fp = fopen($url, 'r', null, $context);
+  if(!$fp){ // timeout or something else
+    return false;
+  }
+
+  $metaData = stream_get_meta_data($fp);
+  fclose($fp);
+
+  $headerLines = $metaData['wrapper_data'];
+
+  if(!$assoc) return $headerLines;
+
+  $headers = array();
+  foreach($headerLines as $line) {
+      if(strpos($line, 'HTTP') === 0) {
+          $headers[0] = $line;
+          continue;
+      }
+      list($key, $value) = explode(': ', $line);
+      $headers[$key] = $value;
+  }
+
+  return $headers;
+}
+
 /* <<小牆>> Anti-Spam v1.84 by Willin Kan. */
 class anti_spam {
   static $form_name = 'www';
@@ -52,21 +84,22 @@ class anti_spam {
       $this->add_black( $comment );
     } else {
 
-      // // 檢查頭像, 国内开启此方法后, 可能会导致超时
-      // $f = md5( strtolower($comment['comment_author_email']) );
-      // $g = sprintf( "http://%d.gravatar.com", (hexdec($f{0}) % 2) ) .'/avatar/'. $f .'?d=404';
+      // 檢查頭像, 国内开启此方法后, 可能会导致超时
+      $f = md5( strtolower($comment['comment_author_email']) );
+      $g = sprintf( "http://%d.gravatar.com", (hexdec($f{0}) % 2) ) .'/avatar/'. $f .'?d=404';
 
-      // // php获取头信息可能超时, 所以设置超时时间为2秒
-      // $max_execution_time = ini_get('max_execution_time');
-      // ini_set('max_execution_time', 2);
-      // $headers = @get_headers( $g );
-      // ini_set('max_execution_time', $max_execution_time);
+      $stream_context = stream_context_create(array(
+        'http' => array(
+          'timeout' => 2
+        )
+      ));
+      $headers = get_headers_with_stream_context($g, $stream_context);
 
-      // if ( !$headers || !preg_match("|200|", $headers[0]) ) {
-      //   // 沒頭像的列入待審
-      //   add_filter('pre_comment_approved', create_function('', 'return "0";'));
-      //   //$this->add_black( $comment );
-      // }
+      if ( !$headers || !preg_match("|200|", $headers[0]) ) {
+        // 沒頭像的列入待審
+        add_filter('pre_comment_approved', create_function('', 'return "0";'));
+        //$this->add_black( $comment );
+      }
     }
     return $comment;
   }
