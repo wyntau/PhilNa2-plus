@@ -89,7 +89,12 @@ class PhilNaGetOpt implements ArrayAccess {
     if($key == 'optDefines'){
       return $this->philnaOptDefines;
     }else if (array_key_exists($key, $this->philnaOptDefines)) {
-      $value = $this->philnaOpt[$key];
+
+      if(array_key_exists($key, $this->philnaOpt)){
+        $value = $this->philnaOpt[$key];
+      }else{
+        $value = null;
+      }
 
       if($this->philnaOptDefines[$key][0] == 'string'){
         if(!$value && array_key_exists(1, $this->philnaOptDefines[$key])){
