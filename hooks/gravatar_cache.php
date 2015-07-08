@@ -6,7 +6,7 @@
 *****************************************/
 
 add_filter('get_avatar', 'philna_gravatar_cache', 1, 5);
-function philna_gravatar_cache($avatar, $id_or_email, $size = '42', $default = '', $alt = ''){
+function philna_gravatar_cache($avatar, $id_or_email, $size = '', $default = '', $alt = ''){
 
   if(!(bool)$GLOBALS['philnaopt']['gravatar_cache']){
     return $avatar;
@@ -16,10 +16,10 @@ function philna_gravatar_cache($avatar, $id_or_email, $size = '42', $default = '
     return $avatar;
   }
 
-  $dir = '/wp-content/avatar';
-  $dir_full = ABSPATH . $dir;
+  $dir_path = '/wp-content/avatar';
+  $dir_path_full = ABSPATH . $dir_path;
 
-  if(!file_exists($dir_full) || !is_writable($dir_full)){
+  if(!file_exists($dir_path_full) || !is_writable($dir_path_full)){
     return $avatar;
   }
 
@@ -41,23 +41,33 @@ function philna_gravatar_cache($avatar, $id_or_email, $size = '42', $default = '
 
   $hash = md5( strtolower( $email ) );
 
-  $path = $dir . '/'. $hash. '.jpg';
-  $path_default = $dir . '/default.jpg';
+  $avatar_path = $dir_path . '/'. $hash . '_' .$size . '.jpg';
+  $avatar_path_full = ABSPATH . $avatar_path;
+  $avatar_url = home_url() . $avatar_path;
 
-  $path_full = ABSPATH . $path;
-
-  $avatar_url = home_url() . $path;
-  $avatar_default = home_url() . $path_default;
+  $avatar_default_path = $dir_path . '/default.jpg';
+  $avatar_default_path_full = ABSPATH . $avatar_default_path;
+  $avatar_default_url = home_url() . $avatar_default_path;
 
   $delta = 24 * 60 * 60 * 14; //設定14天, 單位:秒
 
-  if (empty($default)) {
-    $default = $avatar_default;
+  if (empty($default) && is_file($avatar_default_path_full)) {
+    $default = $avatar_default_url;
+  }else{
+    $default = get_option('avatar_default');
   }
 
-  if (!is_file($path_full) || (time() - filemtime($path_full)) > $delta){ //當頭像不存在或文件超過14天才更新
-    $r = get_option('avatar_rating');
-    $gravatar_url = 'http://www.gravatar.com/avatar/' . $hash . '?s=' . $size . '&d=' . urlencode($default) . '&r=' . $r; // 舊服務器 (哪個快就開哪個)
+  if (!is_file($avatar_path_full) || (time() - filemtime($avatar_path_full)) > $delta){ //當頭像不存在或文件超過14天才更新
+
+    if(is_ssl()){
+      $gravatar_host = 'https://secure.gravatar.com';
+    }else{
+      $gravatar_host = sprintf( "http://%d.gravatar.com", (hexdec($hash{0}) % 2) );
+    }
+
+    $avatar_rating = get_option('avatar_rating');
+
+    $gravatar_url = $gravatar_host . '/avatar/' . $hash . '?s=' . $size . '&d=' . urlencode($default) . '&r=' . $avatar_rating; // 舊服務器 (哪個快就開哪個)
 
     // php获取头信息可能超时, 所以设置超时时间为2秒
     $stream_context = stream_context_create(array(
@@ -65,12 +75,9 @@ function philna_gravatar_cache($avatar, $id_or_email, $size = '42', $default = '
         'timeout' => 2
         )
     ));
-    @copy($gravatar_url, $path_full, $stream_context);
+    @copy($gravatar_url, $avatar_path_full, $stream_context);
 
     $avatar_url = esc_attr($gravatar_url); //新頭像 copy 時, 取 gravatar 顯示
-  }
-  if (is_file($path_full) && filesize($path_full) < 500) {
-    @copy($default, $path_full);
   }
   return "<img title='{$alt}' alt='{$alt}' src='{$avatar_url}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
 }
