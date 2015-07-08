@@ -78,6 +78,7 @@ if(isset($_POST['Submit']) && isset($_POST['savephilnaopt'])){
         <tr valign="top">
           <th scope="row"><?php _e('<h5>Gavatar</h5>',YHL);?></th>
           <td class="form-field">
+            <p><strong>注意:</strong> 如果你的服务器在国内, 请尽量不要使用, 因为Gravatar的服务器在国内基本不可用, 如果开启缓存的话, 会在获取gravatar的图片连接超时, 造成服务器端阻塞</p><br />
             <input id="gravatar_cache" name="gravatar_cache" type="checkbox" value="checkbox" <?php if($o['gravatar_cache']) echo "checked='checked'"; ?> />
             <label for="gravatar_cache">开启Gavatar头像缓存.</label><br/>
             如需使用头像缓存,请先在wp-content目录建立avatar文件夹,并设置此文件夹权限为777,文件夹中放置一张default.jpg.
