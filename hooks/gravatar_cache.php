@@ -23,20 +23,20 @@ function philna_gravatar_cache($avatar, $id_or_email, $size = '', $default = '',
     return $avatar;
   }
 
-  $user = false;
-  if ( is_numeric( $id_or_email ) ) {
+  if(filter_var($id_or_email, FILTER_VALIDATE_EMAIL)){
+    $email = $id_or_email;
+  }else if( is_numeric( $id_or_email ) ) {
     $id = (int) $id_or_email;
     $user = get_user_by( 'id' , $id );
+    $email = $user->get('user_email');
   } else if ( is_object( $id_or_email ) ) {
     if ( ! empty( $id_or_email->user_id ) ) {
       $id = (int) $id_or_email->user_id;
       $user = get_user_by( 'id' , $id );
+      $email = $user->get('user_email');
     }
-  } else {
-    $user = get_user_by( 'email', $id_or_email );
   }
 
-  $email = $user->get('user_email');
   $alt = esc_attr( $alt );
 
   $hash = md5( strtolower( $email ) );

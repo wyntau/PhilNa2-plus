@@ -153,6 +153,8 @@ class PhilNaGetOpt implements ArrayAccess {
 
     'gravatar_cache' => array('bool'),
 
+    'anti_spam_field' => array('string', 'anti_spam'),
+
     'google_cse' => array('bool'),
     'google_cse_cx' => array('string'),
 

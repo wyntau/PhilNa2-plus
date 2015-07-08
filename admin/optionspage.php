@@ -87,6 +87,15 @@ if(isset($_POST['Submit']) && isset($_POST['savephilnaopt'])){
             <strong>可选: </strong>您可以选择在avatar文件夹中放置一张default.jpg作为默认头像
           </td>
         </tr>
+
+        <tr valign="top">
+          <th scope="row"><?php _e('<h5>Anti spam 小墙</h5>',YHL);?></th>
+          <td class="form-field">
+            <label for="anti_spam_field">小墙 textarea 的 name属性值</label><br/>
+            <input type="text" name="anti_spam_field" id="anti_spam_field" class="code" value="<?php echo($o['anti_spam_field']); ?>"><br/><br/>
+          </td>
+        </tr>
+
         <tr valign="top">
           <th scope="row"><?php _e('<h5>Search Settings</h5>',YHL);?></th>
           <td class="form-field">

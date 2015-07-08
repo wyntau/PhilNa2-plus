@@ -30,10 +30,13 @@ function get_headers_with_stream_context($url, $context, $assoc = 0) {
 
   return $headers;
 }
-
 /* <<小牆>> Anti-Spam v1.84 by Willin Kan. */
 class anti_spam {
-  static $form_name = 'www';
+
+  function get_form_name(){
+    return $GLOBALS['philnaopt']['anti_spam_field'];
+  }
+
   function anti_spam() {
     if ( !current_user_can('read') ) {
       add_action('template_redirect', array($this, 'w_tb'), 1);
@@ -48,13 +51,13 @@ class anti_spam {
       if ( stripos($_SERVER['HTTP_ACCEPT_LANGUAGE'], 'zh') === false ) {
         add_filter( 'comments_open', create_function('', "return false;") ); // 關閉評論
       } else {
-        ob_start(create_function('$input','return preg_replace("#textarea(.*?)name=([\\"\'])comment([\\"\'])(.+)/textarea>#", "textarea$1name=$2' . self::$form_name . '$3$4/textarea><textarea name=\\"comment\\" cols=\\"100%\\" rows=\\"4\\" style=\\"display:none\\"></textarea>",$input);') );
+        ob_start(create_function('$input','return preg_replace("#textarea(.*?)name=([\\"\'])comment([\\"\'])(.+)/textarea>#", "textarea$1name=$2' . $this->get_form_name() . '$3$4/textarea><textarea name=\\"comment\\" cols=\\"100%\\" rows=\\"4\\" style=\\"display:none\\"></textarea>",$input);') );
       }
     }
   }
   // 檢查
   function gate() {
-    $w = self::$form_name;
+    $w = $this->get_form_name();
     if(!empty($_POST['comment'])){
       $request = $_SERVER['REQUEST_URI'];
       $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '隐瞒';
@@ -85,15 +88,15 @@ class anti_spam {
     } else {
 
       // 檢查頭像, 国内开启此方法后, 可能会导致超时
-      $f = md5( strtolower($comment['comment_author_email']) );
-      $g = sprintf( "http://%d.gravatar.com", (hexdec($f{0}) % 2) ) .'/avatar/'. $f .'?d=404';
+      $hash = md5( strtolower($comment['comment_author_email']) );
+      $gravatar_url = sprintf( "http://%d.gravatar.com", (hexdec($hash{0}) % 2) ) .'/avatar/'. $hash .'?d=404';
 
       $stream_context = stream_context_create(array(
         'http' => array(
           'timeout' => 2
         )
       ));
-      $headers = get_headers_with_stream_context($g, $stream_context);
+      $headers = get_headers_with_stream_context($gravatar_url, $stream_context);
 
       if ( !$headers || !preg_match("|200|", $headers[0]) ) {
         // 沒頭像的列入待審
