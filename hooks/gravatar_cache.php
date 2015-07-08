@@ -45,11 +45,13 @@ function philna_gravatar_cache($avatar, $id_or_email, $size = '', $default = '',
   $avatar_path_full = ABSPATH . $avatar_path;
   $avatar_url = home_url() . $avatar_path;
 
-  $delta = 24 * 60 * 60 * 14; //設定14天, 單位:秒
+  // 缓存头像7天, 单位秒
+  $delta = 24 * 60 * 60 * 7;
 
   if (!is_file($avatar_path_full) || (time() - filemtime($avatar_path_full)) > $delta){ //當頭像不存在或文件超過14天才更新
 
     $gravatar_block = $dir_path_full . '/.gravatar_block';
+    // 每隔一天检查一次gravatar服务是否可用, 单位秒
     $gravatar_block_check_interval = 24 * 60 * 60 * 1;
     // have .gravatar_block file, and is created rencently, so the server is not available
     if(is_file($gravatar_block) && (time() - filemtime($gravatar_block) <= $gravatar_block_check_interval)){
@@ -91,5 +93,5 @@ function philna_gravatar_cache($avatar, $id_or_email, $size = '', $default = '',
 
     $avatar_url = esc_attr($gravatar_url); //新頭像 copy 時, 取 gravatar 顯示
   }
-  return "<img title='{$alt}' alt='{$alt}' src='{$avatar_url}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
+  return "<img title=\"{$alt}\" alt=\"{$alt}\" src=\"{$avatar_url}\" class=\"avatar avatar-{$size} photo\" height=\"{$size}\" width=\"{$size}\" />";
 }
