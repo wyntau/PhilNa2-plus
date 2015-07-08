@@ -50,22 +50,28 @@ function philna_gravatar_cache($avatar, $id_or_email, $size = '42', $default = '
   $avatar_default = home_url() . $path_default;
 
   $delta = 24 * 60 * 60 * 14; //設定14天, 單位:秒
-  if ( empty($default) ) {
+
+  if (empty($default)) {
     $default = $avatar_default;
   }
-  if ( !is_file($path_full) || (time() - filemtime($path_full)) > $delta ){ //當頭像不存在或文件超過14天才更新
+
+  if (!is_file($path_full) || (time() - filemtime($path_full)) > $delta){ //當頭像不存在或文件超過14天才更新
     $r = get_option('avatar_rating');
     $gravatar_url = 'http://www.gravatar.com/avatar/' . $hash . '?s=' . $size . '&d=' . urlencode($default) . '&r=' . $r; // 舊服務器 (哪個快就開哪個)
 
     // php获取头信息可能超时, 所以设置超时时间为2秒
     $max_execution_time = ini_get('max_execution_time');
     ini_set('max_execution_time', 2);
-    @copy($gravatar_url, $path_full);
+    $headers = @get_headers( $gravatar_url );
     ini_set('max_execution_time', $max_execution_time);
+    // 当返回头信息时才进行copy
+    if($headers && preg_match("|200|", $headers[0])){
+      @copy($gravatar_url, $path_full);
+    }
 
     $avatar_url = esc_attr($gravatar_url); //新頭像 copy 時, 取 gravatar 顯示
   }
-  if (filesize($path_full) < 500) {
+  if (is_file($path_full) && filesize($path_full) < 500) {
     @copy($default, $path_full);
   }
   return "<img title='{$alt}' alt='{$alt}' src='{$avatar_url}' class='avatar avatar-{$size} photo' height='{$size}' width='{$size}' />";
