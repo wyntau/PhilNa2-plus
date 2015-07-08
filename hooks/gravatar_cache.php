@@ -45,27 +45,35 @@ function philna_gravatar_cache($avatar, $id_or_email, $size = '', $default = '',
   $avatar_path_full = ABSPATH . $avatar_path;
   $avatar_url = home_url() . $avatar_path;
 
-  $avatar_default_path = $dir_path . '/default.jpg';
-  $avatar_default_path_full = ABSPATH . $avatar_default_path;
-  $avatar_default_url = home_url() . $avatar_default_path;
-
   $delta = 24 * 60 * 60 * 14; //設定14天, 單位:秒
 
-  if (empty($default) && is_file($avatar_default_path_full)) {
-    $default = $avatar_default_url;
-  }else{
-    $default = get_option('avatar_default');
-  }
-
   if (!is_file($avatar_path_full) || (time() - filemtime($avatar_path_full)) > $delta){ //當頭像不存在或文件超過14天才更新
+
+    $gravatar_block = $dir_path_full . '/.gravatar_block';
+    $gravatar_block_check_interval = 24 * 60 * 60 * 1;
+    // have .gravatar_block file, and is created rencently, so the server is not available
+    if(is_file($gravatar_block) && (time() - filemtime($gravatar_block) <= $gravatar_block_check_interval)){
+      return $avatar;
+    }
+
+    // set default
+    $avatar_default_path = $dir_path . '/default.jpg';
+    $avatar_default_path_full = ABSPATH . $avatar_default_path;
+    $avatar_default_url = home_url() . $avatar_default_path;
+
+    $avatar_rating = get_option('avatar_rating');
+
+    if (empty($default) && is_file($avatar_default_path_full)) {
+      $default = $avatar_default_url;
+    }else{
+      $default = get_option('avatar_default');
+    }
 
     if(is_ssl()){
       $gravatar_host = 'https://secure.gravatar.com';
     }else{
       $gravatar_host = sprintf( "http://%d.gravatar.com", (hexdec($hash{0}) % 2) );
     }
-
-    $avatar_rating = get_option('avatar_rating');
 
     $gravatar_url = $gravatar_host . '/avatar/' . $hash . '?s=' . $size . '&d=' . urlencode($default) . '&r=' . $avatar_rating; // 舊服務器 (哪個快就開哪個)
 
@@ -75,7 +83,11 @@ function philna_gravatar_cache($avatar, $id_or_email, $size = '', $default = '',
         'timeout' => 2
         )
     ));
-    @copy($gravatar_url, $avatar_path_full, $stream_context);
+    $res = @copy($gravatar_url, $avatar_path_full, $stream_context);
+    if(!$res){
+      $fp = fopen($gravatar_block, 'w');
+      fwrite($fp, time());
+    }
 
     $avatar_url = esc_attr($gravatar_url); //新頭像 copy 時, 取 gravatar 顯示
   }
