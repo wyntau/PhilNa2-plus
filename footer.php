@@ -21,7 +21,6 @@ is_404() || get_sidebar(); // if 404 page, no sidebar!
     <p id="footerinfo">
       Philna2-plus by <a target="_blank" href="http://ISayMe.com" title="集成功能扩展">自说Me话</a> and PhilNa2 by <a href="http://philna.com">yinheli</a>.
       <?php do_action('philnaFooterInfo'); ?>
-      <?php philna_query_state() ?>
     </p>
   </div>
 </div>
