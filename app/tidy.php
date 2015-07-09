@@ -17,7 +17,8 @@ function philnaTidyHTML(){
     ob_start('philnaPHPTidyClass');
   }
 }
-add_action('template_redirect', 'philnaTidyHTML');
+// invoke tidy clean before anti_spam w_tb
+add_action('template_redirect', 'philnaTidyHTML', 10);
 
 /**
  * tidy html output

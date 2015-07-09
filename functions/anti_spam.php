@@ -39,7 +39,7 @@ class anti_spam {
 
   function anti_spam() {
     if ( !current_user_can('read') ) {
-      add_action('template_redirect', array($this, 'w_tb'), 1);
+      add_action('template_redirect', array($this, 'w_tb'), 20); // invoke w_tb after tidy
       add_action('pre_comment_on_post', array($this, 'gate'), 1);
       add_action('preprocess_comment', array($this, 'sink'), 1);
     }

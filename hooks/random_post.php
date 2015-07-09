@@ -18,5 +18,5 @@ function matt_random_redirect() {
   exit;
 }
 if ( isset( $_GET['random'] ) ){
-  add_action( 'template_redirect', 'matt_random_redirect' );
+  add_action( 'template_redirect', 'matt_random_redirect', 1); // invoke this functions early
 }
