@@ -7,21 +7,25 @@
 defined('PHILNA') or die('Restricted access -- PhilNa2 gorgeous design by yinheli < http://philna.com/ >');
 
 /**
- * include all PHP script
+ * recursive include all PHP script
  * @param string $dir
  * @return unknown_type
  */
-function philnaIncludeAll($dir){
-  $dir = realpath($dir);
-  if($dir){
-    $files = scandir($dir);
-    sort($files);
-    foreach($files as $file){
-      if($file == '.' || $file == '..'){
-        continue;
-      }elseif(preg_match('/\.php$/i', $file)){
-        include_once $dir.'/'.$file;
+function philnaIncludeAll($path){
+  $path = realpath($path);
+  if($path){
+    if(is_dir($path)){
+      $files = scandir($path);
+      sort($files);
+      foreach($files as $file){
+        if($file == '.' || $file == '..'){
+          continue;
+        }else{
+          philnaIncludeAll($path . '/' . $file);
+        }
       }
+    }else if(is_file($path) && preg_match('/\.php$/i', $path)){
+      include_once $path;
     }
   }
 }
