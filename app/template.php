@@ -109,12 +109,11 @@ function philnaKeywordsAndDescription(){
   global $post, $wp_query;
 
   // default
-  $keywords = $GLOBALS['philnaopt']['keywords'] ? $GLOBALS['philnaopt']['keywords'] : 'Wordpress,philna,theme,yinheli';
+  $keywords = $GLOBALS['philnaopt']['keywords'] ? $GLOBALS['philnaopt']['keywords'] : 'Wordpress,philna-plus,theme';
   $description = $GLOBALS['philnaopt']['description'] ? $GLOBALS['philnaopt']['description'] : get_bloginfo('description');
 
   if(is_singular()){ // 普通页面
     $keywords = array($keywords);
-    $keywords[] = get_post_meta($post->ID, 'Keywords', true);
     $keywords[] = get_post_meta($post->ID, 'keywords', true);
 
     // 仅对 单篇文章页( single ) 处理
@@ -286,18 +285,6 @@ function philnaColorfullTags($tagLinks){
 }
 // add filter to wp_tag_cloud
 add_filter('wp_tag_cloud', 'philnaColorfullTags');
-
-/**
- * Filter body class
- *
- * @param array $class
- * @return multitype:
- */
-function philnaBodyClass(array $class){
-  $class = array_merge($class, array('philna', 'yinheli'));
-  return array_unique($class);
-}
-add_filter('body_class','philnaBodyClass');
 
 /**
  * Filter post class
