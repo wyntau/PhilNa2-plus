@@ -9,7 +9,7 @@ function Mini_pagenavi ( $p = 2 ) { //取当前页前后各2页
     return ; //文章与插页不用
   }
   global $wp_query , $paged ;
-  $max_page = $wp_query -> max_num_pages ;
+  $max_page = $wp_query->max_num_pages ;
   if ( $max_page == 1 ) {
     return ; //只有一页不用
   }
