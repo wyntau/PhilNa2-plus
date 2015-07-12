@@ -16,10 +16,12 @@ function philnaCloseSidebar(){
       padding: 0;
       position: relative;
     }
-    #top_right ul *:hover {
-      background-color: #666;
-      color: #FFF;
-      cursor:pointer;
+    #top_right ul li {
+      display: block;
+      list-style: none;
+      float: left;
+      position: relative;
+      margin-bottom:0;
     }
     #top_right ul a {
       display: block;
@@ -28,12 +30,10 @@ function philnaCloseSidebar(){
       padding: 3px 15px 3px;
       margin: 0;
     }
-    #top_right ul li {
-      display: block;
-      list-style: none;
-      float: left;
-      position: relative;
-      margin-bottom:0;
+    #top_right ul a:hover {
+      background-color: #666;
+      color: #FFF;
+      cursor:pointer;
     }
   </style>
   <div id="top_right">
